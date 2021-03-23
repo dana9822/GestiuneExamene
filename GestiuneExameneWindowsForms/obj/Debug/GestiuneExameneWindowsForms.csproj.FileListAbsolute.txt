@@ -1,0 +1,13 @@
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\GestiuneExameneWindowsForms.exe.config
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\GestiuneExameneWindowsForms.exe
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\GestiuneExameneWindowsForms.pdb
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.csprojAssemblyReference.cache
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.Form1.resources
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.Properties.Resources.resources
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.csproj.GenerateResource.cache
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.csproj.CoreCompileInputs.cache
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.exe
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.pdb
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.AddDataForm.resources
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.ScheduleExamForm.resources
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.StatisticsForm.resources
