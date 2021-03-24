@@ -50,6 +50,7 @@ namespace GestiuneExameneWindowsForms
             this.Controls.Add(this.buttonScheduleExamBack);
             this.Name = "ScheduleExamForm";
             this.Text = "ScheduleExamForm";
+            this.Load += new System.EventHandler(this.ScheduleExamForm_Load);
             this.ResumeLayout(false);
 
         }

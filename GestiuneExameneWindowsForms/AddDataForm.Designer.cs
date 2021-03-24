@@ -30,6 +30,7 @@ namespace GestiuneExameneWindowsForms
         private void InitializeComponent()
         {
             this.buttonAddDataBack = new System.Windows.Forms.Button();
+            this.labelAddDataConnectionStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonAddDataBack
@@ -42,20 +43,33 @@ namespace GestiuneExameneWindowsForms
             this.buttonAddDataBack.UseVisualStyleBackColor = true;
             this.buttonAddDataBack.Click += new System.EventHandler(this.buttonAddDataBack_Click);
             // 
+            // labelAddDataConnectionStatus
+            // 
+            this.labelAddDataConnectionStatus.AutoSize = true;
+            this.labelAddDataConnectionStatus.Location = new System.Drawing.Point(24, 410);
+            this.labelAddDataConnectionStatus.Name = "labelAddDataConnectionStatus";
+            this.labelAddDataConnectionStatus.Size = new System.Drawing.Size(0, 13);
+            this.labelAddDataConnectionStatus.TabIndex = 1;
+            this.labelAddDataConnectionStatus.Visible = false;
+            // 
             // AddDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelAddDataConnectionStatus);
             this.Controls.Add(this.buttonAddDataBack);
             this.Name = "AddDataForm";
             this.Text = "AddDataForm";
+            this.Load += new System.EventHandler(this.AddDataForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button buttonAddDataBack;
+        private System.Windows.Forms.Label labelAddDataConnectionStatus;
     }
 }

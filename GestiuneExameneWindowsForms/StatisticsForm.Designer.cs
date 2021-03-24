@@ -50,6 +50,7 @@ namespace GestiuneExameneWindowsForms
             this.Controls.Add(this.buttonStatisticsBack);
             this.Name = "StatisticsForm";
             this.Text = "StatisticsForm";
+            this.Load += new System.EventHandler(this.StatisticsForm_Load);
             this.ResumeLayout(false);
 
         }
