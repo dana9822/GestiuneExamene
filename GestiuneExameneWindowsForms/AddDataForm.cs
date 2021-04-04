@@ -24,6 +24,7 @@ namespace GestiuneExameneWindowsForms
         SqlDataAdapter da;
         DataSet ds = new DataSet();
         List<RadioButton> listRadioButtonFormaInvatamant = new List<RadioButton>();
+        List<RadioButton> listRadioButtonGradProfesor = new List<RadioButton>();
         #endregion
 
         #region backButton
@@ -118,8 +119,11 @@ namespace GestiuneExameneWindowsForms
         #region PopulateDropDownLists
         void adaugaFacultateToDropDownList()
         {
+            comboBoxDropDownListFacultate.Items.Clear();
+
             foreach (DataRow dr in ds.Tables["FACULTATE"].Rows)
                 comboBoxDropDownListFacultate.Items.Add(dr.ItemArray.GetValue(1).ToString());
+
             if (comboBoxDropDownListFacultate.Items.Count > 0)
                 comboBoxDropDownListFacultate.SelectedIndex = 0;
         }
@@ -216,6 +220,8 @@ namespace GestiuneExameneWindowsForms
 
             foreach (Control c in groupBoxFormaInv.Controls)
                 listRadioButtonFormaInvatamant.Add((RadioButton)c);
+            foreach (Control c in groupBoxGradDidactic.Controls)
+                listRadioButtonGradProfesor.Add((RadioButton)c);
 
         }
 
@@ -370,7 +376,89 @@ namespace GestiuneExameneWindowsForms
 
         private void buttonAdaugaGrupa_Click(object sender, EventArgs e)
         {
+            string codSpec = "";
+            string anStudiuId = "";
+            bool exista = false;
+            if (string.IsNullOrEmpty(numericUpDownNrGrupa.Text))
+                MessageBox.Show("Introduceti numarul grupei!");
+            else
+                if (Convert.ToInt32(numericUpDownNrStudentiGrupa.Value) < 10)
+                MessageBox.Show("O grupa nu poate avea mai putin de 10 studenti!");
+                else
+                {
+                    foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                        if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListSpecializareGrupa.SelectedItem.ToString())
+                            codSpec = dr.ItemArray.GetValue(0).ToString();
+                    foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+                        if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAnStudiuGrupa.SelectedItem.ToString())
+                            anStudiuId = dr.ItemArray.GetValue(0).ToString();
 
+                    foreach (DataRow dr in ds.Tables["GRUPA"].Rows)
+                        if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == numericUpDownNrGrupa.Value.ToString() && dr.ItemArray.GetValue(2).ToString() == anStudiuId && dr.ItemArray.GetValue(3).ToString() == anUniversitarCurent.ToString())
+                        {
+                            exista = true; //grupa exista deja  pentru specializarea selectata                    
+                            break;
+                        }
+                    if (exista == false)
+                    {
+                        string insertGrupa = "INSERT INTO Grupa VALUES ('" + codSpec.ToString() + "', '" + numericUpDownNrGrupa.Value.ToString() + "','" + anStudiuId.ToString() + "','" + anUniversitarCurent.ToString() + "','" + Convert.ToInt32(numericUpDownNrStudentiGrupa.Value) + "')";
+                        con.Open();
+                        SqlCommand cmdInsertGrupa = new SqlCommand(insertGrupa, con);
+                        cmdInsertGrupa.ExecuteNonQuery();
+                        ds.Tables["GRUPA"].Clear();
+                        SqlDataAdapter daGrupa = new SqlDataAdapter("SELECT * FROM Grupa", con);
+                        daGrupa.Fill(ds, "GRUPA");
+                        con.Close();
+                        //Grupa.Items.Clear();
+                        //adaugaGrupaToListBox();
+                        MessageBox.Show("Grupa " + numericUpDownNrGrupa.Value.ToString() + " pentru specializarea " + comboBoxDropDownListSpecializareGrupa.SelectedItem.ToString() + "(" + codSpec + ")" + " in anul de studiu " + anStudiuId.ToString() + " si anul universitar " + anUniversitarCurent.ToString() + " a fost adaugata cu succes!");
+                        // reset drop down numeric fields to their default values?
+                    }
+                    else
+                        MessageBox.Show("Grupa exista deja in baza de date!");
+                }
+        }
+       
+        private void buttonAdaugaProfesor_Click(object sender, EventArgs e)
+        {
+            ds.Tables["PROFESOR"].Clear();
+            SqlDataAdapter daProf = new SqlDataAdapter("SELECT * FROM Profesor", con);
+            con.Open();
+            daProf.Fill(ds, "PROFESOR");
+            con.Close();
+            DataTable dt = ds.Tables["PROFESOR"];
+            DataRow dr1 = dt.NewRow();
+
+            List<Int32> listMarcaProf = new List<int>();
+            if (ds.Tables["PROFESOR"].Rows.Count == 0)  //daca nu exista inregistrari, pentru primul insert in tabel,tratare exceptie " no element found "
+            {
+                dr1[0] = "1";
+                dr1[1] = textBoxNumeProfesor.Text.ToString();
+                dr1[2] = textBoxPrenumeProfesor.Text.ToString();
+                dr1[3] = returnRadioButtonName(listRadioButtonGradProfesor);
+            }
+            else
+            {
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                {
+                    if (dr.ItemArray.GetValue(0).ToString() != "NoProf")
+                        listMarcaProf.Add(Convert.ToInt32(dr.ItemArray.GetValue(0)));
+                }
+                string newMarcaProf = (listMarcaProf.Max() + 1).ToString();
+
+                dr1[0] = newMarcaProf;
+                dr1[1] = textBoxNumeProfesor.Text.ToString();
+                dr1[2] = textBoxPrenumeProfesor.Text.ToString();
+                dr1[3] = returnRadioButtonName(listRadioButtonGradProfesor);
+
+            }
+            dt.Rows.Add(dr1);
+            SqlCommandBuilder cb = new SqlCommandBuilder(daProf);
+            cb.DataAdapter.Update(dt);
+
+            MessageBox.Show("Domnul/Doamna "+ returnRadioButtonName(listRadioButtonGradProfesor).ToString()+" "+textBoxNumeProfesor.Text.ToString()+" "+textBoxPrenumeProfesor.Text.ToString()+" a fost inregistrat/a cu succes!");
+            textBoxNumeProfesor.Clear();
+            textBoxPrenumeProfesor.Clear();
         }
         #endregion
     }

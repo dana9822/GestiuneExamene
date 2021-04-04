@@ -29,6 +29,7 @@ namespace GestiuneExameneWindowsForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonAdaugaDate = new System.Windows.Forms.Button();
             this.buttonProgramareExamene = new System.Windows.Forms.Button();
             this.buttonStatistici = new System.Windows.Forms.Button();
@@ -79,11 +80,13 @@ namespace GestiuneExameneWindowsForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(479, 259);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonStatistici);
             this.Controls.Add(this.buttonProgramareExamene);
             this.Controls.Add(this.buttonAdaugaDate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Gestiune Examene";
             this.ResumeLayout(false);

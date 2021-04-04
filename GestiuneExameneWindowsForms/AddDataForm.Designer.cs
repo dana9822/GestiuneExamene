@@ -34,8 +34,32 @@ namespace GestiuneExameneWindowsForms
             this.labelAnUniversitarCurent = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageFacultate = new System.Windows.Forms.TabPage();
+            this.buttonAdaugaFacultate = new System.Windows.Forms.Button();
+            this.textBoxAdresaFacultate = new System.Windows.Forms.TextBox();
+            this.textBoxDenumireFacultate = new System.Windows.Forms.TextBox();
+            this.labelAdresaFac = new System.Windows.Forms.Label();
+            this.labelDenFac = new System.Windows.Forms.Label();
             this.tabPageSpecializare = new System.Windows.Forms.TabPage();
+            this.buttonAdaugaSpecializare = new System.Windows.Forms.Button();
+            this.comboBoxDropDownListFacultate = new System.Windows.Forms.ComboBox();
+            this.textBoxDenumireSpecializare = new System.Windows.Forms.TextBox();
+            this.labelFacultateSpec = new System.Windows.Forms.Label();
+            this.groupBoxFormaInv = new System.Windows.Forms.GroupBox();
+            this.radioButtonMaster = new System.Windows.Forms.RadioButton();
+            this.radioButtonLicenta = new System.Windows.Forms.RadioButton();
+            this.labelDenSpec = new System.Windows.Forms.Label();
             this.tabPageGrupa = new System.Windows.Forms.TabPage();
+            this.buttonAdaugaGrupa = new System.Windows.Forms.Button();
+            this.numericUpDownNrStudentiGrupa = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelAnUniversitarGrupa = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxDropDownListAnStudiuGrupa = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDownNrGrupa = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxDropDownListSpecializareGrupa = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabPageProfesor = new System.Windows.Forms.TabPage();
             this.tabPageDisciplina = new System.Windows.Forms.TabPage();
             this.tabPageSesiune = new System.Windows.Forms.TabPage();
@@ -43,37 +67,25 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSala = new System.Windows.Forms.TabPage();
             this.tabPageAlocareDisciplina = new System.Windows.Forms.TabPage();
             this.tabPageAcoperireDisciplina = new System.Windows.Forms.TabPage();
-            this.labelDenFac = new System.Windows.Forms.Label();
-            this.labelAdresaFac = new System.Windows.Forms.Label();
-            this.textBoxDenumireFacultate = new System.Windows.Forms.TextBox();
-            this.textBoxAdresaFacultate = new System.Windows.Forms.TextBox();
-            this.buttonAdaugaFacultate = new System.Windows.Forms.Button();
-            this.labelDenSpec = new System.Windows.Forms.Label();
-            this.groupBoxFormaInv = new System.Windows.Forms.GroupBox();
-            this.radioButtonLicenta = new System.Windows.Forms.RadioButton();
-            this.radioButtonMaster = new System.Windows.Forms.RadioButton();
-            this.labelFacultateSpec = new System.Windows.Forms.Label();
-            this.textBoxDenumireSpecializare = new System.Windows.Forms.TextBox();
-            this.comboBoxDropDownListFacultate = new System.Windows.Forms.ComboBox();
-            this.buttonAdaugaSpecializare = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxDropDownListSpecializareGrupa = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDownNrGrupa = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxDropDownListAnStudiuGrupa = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelAnUniversitarGrupa = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDownNrStudentiGrupa = new System.Windows.Forms.NumericUpDown();
-            this.buttonAdaugaGrupa = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBoxGradDidactic = new System.Windows.Forms.GroupBox();
+            this.radioButtonAsistent = new System.Windows.Forms.RadioButton();
+            this.radioButtonLector = new System.Windows.Forms.RadioButton();
+            this.radioButtonConferentiar = new System.Windows.Forms.RadioButton();
+            this.radioButtonProfesor = new System.Windows.Forms.RadioButton();
+            this.textBoxNumeProfesor = new System.Windows.Forms.TextBox();
+            this.textBoxPrenumeProfesor = new System.Windows.Forms.TextBox();
+            this.buttonAdaugaProfesor = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageFacultate.SuspendLayout();
             this.tabPageSpecializare.SuspendLayout();
-            this.tabPageGrupa.SuspendLayout();
             this.groupBoxFormaInv.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).BeginInit();
+            this.tabPageGrupa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrStudentiGrupa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).BeginInit();
+            this.tabPageProfesor.SuspendLayout();
+            this.groupBoxGradDidactic.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddDataBack
@@ -139,6 +151,49 @@ namespace GestiuneExameneWindowsForms
             this.tabPageFacultate.Text = "Facultate";
             this.tabPageFacultate.UseVisualStyleBackColor = true;
             // 
+            // buttonAdaugaFacultate
+            // 
+            this.buttonAdaugaFacultate.Location = new System.Drawing.Point(144, 116);
+            this.buttonAdaugaFacultate.Name = "buttonAdaugaFacultate";
+            this.buttonAdaugaFacultate.Size = new System.Drawing.Size(258, 44);
+            this.buttonAdaugaFacultate.TabIndex = 4;
+            this.buttonAdaugaFacultate.Text = "Adauga facultate";
+            this.buttonAdaugaFacultate.UseVisualStyleBackColor = true;
+            this.buttonAdaugaFacultate.Click += new System.EventHandler(this.buttonAdaugaFacultate_Click);
+            // 
+            // textBoxAdresaFacultate
+            // 
+            this.textBoxAdresaFacultate.Location = new System.Drawing.Point(111, 71);
+            this.textBoxAdresaFacultate.Name = "textBoxAdresaFacultate";
+            this.textBoxAdresaFacultate.Size = new System.Drawing.Size(321, 29);
+            this.textBoxAdresaFacultate.TabIndex = 3;
+            // 
+            // textBoxDenumireFacultate
+            // 
+            this.textBoxDenumireFacultate.Location = new System.Drawing.Point(110, 25);
+            this.textBoxDenumireFacultate.Name = "textBoxDenumireFacultate";
+            this.textBoxDenumireFacultate.Size = new System.Drawing.Size(322, 29);
+            this.textBoxDenumireFacultate.TabIndex = 2;
+            // 
+            // labelAdresaFac
+            // 
+            this.labelAdresaFac.AutoSize = true;
+            this.labelAdresaFac.Location = new System.Drawing.Point(29, 71);
+            this.labelAdresaFac.Name = "labelAdresaFac";
+            this.labelAdresaFac.Size = new System.Drawing.Size(75, 24);
+            this.labelAdresaFac.TabIndex = 1;
+            this.labelAdresaFac.Text = "Adresa:";
+            // 
+            // labelDenFac
+            // 
+            this.labelDenFac.AutoSize = true;
+            this.labelDenFac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDenFac.Location = new System.Drawing.Point(6, 30);
+            this.labelDenFac.Name = "labelDenFac";
+            this.labelDenFac.Size = new System.Drawing.Size(98, 24);
+            this.labelDenFac.TabIndex = 0;
+            this.labelDenFac.Text = "Denumire:";
+            // 
             // tabPageSpecializare
             // 
             this.tabPageSpecializare.Controls.Add(this.buttonAdaugaSpecializare);
@@ -155,6 +210,83 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSpecializare.TabIndex = 1;
             this.tabPageSpecializare.Text = "Specializare";
             this.tabPageSpecializare.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdaugaSpecializare
+            // 
+            this.buttonAdaugaSpecializare.Location = new System.Drawing.Point(124, 241);
+            this.buttonAdaugaSpecializare.Name = "buttonAdaugaSpecializare";
+            this.buttonAdaugaSpecializare.Size = new System.Drawing.Size(207, 38);
+            this.buttonAdaugaSpecializare.TabIndex = 5;
+            this.buttonAdaugaSpecializare.Text = "Adauga Specializare";
+            this.buttonAdaugaSpecializare.UseVisualStyleBackColor = true;
+            this.buttonAdaugaSpecializare.Click += new System.EventHandler(this.buttonAdaugaSpecializare_Click);
+            // 
+            // comboBoxDropDownListFacultate
+            // 
+            this.comboBoxDropDownListFacultate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDropDownListFacultate.FormattingEnabled = true;
+            this.comboBoxDropDownListFacultate.Location = new System.Drawing.Point(111, 68);
+            this.comboBoxDropDownListFacultate.Name = "comboBoxDropDownListFacultate";
+            this.comboBoxDropDownListFacultate.Size = new System.Drawing.Size(237, 32);
+            this.comboBoxDropDownListFacultate.TabIndex = 4;
+            // 
+            // textBoxDenumireSpecializare
+            // 
+            this.textBoxDenumireSpecializare.Location = new System.Drawing.Point(110, 24);
+            this.textBoxDenumireSpecializare.Name = "textBoxDenumireSpecializare";
+            this.textBoxDenumireSpecializare.Size = new System.Drawing.Size(238, 29);
+            this.textBoxDenumireSpecializare.TabIndex = 3;
+            // 
+            // labelFacultateSpec
+            // 
+            this.labelFacultateSpec.AutoSize = true;
+            this.labelFacultateSpec.Location = new System.Drawing.Point(13, 76);
+            this.labelFacultateSpec.Name = "labelFacultateSpec";
+            this.labelFacultateSpec.Size = new System.Drawing.Size(91, 24);
+            this.labelFacultateSpec.TabIndex = 2;
+            this.labelFacultateSpec.Text = "Facultate:";
+            // 
+            // groupBoxFormaInv
+            // 
+            this.groupBoxFormaInv.Controls.Add(this.radioButtonMaster);
+            this.groupBoxFormaInv.Controls.Add(this.radioButtonLicenta);
+            this.groupBoxFormaInv.Location = new System.Drawing.Point(142, 125);
+            this.groupBoxFormaInv.Name = "groupBoxFormaInv";
+            this.groupBoxFormaInv.Size = new System.Drawing.Size(179, 100);
+            this.groupBoxFormaInv.TabIndex = 1;
+            this.groupBoxFormaInv.TabStop = false;
+            this.groupBoxFormaInv.Text = "Forma invatamant";
+            // 
+            // radioButtonMaster
+            // 
+            this.radioButtonMaster.AutoSize = true;
+            this.radioButtonMaster.Location = new System.Drawing.Point(17, 63);
+            this.radioButtonMaster.Name = "radioButtonMaster";
+            this.radioButtonMaster.Size = new System.Drawing.Size(84, 28);
+            this.radioButtonMaster.TabIndex = 1;
+            this.radioButtonMaster.Text = "Master";
+            this.radioButtonMaster.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLicenta
+            // 
+            this.radioButtonLicenta.AutoSize = true;
+            this.radioButtonLicenta.Checked = true;
+            this.radioButtonLicenta.Location = new System.Drawing.Point(17, 29);
+            this.radioButtonLicenta.Name = "radioButtonLicenta";
+            this.radioButtonLicenta.Size = new System.Drawing.Size(88, 28);
+            this.radioButtonLicenta.TabIndex = 0;
+            this.radioButtonLicenta.TabStop = true;
+            this.radioButtonLicenta.Text = "Licenta";
+            this.radioButtonLicenta.UseVisualStyleBackColor = true;
+            // 
+            // labelDenSpec
+            // 
+            this.labelDenSpec.AutoSize = true;
+            this.labelDenSpec.Location = new System.Drawing.Point(6, 29);
+            this.labelDenSpec.Name = "labelDenSpec";
+            this.labelDenSpec.Size = new System.Drawing.Size(98, 24);
+            this.labelDenSpec.TabIndex = 0;
+            this.labelDenSpec.Text = "Denumire:";
             // 
             // tabPageGrupa
             // 
@@ -178,8 +310,135 @@ namespace GestiuneExameneWindowsForms
             this.tabPageGrupa.Text = "Grupa";
             this.tabPageGrupa.UseVisualStyleBackColor = true;
             // 
+            // buttonAdaugaGrupa
+            // 
+            this.buttonAdaugaGrupa.Location = new System.Drawing.Point(168, 250);
+            this.buttonAdaugaGrupa.Name = "buttonAdaugaGrupa";
+            this.buttonAdaugaGrupa.Size = new System.Drawing.Size(185, 44);
+            this.buttonAdaugaGrupa.TabIndex = 10;
+            this.buttonAdaugaGrupa.Text = "Adauga Grupa";
+            this.buttonAdaugaGrupa.UseVisualStyleBackColor = true;
+            this.buttonAdaugaGrupa.Click += new System.EventHandler(this.buttonAdaugaGrupa_Click);
+            // 
+            // numericUpDownNrStudentiGrupa
+            // 
+            this.numericUpDownNrStudentiGrupa.Location = new System.Drawing.Point(143, 204);
+            this.numericUpDownNrStudentiGrupa.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownNrStudentiGrupa.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownNrStudentiGrupa.Name = "numericUpDownNrStudentiGrupa";
+            this.numericUpDownNrStudentiGrupa.Size = new System.Drawing.Size(239, 29);
+            this.numericUpDownNrStudentiGrupa.TabIndex = 9;
+            this.numericUpDownNrStudentiGrupa.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 209);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(142, 24);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Numar studenti:";
+            // 
+            // labelAnUniversitarGrupa
+            // 
+            this.labelAnUniversitarGrupa.AutoSize = true;
+            this.labelAnUniversitarGrupa.Location = new System.Drawing.Point(196, 166);
+            this.labelAnUniversitarGrupa.Name = "labelAnUniversitarGrupa";
+            this.labelAnUniversitarGrupa.Size = new System.Drawing.Size(0, 24);
+            this.labelAnUniversitarGrupa.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 166);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(129, 24);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "An universitar:";
+            // 
+            // comboBoxDropDownListAnStudiuGrupa
+            // 
+            this.comboBoxDropDownListAnStudiuGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDropDownListAnStudiuGrupa.FormattingEnabled = true;
+            this.comboBoxDropDownListAnStudiuGrupa.Location = new System.Drawing.Point(143, 113);
+            this.comboBoxDropDownListAnStudiuGrupa.Name = "comboBoxDropDownListAnStudiuGrupa";
+            this.comboBoxDropDownListAnStudiuGrupa.Size = new System.Drawing.Size(239, 32);
+            this.comboBoxDropDownListAnStudiuGrupa.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 24);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "An studiu:";
+            // 
+            // numericUpDownNrGrupa
+            // 
+            this.numericUpDownNrGrupa.Location = new System.Drawing.Point(143, 71);
+            this.numericUpDownNrGrupa.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownNrGrupa.Name = "numericUpDownNrGrupa";
+            this.numericUpDownNrGrupa.Size = new System.Drawing.Size(239, 29);
+            this.numericUpDownNrGrupa.TabIndex = 3;
+            this.numericUpDownNrGrupa.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 24);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Numar grupa:";
+            // 
+            // comboBoxDropDownListSpecializareGrupa
+            // 
+            this.comboBoxDropDownListSpecializareGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDropDownListSpecializareGrupa.FormattingEnabled = true;
+            this.comboBoxDropDownListSpecializareGrupa.Location = new System.Drawing.Point(143, 20);
+            this.comboBoxDropDownListSpecializareGrupa.Name = "comboBoxDropDownListSpecializareGrupa";
+            this.comboBoxDropDownListSpecializareGrupa.Size = new System.Drawing.Size(239, 32);
+            this.comboBoxDropDownListSpecializareGrupa.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Specializare:";
+            // 
             // tabPageProfesor
             // 
+            this.tabPageProfesor.Controls.Add(this.buttonAdaugaProfesor);
+            this.tabPageProfesor.Controls.Add(this.textBoxPrenumeProfesor);
+            this.tabPageProfesor.Controls.Add(this.textBoxNumeProfesor);
+            this.tabPageProfesor.Controls.Add(this.groupBoxGradDidactic);
+            this.tabPageProfesor.Controls.Add(this.label7);
+            this.tabPageProfesor.Controls.Add(this.label6);
             this.tabPageProfesor.Location = new System.Drawing.Point(4, 22);
             this.tabPageProfesor.Name = "tabPageProfesor";
             this.tabPageProfesor.Padding = new System.Windows.Forms.Padding(3);
@@ -248,246 +507,108 @@ namespace GestiuneExameneWindowsForms
             this.tabPageAcoperireDisciplina.Text = "Acoperire Disciplina";
             this.tabPageAcoperireDisciplina.UseVisualStyleBackColor = true;
             // 
-            // labelDenFac
+            // label6
             // 
-            this.labelDenFac.AutoSize = true;
-            this.labelDenFac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDenFac.Location = new System.Drawing.Point(6, 30);
-            this.labelDenFac.Name = "labelDenFac";
-            this.labelDenFac.Size = new System.Drawing.Size(98, 24);
-            this.labelDenFac.TabIndex = 0;
-            this.labelDenFac.Text = "Denumire:";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(23, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 24);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Nume:";
             // 
-            // labelAdresaFac
+            // label7
             // 
-            this.labelAdresaFac.AutoSize = true;
-            this.labelAdresaFac.Location = new System.Drawing.Point(29, 71);
-            this.labelAdresaFac.Name = "labelAdresaFac";
-            this.labelAdresaFac.Size = new System.Drawing.Size(75, 24);
-            this.labelAdresaFac.TabIndex = 1;
-            this.labelAdresaFac.Text = "Adresa:";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 24);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Prenume:";
             // 
-            // textBoxDenumireFacultate
+            // groupBoxGradDidactic
             // 
-            this.textBoxDenumireFacultate.Location = new System.Drawing.Point(110, 25);
-            this.textBoxDenumireFacultate.Name = "textBoxDenumireFacultate";
-            this.textBoxDenumireFacultate.Size = new System.Drawing.Size(322, 29);
-            this.textBoxDenumireFacultate.TabIndex = 2;
+            this.groupBoxGradDidactic.Controls.Add(this.radioButtonProfesor);
+            this.groupBoxGradDidactic.Controls.Add(this.radioButtonConferentiar);
+            this.groupBoxGradDidactic.Controls.Add(this.radioButtonLector);
+            this.groupBoxGradDidactic.Controls.Add(this.radioButtonAsistent);
+            this.groupBoxGradDidactic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxGradDidactic.Location = new System.Drawing.Point(134, 101);
+            this.groupBoxGradDidactic.Name = "groupBoxGradDidactic";
+            this.groupBoxGradDidactic.Size = new System.Drawing.Size(200, 168);
+            this.groupBoxGradDidactic.TabIndex = 3;
+            this.groupBoxGradDidactic.TabStop = false;
+            this.groupBoxGradDidactic.Text = "Grad didactic";
             // 
-            // textBoxAdresaFacultate
+            // radioButtonAsistent
             // 
-            this.textBoxAdresaFacultate.Location = new System.Drawing.Point(111, 71);
-            this.textBoxAdresaFacultate.Name = "textBoxAdresaFacultate";
-            this.textBoxAdresaFacultate.Size = new System.Drawing.Size(321, 29);
-            this.textBoxAdresaFacultate.TabIndex = 3;
+            this.radioButtonAsistent.AutoSize = true;
+            this.radioButtonAsistent.Checked = true;
+            this.radioButtonAsistent.Location = new System.Drawing.Point(7, 29);
+            this.radioButtonAsistent.Name = "radioButtonAsistent";
+            this.radioButtonAsistent.Size = new System.Drawing.Size(93, 28);
+            this.radioButtonAsistent.TabIndex = 0;
+            this.radioButtonAsistent.TabStop = true;
+            this.radioButtonAsistent.Text = "Asistent";
+            this.radioButtonAsistent.UseVisualStyleBackColor = true;
             // 
-            // buttonAdaugaFacultate
+            // radioButtonLector
             // 
-            this.buttonAdaugaFacultate.Location = new System.Drawing.Point(144, 116);
-            this.buttonAdaugaFacultate.Name = "buttonAdaugaFacultate";
-            this.buttonAdaugaFacultate.Size = new System.Drawing.Size(258, 44);
-            this.buttonAdaugaFacultate.TabIndex = 4;
-            this.buttonAdaugaFacultate.Text = "Adauga facultate";
-            this.buttonAdaugaFacultate.UseVisualStyleBackColor = true;
-            this.buttonAdaugaFacultate.Click += new System.EventHandler(this.buttonAdaugaFacultate_Click);
+            this.radioButtonLector.AutoSize = true;
+            this.radioButtonLector.Location = new System.Drawing.Point(7, 64);
+            this.radioButtonLector.Name = "radioButtonLector";
+            this.radioButtonLector.Size = new System.Drawing.Size(80, 28);
+            this.radioButtonLector.TabIndex = 1;
+            this.radioButtonLector.Text = "Lector";
+            this.radioButtonLector.UseVisualStyleBackColor = true;
             // 
-            // labelDenSpec
+            // radioButtonConferentiar
             // 
-            this.labelDenSpec.AutoSize = true;
-            this.labelDenSpec.Location = new System.Drawing.Point(6, 29);
-            this.labelDenSpec.Name = "labelDenSpec";
-            this.labelDenSpec.Size = new System.Drawing.Size(98, 24);
-            this.labelDenSpec.TabIndex = 0;
-            this.labelDenSpec.Text = "Denumire:";
+            this.radioButtonConferentiar.AutoSize = true;
+            this.radioButtonConferentiar.Location = new System.Drawing.Point(7, 99);
+            this.radioButtonConferentiar.Name = "radioButtonConferentiar";
+            this.radioButtonConferentiar.Size = new System.Drawing.Size(130, 28);
+            this.radioButtonConferentiar.TabIndex = 2;
+            this.radioButtonConferentiar.Text = "Conferentiar";
+            this.radioButtonConferentiar.UseVisualStyleBackColor = true;
             // 
-            // groupBoxFormaInv
+            // radioButtonProfesor
             // 
-            this.groupBoxFormaInv.Controls.Add(this.radioButtonMaster);
-            this.groupBoxFormaInv.Controls.Add(this.radioButtonLicenta);
-            this.groupBoxFormaInv.Location = new System.Drawing.Point(111, 125);
-            this.groupBoxFormaInv.Name = "groupBoxFormaInv";
-            this.groupBoxFormaInv.Size = new System.Drawing.Size(179, 100);
-            this.groupBoxFormaInv.TabIndex = 1;
-            this.groupBoxFormaInv.TabStop = false;
-            this.groupBoxFormaInv.Text = "Forma invatamant";
+            this.radioButtonProfesor.AutoSize = true;
+            this.radioButtonProfesor.Location = new System.Drawing.Point(7, 134);
+            this.radioButtonProfesor.Name = "radioButtonProfesor";
+            this.radioButtonProfesor.Size = new System.Drawing.Size(98, 28);
+            this.radioButtonProfesor.TabIndex = 3;
+            this.radioButtonProfesor.Text = "Profesor";
+            this.radioButtonProfesor.UseVisualStyleBackColor = true;
             // 
-            // radioButtonLicenta
+            // textBoxNumeProfesor
             // 
-            this.radioButtonLicenta.AutoSize = true;
-            this.radioButtonLicenta.Checked = true;
-            this.radioButtonLicenta.Location = new System.Drawing.Point(17, 29);
-            this.radioButtonLicenta.Name = "radioButtonLicenta";
-            this.radioButtonLicenta.Size = new System.Drawing.Size(88, 28);
-            this.radioButtonLicenta.TabIndex = 0;
-            this.radioButtonLicenta.TabStop = true;
-            this.radioButtonLicenta.Text = "Licenta";
-            this.radioButtonLicenta.UseVisualStyleBackColor = true;
+            this.textBoxNumeProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumeProfesor.Location = new System.Drawing.Point(96, 15);
+            this.textBoxNumeProfesor.Name = "textBoxNumeProfesor";
+            this.textBoxNumeProfesor.Size = new System.Drawing.Size(287, 29);
+            this.textBoxNumeProfesor.TabIndex = 4;
             // 
-            // radioButtonMaster
+            // textBoxPrenumeProfesor
             // 
-            this.radioButtonMaster.AutoSize = true;
-            this.radioButtonMaster.Location = new System.Drawing.Point(17, 63);
-            this.radioButtonMaster.Name = "radioButtonMaster";
-            this.radioButtonMaster.Size = new System.Drawing.Size(84, 28);
-            this.radioButtonMaster.TabIndex = 1;
-            this.radioButtonMaster.Text = "Master";
-            this.radioButtonMaster.UseVisualStyleBackColor = true;
+            this.textBoxPrenumeProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPrenumeProfesor.Location = new System.Drawing.Point(96, 53);
+            this.textBoxPrenumeProfesor.Name = "textBoxPrenumeProfesor";
+            this.textBoxPrenumeProfesor.Size = new System.Drawing.Size(287, 29);
+            this.textBoxPrenumeProfesor.TabIndex = 5;
             // 
-            // labelFacultateSpec
+            // buttonAdaugaProfesor
             // 
-            this.labelFacultateSpec.AutoSize = true;
-            this.labelFacultateSpec.Location = new System.Drawing.Point(13, 76);
-            this.labelFacultateSpec.Name = "labelFacultateSpec";
-            this.labelFacultateSpec.Size = new System.Drawing.Size(91, 24);
-            this.labelFacultateSpec.TabIndex = 2;
-            this.labelFacultateSpec.Text = "Facultate:";
-            // 
-            // textBoxDenumireSpecializare
-            // 
-            this.textBoxDenumireSpecializare.Location = new System.Drawing.Point(110, 24);
-            this.textBoxDenumireSpecializare.Name = "textBoxDenumireSpecializare";
-            this.textBoxDenumireSpecializare.Size = new System.Drawing.Size(238, 29);
-            this.textBoxDenumireSpecializare.TabIndex = 3;
-            // 
-            // comboBoxDropDownListFacultate
-            // 
-            this.comboBoxDropDownListFacultate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListFacultate.FormattingEnabled = true;
-            this.comboBoxDropDownListFacultate.Location = new System.Drawing.Point(111, 68);
-            this.comboBoxDropDownListFacultate.Name = "comboBoxDropDownListFacultate";
-            this.comboBoxDropDownListFacultate.Size = new System.Drawing.Size(237, 32);
-            this.comboBoxDropDownListFacultate.TabIndex = 4;
-            // 
-            // buttonAdaugaSpecializare
-            // 
-            this.buttonAdaugaSpecializare.Location = new System.Drawing.Point(128, 241);
-            this.buttonAdaugaSpecializare.Name = "buttonAdaugaSpecializare";
-            this.buttonAdaugaSpecializare.Size = new System.Drawing.Size(207, 38);
-            this.buttonAdaugaSpecializare.TabIndex = 5;
-            this.buttonAdaugaSpecializare.Text = "Adauga Specializare";
-            this.buttonAdaugaSpecializare.UseVisualStyleBackColor = true;
-            this.buttonAdaugaSpecializare.Click += new System.EventHandler(this.buttonAdaugaSpecializare_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Specializare:";
-            // 
-            // comboBoxDropDownListSpecializareGrupa
-            // 
-            this.comboBoxDropDownListSpecializareGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListSpecializareGrupa.FormattingEnabled = true;
-            this.comboBoxDropDownListSpecializareGrupa.Location = new System.Drawing.Point(143, 20);
-            this.comboBoxDropDownListSpecializareGrupa.Name = "comboBoxDropDownListSpecializareGrupa";
-            this.comboBoxDropDownListSpecializareGrupa.Size = new System.Drawing.Size(239, 32);
-            this.comboBoxDropDownListSpecializareGrupa.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 24);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Numar grupa:";
-            // 
-            // numericUpDownNrGrupa
-            // 
-            this.numericUpDownNrGrupa.Location = new System.Drawing.Point(143, 71);
-            this.numericUpDownNrGrupa.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownNrGrupa.Name = "numericUpDownNrGrupa";
-            this.numericUpDownNrGrupa.Size = new System.Drawing.Size(239, 29);
-            this.numericUpDownNrGrupa.TabIndex = 3;
-            this.numericUpDownNrGrupa.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 121);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 24);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "An studiu:";
-            // 
-            // comboBoxDropDownListAnStudiuGrupa
-            // 
-            this.comboBoxDropDownListAnStudiuGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListAnStudiuGrupa.FormattingEnabled = true;
-            this.comboBoxDropDownListAnStudiuGrupa.Location = new System.Drawing.Point(143, 113);
-            this.comboBoxDropDownListAnStudiuGrupa.Name = "comboBoxDropDownListAnStudiuGrupa";
-            this.comboBoxDropDownListAnStudiuGrupa.Size = new System.Drawing.Size(239, 32);
-            this.comboBoxDropDownListAnStudiuGrupa.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 166);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 24);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "An universitar:";
-            // 
-            // labelAnUniversitarGrupa
-            // 
-            this.labelAnUniversitarGrupa.AutoSize = true;
-            this.labelAnUniversitarGrupa.Location = new System.Drawing.Point(196, 166);
-            this.labelAnUniversitarGrupa.Name = "labelAnUniversitarGrupa";
-            this.labelAnUniversitarGrupa.Size = new System.Drawing.Size(0, 24);
-            this.labelAnUniversitarGrupa.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 209);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 24);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Numar studenti:";
-            // 
-            // numericUpDownNrStudentiGrupa
-            // 
-            this.numericUpDownNrStudentiGrupa.Location = new System.Drawing.Point(143, 204);
-            this.numericUpDownNrStudentiGrupa.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownNrStudentiGrupa.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownNrStudentiGrupa.Name = "numericUpDownNrStudentiGrupa";
-            this.numericUpDownNrStudentiGrupa.Size = new System.Drawing.Size(239, 29);
-            this.numericUpDownNrStudentiGrupa.TabIndex = 9;
-            this.numericUpDownNrStudentiGrupa.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // buttonAdaugaGrupa
-            // 
-            this.buttonAdaugaGrupa.Location = new System.Drawing.Point(168, 250);
-            this.buttonAdaugaGrupa.Name = "buttonAdaugaGrupa";
-            this.buttonAdaugaGrupa.Size = new System.Drawing.Size(185, 44);
-            this.buttonAdaugaGrupa.TabIndex = 10;
-            this.buttonAdaugaGrupa.Text = "Adauga Grupa";
-            this.buttonAdaugaGrupa.UseVisualStyleBackColor = true;
-            this.buttonAdaugaGrupa.Click += new System.EventHandler(this.buttonAdaugaGrupa_Click);
+            this.buttonAdaugaProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaProfesor.Location = new System.Drawing.Point(134, 275);
+            this.buttonAdaugaProfesor.Name = "buttonAdaugaProfesor";
+            this.buttonAdaugaProfesor.Size = new System.Drawing.Size(200, 41);
+            this.buttonAdaugaProfesor.TabIndex = 6;
+            this.buttonAdaugaProfesor.Text = "Adauga Profesor";
+            this.buttonAdaugaProfesor.UseVisualStyleBackColor = true;
+            this.buttonAdaugaProfesor.Click += new System.EventHandler(this.buttonAdaugaProfesor_Click);
             // 
             // AddDataForm
             // 
@@ -506,12 +627,16 @@ namespace GestiuneExameneWindowsForms
             this.tabPageFacultate.PerformLayout();
             this.tabPageSpecializare.ResumeLayout(false);
             this.tabPageSpecializare.PerformLayout();
-            this.tabPageGrupa.ResumeLayout(false);
-            this.tabPageGrupa.PerformLayout();
             this.groupBoxFormaInv.ResumeLayout(false);
             this.groupBoxFormaInv.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).EndInit();
+            this.tabPageGrupa.ResumeLayout(false);
+            this.tabPageGrupa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrStudentiGrupa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).EndInit();
+            this.tabPageProfesor.ResumeLayout(false);
+            this.tabPageProfesor.PerformLayout();
+            this.groupBoxGradDidactic.ResumeLayout(false);
+            this.groupBoxGradDidactic.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,5 +682,15 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxDropDownListSpecializareGrupa;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonAdaugaProfesor;
+        private System.Windows.Forms.TextBox textBoxPrenumeProfesor;
+        private System.Windows.Forms.TextBox textBoxNumeProfesor;
+        private System.Windows.Forms.GroupBox groupBoxGradDidactic;
+        private System.Windows.Forms.RadioButton radioButtonProfesor;
+        private System.Windows.Forms.RadioButton radioButtonConferentiar;
+        private System.Windows.Forms.RadioButton radioButtonLector;
+        private System.Windows.Forms.RadioButton radioButtonAsistent;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
