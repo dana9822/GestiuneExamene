@@ -25,6 +25,10 @@ namespace GestiuneExameneWindowsForms
         DataSet ds = new DataSet();
         List<RadioButton> listRadioButtonFormaInvatamant = new List<RadioButton>();
         List<RadioButton> listRadioButtonGradProfesor = new List<RadioButton>();
+        List<RadioButton> listRadioButtonTipSala = new List<RadioButton>();
+        List<RadioButton> listRadioButtonSemestru = new List<RadioButton>();
+        List<RadioButton> listRadioButtonTipEvaluare = new List<RadioButton>();
+        List<RadioButton> listRadioButtonStatusDisciplina = new List<RadioButton>();
         #endregion
 
         #region backButton
@@ -45,12 +49,21 @@ namespace GestiuneExameneWindowsForms
             completareDataSet();
             adaugaRadioButtonInList();
             getAnUniversitarCurent();
+            getSesiuneCurenta();
             showCurrentAcademicYear();
             adaugaFacultateToDropDownList();
             adaugaSpecializareToDropDownList();
             adaugaAnStudiuToDropDownList();
+            adaugaSesiuneToDropDownList();
+            adaugaCorpToDropDownList();
+            adaugaDisciplinaToDropDownList();
+            adaugaProfesorToDropDownList();
             labelAnUniversitarGrupa.Visible = true;
             labelAnUniversitarGrupa.Text = anUniversitarCurent.ToString();
+            labelAnUniversitarCurentSesiune.Visible = true;
+            labelAnUniversitarCurentSesiune.Text = anUniversitarCurent.ToString();
+            labelAcoperireDiscAnUniv.Visible = true;
+            labelAcoperireDiscAnUniv.Text = anUniversitarCurent.ToString();
         }
 
         #region conectare
@@ -131,23 +144,96 @@ namespace GestiuneExameneWindowsForms
         void adaugaSpecializareToDropDownList()
         {
             comboBoxDropDownListSpecializareGrupa.Items.Clear();
+            comboBoxDropDownListAlocareDisSpecList.Items.Clear();
+            comboBoxDropDownListAcoperireDiscSpec.Items.Clear();
 
             foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
-                   comboBoxDropDownListSpecializareGrupa.Items.Add(dr.ItemArray.GetValue(1).ToString());
+            {
+                comboBoxDropDownListSpecializareGrupa.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                comboBoxDropDownListAlocareDisSpecList.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                comboBoxDropDownListAcoperireDiscSpec.Items.Add(dr.ItemArray.GetValue(1).ToString());
+            }
 
             if (comboBoxDropDownListSpecializareGrupa.Items.Count > 0)
                 comboBoxDropDownListSpecializareGrupa.SelectedIndex = 0;
+            if (comboBoxDropDownListAlocareDisSpecList.Items.Count > 0)
+                comboBoxDropDownListAlocareDisSpecList.SelectedIndex = 0;
+            if (comboBoxDropDownListAcoperireDiscSpec.Items.Count > 0)
+                comboBoxDropDownListAcoperireDiscSpec.SelectedIndex = 0;
         }
 
         void adaugaAnStudiuToDropDownList()
         {
             comboBoxDropDownListAnStudiuGrupa.Items.Clear();
+            comboBoxDropDownListAlocareDiscAnStudiuList.Items.Clear();
+            comboBoxDropDownListAcoperireDiscAnStudiu.Items.Clear();
 
             foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+            {
                 comboBoxDropDownListAnStudiuGrupa.Items.Add(dr.ItemArray.GetValue(0).ToString());
+                comboBoxDropDownListAlocareDiscAnStudiuList.Items.Add(dr.ItemArray.GetValue(0).ToString());
+                comboBoxDropDownListAcoperireDiscAnStudiu.Items.Add(dr.ItemArray.GetValue(0).ToString());
+            }
 
             if (comboBoxDropDownListAnStudiuGrupa.Items.Count > 0)
                 comboBoxDropDownListAnStudiuGrupa.SelectedIndex = 0;
+            if (comboBoxDropDownListAlocareDiscAnStudiuList.Items.Count > 0)
+                comboBoxDropDownListAlocareDiscAnStudiuList.SelectedIndex = 0;
+            if (comboBoxDropDownListAcoperireDiscAnStudiu.Items.Count > 0)
+                comboBoxDropDownListAcoperireDiscAnStudiu.SelectedIndex = 0;
+        }
+
+        void adaugaSesiuneToDropDownList()
+        {
+            comboBoxDropDownListSesiune.Items.Clear();
+
+            foreach (DataRow dr in ds.Tables["SESIUNE"].Rows)
+            {
+                comboBoxDropDownListSesiune.Items.Add(dr.ItemArray.GetValue(1).ToString());
+            }
+
+            if (comboBoxDropDownListSesiune.Items.Count > 0)
+                comboBoxDropDownListSesiune.SelectedIndex = 0;
+        }
+
+        void adaugaCorpToDropDownList()
+        {
+            comboBoxDropDownListCorp.Items.Clear();
+
+            foreach (DataRow dr in ds.Tables["CORP"].Rows)
+            {
+                comboBoxDropDownListCorp.Items.Add(dr.ItemArray.GetValue(1).ToString());
+            }
+
+            if (comboBoxDropDownListCorp.Items.Count > 0)
+                comboBoxDropDownListCorp.SelectedIndex = 0;
+        }
+
+        void adaugaDisciplinaToDropDownList()
+        {
+            comboBoxDropDownListAlocareDiscDiscList.Items.Clear();
+            comboBoxDropDowListAcoperireDiscDisc.Items.Clear();
+
+            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+            {
+                comboBoxDropDownListAlocareDiscDiscList.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                comboBoxDropDowListAcoperireDiscDisc.Items.Add(dr.ItemArray.GetValue(1).ToString());
+            }
+
+            if (comboBoxDropDownListAlocareDiscDiscList.Items.Count > 0)
+                comboBoxDropDownListAlocareDiscDiscList.SelectedIndex = 0;
+            if (comboBoxDropDowListAcoperireDiscDisc.Items.Count > 0)
+                comboBoxDropDowListAcoperireDiscDisc.SelectedIndex = 0;
+        }
+
+        void adaugaProfesorToDropDownList()
+        {
+            comboBoxDropDownListAcoperireDiscProf.Items.Clear();
+
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                comboBoxDropDownListAcoperireDiscProf.Items.Add(dr.ItemArray.GetValue(3).ToString()+" "+dr.ItemArray.GetValue(1).ToString()+" "+dr.ItemArray.GetValue(2).ToString());
+            if (comboBoxDropDownListAcoperireDiscProf.Items.Count > 0)
+                comboBoxDropDownListAcoperireDiscProf.SelectedIndex = 0;
         }
         #endregion
 
@@ -214,6 +300,29 @@ namespace GestiuneExameneWindowsForms
         }
         #endregion
 
+        #region Sesiune Curenta
+        static string idSesiuneCurenta;
+        static string dataInceputSesiuneCurenta;
+        static string dataFinalSesiuneCurenta;
+
+        public void getSesiuneCurenta()
+        {
+            con.Open();
+            string query = "SELECT top 1 idSesiune,anUniversitar,dataInceput,dataFinal FROM An_Sesiune order by dataInceput Desc;";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            SqlDataReader returnedRows = cmd.ExecuteReader();
+            if (returnedRows.Read())
+            {
+                idSesiuneCurenta = returnedRows.GetValue(0).ToString();
+                dataInceputSesiuneCurenta = returnedRows.GetValue(2).ToString();
+                dataFinalSesiuneCurenta = returnedRows.GetValue(3).ToString();
+            }
+            con.Close();
+            MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta + "data inceput: "+ dataInceputSesiuneCurenta+ " data final: "+ dataFinalSesiuneCurenta);
+        }
+        #endregion
+
         #region RadioButtonMethods
         void adaugaRadioButtonInList()
         {
@@ -222,7 +331,14 @@ namespace GestiuneExameneWindowsForms
                 listRadioButtonFormaInvatamant.Add((RadioButton)c);
             foreach (Control c in groupBoxGradDidactic.Controls)
                 listRadioButtonGradProfesor.Add((RadioButton)c);
-
+            foreach (Control c in groupBoxTipSala.Controls)
+                listRadioButtonTipSala.Add((RadioButton)c);
+            foreach (Control c in groupBoxAlocDiscSemestru.Controls)
+                listRadioButtonSemestru.Add((RadioButton)c);
+            foreach (Control c in groupBoxAlocDiscTipEvaluare.Controls)
+                listRadioButtonTipEvaluare.Add((RadioButton)c);
+            foreach (Control c in groupBoxAlocareDiscStatus.Controls)
+                listRadioButtonStatusDisciplina.Add((RadioButton)c);
         }
 
         string returnRadioButtonName(List<RadioButton> listaRadioButtons)
@@ -306,6 +422,8 @@ namespace GestiuneExameneWindowsForms
             da.Fill(ds, "FACULTATE");
 
             con.Close();
+
+            MessageBox.Show(textBoxDenumireFacultate.Text.ToString()+" a fost adaugata!");
 
             textBoxDenumireFacultate.Clear();
             textBoxAdresaFacultate.Clear();
@@ -409,8 +527,6 @@ namespace GestiuneExameneWindowsForms
                         SqlDataAdapter daGrupa = new SqlDataAdapter("SELECT * FROM Grupa", con);
                         daGrupa.Fill(ds, "GRUPA");
                         con.Close();
-                        //Grupa.Items.Clear();
-                        //adaugaGrupaToListBox();
                         MessageBox.Show("Grupa " + numericUpDownNrGrupa.Value.ToString() + " pentru specializarea " + comboBoxDropDownListSpecializareGrupa.SelectedItem.ToString() + "(" + codSpec + ")" + " in anul de studiu " + anStudiuId.ToString() + " si anul universitar " + anUniversitarCurent.ToString() + " a fost adaugata cu succes!");
                         // reset drop down numeric fields to their default values?
                     }
@@ -457,8 +573,294 @@ namespace GestiuneExameneWindowsForms
             cb.DataAdapter.Update(dt);
 
             MessageBox.Show("Domnul/Doamna "+ returnRadioButtonName(listRadioButtonGradProfesor).ToString()+" "+textBoxNumeProfesor.Text.ToString()+" "+textBoxPrenumeProfesor.Text.ToString()+" a fost inregistrat/a cu succes!");
+            adaugaProfesorToDropDownList();
             textBoxNumeProfesor.Clear();
             textBoxPrenumeProfesor.Clear();
+        }
+       
+        private void buttonAdaugaDisciplina_Click(object sender, EventArgs e)
+        {
+            bool verificaId = false;
+            int nrCaractereExtrase = 0;
+            int pozCaracterExtras = 0;
+            StringBuilder idDisciplinaDB = new StringBuilder();
+            string[] idDisciplina;
+
+            if (string.IsNullOrEmpty(textBoxDenumireDisciplina.Text))
+                MessageBox.Show("Introduceti denumirea disciplinei!");
+            else
+            {
+                idDisciplina = textBoxDenumireDisciplina.Text.ToString().Split(' ');
+
+                if (idDisciplina.Length > 1)
+                {
+
+                    foreach (string s in idDisciplina)
+                        if (s.Length >= 4)
+                            idDisciplinaDB.Append(s.Substring(0, 1));
+
+                    pozCaracterExtras = 0;
+                    do
+                    {
+                        verificaId = false;
+                        foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                        {
+                            if (dr.ItemArray.GetValue(0).ToString() == idDisciplinaDB.ToString())
+                            {
+                                verificaId = true;
+                                pozCaracterExtras++;
+
+                                idDisciplinaDB.Append((idDisciplina[idDisciplina.Length - 1]).ToString().Substring(pozCaracterExtras, 1));
+                            }
+                        }
+                    } while (verificaId);
+                }
+                else
+                {
+                    nrCaractereExtrase = 3;
+                    do
+                    {
+                        verificaId = false;
+                        idDisciplinaDB.Clear();
+                        idDisciplinaDB.Append(textBoxDenumireDisciplina.Text.Substring(0, nrCaractereExtrase));
+                        foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                        {
+                            if (dr.ItemArray.GetValue(0).ToString() == idDisciplinaDB.ToString())
+                            {
+                                verificaId = true;
+                                nrCaractereExtrase++;
+                            }
+                        }
+                    } while (verificaId);
+                }
+
+            }
+
+            ds.Tables["DISCIPLINA"].Clear();
+
+            string insertDisciplina = "INSERT INTO Disciplina VALUES ('" + idDisciplinaDB.ToString() + "', '" + textBoxDenumireDisciplina.Text + "')";
+
+            con.Open();
+            SqlCommand cmdInsertDisciplina = new SqlCommand(insertDisciplina, con);
+            cmdInsertDisciplina.ExecuteNonQuery();
+
+            da = new SqlDataAdapter("SELECT * FROM Disciplina", con);
+            da.Fill(ds, "DISCIPLINA");
+
+            con.Close();
+            MessageBox.Show("Disciplina " + textBoxDenumireDisciplina.Text.ToString() + " a fost adaugata cu succes!");
+            textBoxDenumireDisciplina.Clear();
+            comboBoxDropDownListAlocareDiscDiscList.Items.Clear();
+            adaugaDisciplinaToDropDownList();
+        }
+        
+        private void buttonAdaugaAnSesiune_Click(object sender, EventArgs e)
+        {
+
+            if (dateTimePickerSesiuneInceput.Value >= dateTimePickerSesiuneFinal.Value)
+                MessageBox.Show("Data inceperii sesiunii nu poate fi mai tarzie decat cea a finalului sesiunii si datele nu pot coincine!");
+            else
+            {
+                ds.Tables["ANSESIUNE"].Clear();
+                SqlDataAdapter daAnSesiune = new SqlDataAdapter("SELECT * FROM An_Sesiune", con);
+                con.Open();
+                daAnSesiune.Fill(ds, "ANSESIUNE");
+                con.Close();
+                DataTable dt = ds.Tables["ANSESIUNE"];
+                DataRow dr1 = dt.NewRow();
+
+                bool exista = false;
+                string idSesiune = "";
+
+                foreach (DataRow dr in ds.Tables["SESIUNE"].Rows)
+                {
+                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListSesiune.SelectedItem.ToString())
+                        idSesiune = dr.ItemArray.GetValue(0).ToString();
+                }
+
+                foreach (DataRow dr in ds.Tables["ANSESIUNE"].Rows)
+                {
+                    if (dr.ItemArray.GetValue(0).ToString() == idSesiune.ToString() && dr.ItemArray.GetValue(1).ToString() == anUniversitarCurent.ToString() && dr.ItemArray.GetValue(2).ToString() == dateTimePickerSesiuneInceput.Value.ToShortDateString()) // nu intra pe ramura if, niciodata nu vede PK-urile egale!
+                    {
+                        MessageBox.Show("Sesiunea de " + comboBoxDropDownListSesiune.SelectedItem.ToString() + " din anul universitar " + anUniversitarCurent.ToString() + " din data de " + dateTimePickerSesiuneInceput.Value.ToShortDateString().ToString() + " este deja inregistrata!");
+                        exista = true;
+                        break;
+                    }
+                }
+
+                if (exista == false)
+                {
+                    dr1[0] = idSesiune.ToString();
+                    dr1[1] = anUniversitarCurent.ToString();
+                    dr1[2] = dateTimePickerSesiuneInceput.Value.ToShortDateString();
+                    dr1[3] = dateTimePickerSesiuneFinal.Value.ToShortDateString();
+
+                    dt.Rows.Add(dr1);
+                    SqlCommandBuilder cb = new SqlCommandBuilder(daAnSesiune);
+                    cb.DataAdapter.Update(dt);
+                    MessageBox.Show("Sesiunea de " + comboBoxDropDownListSesiune.SelectedItem.ToString() + " din anul universitar " + anUniversitarCurent.ToString() + " din data de " + dateTimePickerSesiuneInceput.Value.ToShortDateString().ToString() + " a fost programata cu succes!");
+                }
+            }
+
+        }
+       
+        private void buttonAdaugaCorp_Click(object sender, EventArgs e)
+        {
+            ds.Tables["CORP"].Clear();
+            SqlDataAdapter daCorp = new SqlDataAdapter("SELECT * FROM Corp", con);
+            con.Open();
+            daCorp.Fill(ds, "CORP");
+            con.Close();
+            DataTable dt = ds.Tables["CORP"];
+            DataRow dr1 = dt.NewRow();
+
+            List<Int32> listIdCorp = new List<int>();
+            if (ds.Tables["CORP"].Rows.Count == 0)  //daca nu exista inregistrari, pentru primul insert in tabel,tratare exceptie " no element found "
+            {
+                dr1[0] = "1";
+                dr1[1] = textBoxDenumireCorp.Text.ToString();
+                dr1[2] = textBoxAdresaCorp.Text.ToString();
+            }
+            else
+            {
+                foreach (DataRow dr in ds.Tables["CORP"].Rows)
+                {
+                        listIdCorp.Add(Convert.ToInt32(dr.ItemArray.GetValue(0)));
+                }
+                string newIdCorp = (listIdCorp.Max() + 1).ToString();
+
+                dr1[0] = newIdCorp;
+                dr1[1] = textBoxDenumireCorp.Text.ToString();
+                dr1[2] = textBoxAdresaCorp.Text.ToString();
+
+            }
+            dt.Rows.Add(dr1);
+            SqlCommandBuilder cb = new SqlCommandBuilder(daCorp);
+            cb.DataAdapter.Update(dt);
+
+            MessageBox.Show("Corpul " + textBoxDenumireCorp.Text.ToString() + " a fost adaugat cu succes in baza de date!");
+            textBoxDenumireCorp.Clear();
+            textBoxAdresaCorp.Clear();
+            comboBoxDropDownListCorp.Items.Clear();
+            adaugaCorpToDropDownList();
+        }
+        
+        private void buttonAdaugaSala_Click(object sender, EventArgs e)
+        {
+            string codCorp = "";
+            bool exista = false;
+            if (string.IsNullOrEmpty(numericUpDownNrSala.Value.ToString()))
+                MessageBox.Show("Introduceti numarul salii!");
+            else
+            {
+                foreach (DataRow dr in ds.Tables["CORP"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListCorp.SelectedItem.ToString())
+                        codCorp = dr.ItemArray.GetValue(0).ToString();
+
+                foreach (DataRow dr in ds.Tables["SALA"].Rows)
+                    if (dr.ItemArray.GetValue(0).ToString() == codCorp.ToString() && dr.ItemArray.GetValue(1).ToString() == numericUpDownNrSala.Value.ToString() && dr.ItemArray.GetValue(2).ToString() == numericUpDownEtaj.Value.ToString())
+                    {
+                        exista = true; // sala deja exista in BD                   
+                        break;
+                    }
+                if (exista == false)
+                {
+                    string insertSala = "INSERT INTO Sala VALUES ('" + codCorp.ToString() + "', '" + numericUpDownNrSala.Value.ToString() + "','" + numericUpDownEtaj.Value.ToString() + "','" + Convert.ToInt32(numericUpDownNrLocuriSala.Value) + "','" + returnRadioButtonName(listRadioButtonTipSala).ToString() + "')";
+                    con.Open();
+                    SqlCommand cmdInsertSala = new SqlCommand(insertSala, con);
+                    cmdInsertSala.ExecuteNonQuery();
+                    ds.Tables["SALA"].Clear();
+                    SqlDataAdapter daSala = new SqlDataAdapter("SELECT * FROM Sala", con);
+                    daSala.Fill(ds, "SALA");
+                    con.Close();
+                    MessageBox.Show("Sala " + comboBoxDropDownListCorp.SelectedItem.ToString() + numericUpDownEtaj.Value.ToString() + numericUpDownNrSala.Value.ToString() + " a fost adaugata cu succes!");
+                    // reset drop down numeric fields to their default values?
+                }
+                else
+                    MessageBox.Show("Sala exista deja in baza de date!");
+            }
+        }
+        
+        private void buttonAlocaDisciplina_Click(object sender, EventArgs e)
+        {
+            string codSpec = "";
+            string idDisc = "";
+            string anStudiuId = "";
+            bool exista = false;
+            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAlocareDisSpecList.SelectedItem.ToString())
+                    codSpec = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAlocareDiscDiscList.SelectedItem.ToString())
+                    idDisc = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+                if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString())
+                    anStudiuId = dr.ItemArray.GetValue(0).ToString();
+
+            foreach (DataRow dr in ds.Tables["ALOCAREDISCIPLINA"].Rows)
+                if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == idDisc.ToString() && dr.ItemArray.GetValue(2).ToString() == anStudiuId.ToString())
+                {
+                    exista = true; // alocarea exista deja                 
+                    break;
+                }
+            if (exista == false)
+            {
+                string insertAlocare = "INSERT INTO AlocareDisciplina VALUES ('" + codSpec.ToString() + "', '" + idDisc.ToString() + "','" + anStudiuId.ToString() + "','" + returnRadioButtonName(listRadioButtonSemestru).ToString() + "','" + returnRadioButtonName(listRadioButtonTipEvaluare).ToString() + "','" + returnRadioButtonName(listRadioButtonStatusDisciplina).ToString() + "')";
+                con.Open();
+                SqlCommand cmdInsertAlocare = new SqlCommand(insertAlocare, con);
+                cmdInsertAlocare.ExecuteNonQuery();
+                ds.Tables["ALOCAREDISCIPLINA"].Clear();
+                SqlDataAdapter daAlocare = new SqlDataAdapter("SELECT * FROM AlocareDisciplina", con);
+                daAlocare.Fill(ds, "ALOCAREDISCIPLINA");
+                con.Close();
+                MessageBox.Show("Disciplina "+comboBoxDropDownListAlocareDiscDiscList.SelectedItem.ToString()+ " a fost alocata cu succes, avand urmatoarele specificatii:"+ "\nSpecializarea: "+comboBoxDropDownListAlocareDisSpecList.SelectedItem.ToString()+" \nAnul de studiu: "+ comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString()+"\nSemestrul: "+ returnRadioButtonName(listRadioButtonSemestru).ToString()+" \nTip Evaluare: "+returnRadioButtonName(listRadioButtonTipEvaluare).ToString()+"\nStatus: "+returnRadioButtonName(listRadioButtonStatusDisciplina).ToString());
+                // reset drop down numeric fields to their default values?
+            }
+            else
+                MessageBox.Show("Alocarea exista deja in baza de date!");
+        }
+
+        private void buttonAcoperireDisciplina_Click(object sender, EventArgs e)
+        {
+            string codSpec = "";
+            string idDisc = "";
+            string marcaProf = "";
+            string anStudiuId = "";
+            bool exista = false;
+            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAlocareDisSpecList.SelectedItem.ToString())
+                    codSpec = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAlocareDiscDiscList.SelectedItem.ToString())
+                    idDisc = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                if (dr.ItemArray.GetValue(3).ToString() + " " + dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString())
+                    marcaProf = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+                if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString())
+                    anStudiuId = dr.ItemArray.GetValue(0).ToString();
+
+            foreach (DataRow dr in ds.Tables["ACOPERIREDISCIPLINA"].Rows)
+                if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == idDisc.ToString() && dr.ItemArray.GetValue(2).ToString() == marcaProf.ToString() && dr.ItemArray.GetValue(3).ToString() == anStudiuId.ToString() && dr.ItemArray.GetValue(4).ToString() == anUniversitarCurent.ToString())
+                {
+                    exista = true; // acoperirea exista deja                 
+                    break;
+                }
+            if (exista == false)
+            {
+                string insertAcoperire = "INSERT INTO AcoperireDisciplina VALUES ('" + codSpec.ToString() + "', '" + idDisc.ToString() + "','"+ marcaProf.ToString() + "','" + anStudiuId.ToString() + "','" + anUniversitarCurent.ToString() + "')";
+                con.Open();
+                SqlCommand cmdInsertAcoperire = new SqlCommand(insertAcoperire, con);
+                cmdInsertAcoperire.ExecuteNonQuery();
+                ds.Tables["ACOPERIREDISCIPLINA"].Clear();
+                SqlDataAdapter daAcoperire = new SqlDataAdapter("SELECT * FROM AcoperireDisciplina", con);
+                daAcoperire.Fill(ds, "ACOPERIREDISCIPLINA");
+                con.Close();
+                MessageBox.Show("Disciplina " + comboBoxDropDowListAcoperireDiscDisc.SelectedItem.ToString() + " a fost acoperita cu succes, avand urmatoarele specificatii:" + "\nSpecializarea: " + comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString() +"\nPredata de: "+comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString()+ " \nAnul de studiu: " + comboBoxDropDownListAcoperireDiscAnStudiu.SelectedItem.ToString() + "\nAnul universitar: " + anUniversitarCurent.ToString());
+                // reset drop down numeric fields to their default values?
+            }
+            else
+                MessageBox.Show("Acoperirea exista deja in baza de date!");
         }
         #endregion
     }
