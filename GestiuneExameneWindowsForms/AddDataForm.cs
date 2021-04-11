@@ -238,7 +238,7 @@ namespace GestiuneExameneWindowsForms
         #endregion
 
         #region labelGUIAcademicYearAndServerStatus
-        void showGUIServerStatus()
+        public void showGUIServerStatus()
         {
             //verificare conexiune si afisare mesaj in label cu statusul conexiunii
             try
@@ -261,7 +261,7 @@ namespace GestiuneExameneWindowsForms
             }
         }
 
-        void showCurrentAcademicYear()
+        public void showCurrentAcademicYear()
         {
             if (!String.IsNullOrEmpty(anUniversitarCurent))
             {
@@ -304,6 +304,7 @@ namespace GestiuneExameneWindowsForms
         static string idSesiuneCurenta;
         static string dataInceputSesiuneCurenta;
         static string dataFinalSesiuneCurenta;
+        static string denumireSesiuneCurenta;
 
         public void getSesiuneCurenta()
         {
@@ -318,8 +319,15 @@ namespace GestiuneExameneWindowsForms
                 dataInceputSesiuneCurenta = returnedRows.GetValue(2).ToString();
                 dataFinalSesiuneCurenta = returnedRows.GetValue(3).ToString();
             }
+
+            foreach (DataRow dr in ds.Tables["SESIUNE"].Rows)
+            {
+                if (dr.ItemArray.GetValue(0).ToString() == idSesiuneCurenta)
+                    denumireSesiuneCurenta = dr.ItemArray.GetValue(1).ToString();
+            }
+
             con.Close();
-            MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta + "data inceput: "+ dataInceputSesiuneCurenta+ " data final: "+ dataFinalSesiuneCurenta);
+            MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta +" ,denumire: "+denumireSesiuneCurenta+ " ,data inceput: "+ dataInceputSesiuneCurenta+ " ,data final: "+ dataFinalSesiuneCurenta);
         }
         #endregion
 
