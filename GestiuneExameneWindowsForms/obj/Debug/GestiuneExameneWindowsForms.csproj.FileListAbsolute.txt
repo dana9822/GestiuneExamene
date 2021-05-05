@@ -11,3 +11,5 @@ C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExamene
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.AddDataForm.resources
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.ScheduleExamForm.resources
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.StatisticsForm.resources
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.Acoperire.resources
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.Alocare.resources

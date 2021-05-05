@@ -32,8 +32,8 @@ namespace GestiuneExameneWindowsForms
         SqlConnection con;
         SqlDataAdapter da;
         DataSet ds = new DataSet();
-        static string idFacultateSelectata;
-        static string denumireFacultateSelectata;
+        public static string idFacultateSelectata;
+        public static string denumireFacultateSelectata;
         #endregion
 
         #region conectare

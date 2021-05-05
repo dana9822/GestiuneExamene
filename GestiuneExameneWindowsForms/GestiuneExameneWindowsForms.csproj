@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acoperire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Acoperire.Designer.cs">
+      <DependentUpon>Acoperire.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddDataForm.Designer.cs">
       <DependentUpon>AddDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alocare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alocare.Designer.cs">
+      <DependentUpon>Alocare.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateNewControls.cs" />
     <Compile Include="Form1.cs">
@@ -73,8 +85,14 @@
     <Compile Include="StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Acoperire.resx">
+      <DependentUpon>Acoperire.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDataForm.resx">
       <DependentUpon>AddDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alocare.resx">
+      <DependentUpon>Alocare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
