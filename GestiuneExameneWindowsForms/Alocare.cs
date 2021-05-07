@@ -25,8 +25,9 @@ namespace GestiuneExameneWindowsForms
             completareDataSet();
             adaugaRadioButtonInList();
             getDenumireDisciplinaAdaugata();
-            adaugaSpecializareToDropDownList();
+            checkboxListSpecializari();
             adaugaAnStudiuToDropDownList();
+            adaugaCheckBoxInList();
             label_DisciplinaAdaugata.Text = denumiDisciplinaAdaugata.ToString();
         }
 
@@ -38,6 +39,8 @@ namespace GestiuneExameneWindowsForms
         List<RadioButton> listRadioButtonTipEvaluare = new List<RadioButton>();
         List<RadioButton> listRadioButtonStatusDisciplina = new List<RadioButton>();
         public static string denumiDisciplinaAdaugata = "";
+        List<CheckBox> listCheckBoxesSpecializari = new List<CheckBox>();
+        List<CheckBox> listPanelCheckBoxSpecializari = new List<CheckBox>();
         #endregion
 
         #region conectare
@@ -104,21 +107,6 @@ namespace GestiuneExameneWindowsForms
         #endregion
 
         #region PopulateDropDownList
-        void adaugaSpecializareToDropDownList()
-        {
-            comboBoxDropDownListAlocareDisSpecList.Items.Clear();
-
-            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
-            {
-                if (dr.ItemArray.GetValue(3).ToString() == Form1.idFacultateSelectata.ToString())
-                {
-                    comboBoxDropDownListAlocareDisSpecList.Items.Add(dr.ItemArray.GetValue(1).ToString());
-                }
-            }
-            if (comboBoxDropDownListAlocareDisSpecList.Items.Count > 0)
-                comboBoxDropDownListAlocareDisSpecList.SelectedIndex = 0;
-        }
-
         void adaugaAnStudiuToDropDownList()
         {
             comboBoxDropDownListAlocareDiscAnStudiuList.Items.Clear();
@@ -162,40 +150,111 @@ namespace GestiuneExameneWindowsForms
         }
         #endregion
 
+        #region CheckList Specializari
+        private void checkboxListSpecializari()
+        {
+            int pozTop = 10;
+            cleanPanel();
+            listCheckBoxesSpecializari.Clear();
+            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+            {
+                if (dr.ItemArray.GetValue(3).ToString() == Form1.idFacultateSelectata.ToString())
+                {
+                    listCheckBoxesSpecializari.Add(CreateNewControls.createCheckBox(dr.ItemArray.GetValue(1).ToString(), 10, pozTop));
+                    pozTop += 20;
+                }
+            }
+
+            foreach (CheckBox cb in listCheckBoxesSpecializari)
+            {
+                panel_CheckList_Alocare_Disciplina_Spec.Controls.Add(cb);
+            }
+        }
+
+        void cleanPanel()
+        {
+            foreach (Control c in panel_CheckList_Alocare_Disciplina_Spec.Controls)
+                panel_CheckList_Alocare_Disciplina_Spec.Controls.Remove(c);
+        }
+
+        void adaugaCheckBoxInList()
+        {
+            foreach (Control c in panel_CheckList_Alocare_Disciplina_Spec.Controls)
+                listPanelCheckBoxSpecializari.Add((CheckBox)c);
+        }
+        #endregion
+
         private void buttonAlocaDisciplina_Click(object sender, EventArgs e)
         {
-                string codSpec = "";
-                string idDisc = AddDataForm.idDisciplinaAdaugata.ToString();
-                string anStudiuId = "";
-                bool exista = false;
-                foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
-                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAlocareDisSpecList.SelectedItem.ToString())
-                        codSpec = dr.ItemArray.GetValue(0).ToString();
-                foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
-                    if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString())
-                        anStudiuId = dr.ItemArray.GetValue(0).ToString();
-
-                foreach (DataRow dr in ds.Tables["ALOCAREDISCIPLINA"].Rows)
-                    if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == idDisc.ToString() && dr.ItemArray.GetValue(2).ToString() == anStudiuId.ToString())
-                    {
-                        exista = true; // alocarea exista deja                 
-                        break;
-                    }
-                if (exista == false)
+            string idDisc = AddDataForm.idDisciplinaAdaugata.ToString();
+            if (listPanelCheckBoxSpecializari.Count > 0)
+            {
+                foreach (CheckBox c in listPanelCheckBoxSpecializari)
                 {
-                    string insertAlocare = "INSERT INTO AlocareDisciplina VALUES ('" + codSpec.ToString() + "', '" + idDisc.ToString() + "','" + anStudiuId.ToString() + "','" + returnRadioButtonName(listRadioButtonSemestru).ToString() + "','" + returnRadioButtonName(listRadioButtonTipEvaluare).ToString() + "','" + returnRadioButtonName(listRadioButtonStatusDisciplina).ToString() + "')";
-                    con.Open();
-                    SqlCommand cmdInsertAlocare = new SqlCommand(insertAlocare, con);
-                    cmdInsertAlocare.ExecuteNonQuery();
-                    ds.Tables["ALOCAREDISCIPLINA"].Clear();
-                    SqlDataAdapter daAlocare = new SqlDataAdapter("SELECT * FROM AlocareDisciplina", con);
-                    daAlocare.Fill(ds, "ALOCAREDISCIPLINA");
-                    con.Close();
-                    MessageBox.Show("Disciplina " + denumiDisciplinaAdaugata + " a fost alocata cu succes, avand urmatoarele specificatii:" + "\nSpecializarea: " + comboBoxDropDownListAlocareDisSpecList.SelectedItem.ToString() + " \nAnul de studiu: " + comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString() + "\nSemestrul: " + returnRadioButtonName(listRadioButtonSemestru).ToString() + " \nTip Evaluare: " + returnRadioButtonName(listRadioButtonTipEvaluare).ToString() + "\nStatus: " + returnRadioButtonName(listRadioButtonStatusDisciplina).ToString());
-                    // reset drop down numeric fields to their default values?
+                    if (c.Checked == true)
+                    {
+                        string codSpec = "";
+                        string anStudiuId = "";
+                        bool exista = false;
+                        foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                        {
+                            if (dr.ItemArray.GetValue(1).ToString() == c.Text.ToString())
+                                codSpec = dr.ItemArray.GetValue(0).ToString();
+                        }
+                        foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+                        {
+                            if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString())
+                                anStudiuId = dr.ItemArray.GetValue(0).ToString();
+                        }
+
+                        foreach (DataRow dr in ds.Tables["ALOCAREDISCIPLINA"].Rows)
+                        {
+                            if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == idDisc.ToString() && dr.ItemArray.GetValue(2).ToString() == anStudiuId.ToString())
+                            {
+                                exista = true; // alocarea exista deja                 
+                                break;
+                            }
+                        }
+                        if (exista == false)
+                        {
+                            string insertAlocare = "INSERT INTO AlocareDisciplina VALUES ('" + codSpec.ToString() + "', '" + idDisc.ToString() + "','" + anStudiuId.ToString() + "','" + returnRadioButtonName(listRadioButtonSemestru).ToString() + "','" + returnRadioButtonName(listRadioButtonTipEvaluare).ToString() + "','" + returnRadioButtonName(listRadioButtonStatusDisciplina).ToString() + "')";
+                            con.Open();
+                            SqlCommand cmdInsertAlocare = new SqlCommand(insertAlocare, con);
+                            cmdInsertAlocare.ExecuteNonQuery();
+                            ds.Tables["ALOCAREDISCIPLINA"].Clear();
+                            SqlDataAdapter daAlocare = new SqlDataAdapter("SELECT * FROM AlocareDisciplina", con);
+                            daAlocare.Fill(ds, "ALOCAREDISCIPLINA");
+                            con.Close();
+                            MessageBox.Show("Disciplina " + denumiDisciplinaAdaugata + " a fost alocata cu succes, avand urmatoarele specificatii:" + "\nSpecializarea: " + c.Text.ToString() + " \nAnul de studiu: " + comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString() + "\nSemestrul: " + returnRadioButtonName(listRadioButtonSemestru).ToString() + " \nTip Evaluare: " + returnRadioButtonName(listRadioButtonTipEvaluare).ToString() + "\nStatus: " + returnRadioButtonName(listRadioButtonStatusDisciplina).ToString());
+                        }
+                        else
+                            MessageBox.Show("Alocarea exista deja in baza de date!");
+                    }
                 }
-                else
-                    MessageBox.Show("Alocarea exista deja in baza de date!");
             }
+            else 
+            {
+                MessageBox.Show("Selectati cel putin o specializare pentru care alocati disciplina "+ denumiDisciplinaAdaugata+" !");
+            }
+        }
+
+        private void buttonIesire_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button_back_AddDataForm_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form form = Application.OpenForms["AddDataForm"];
+            form.Show();
+        }
+
+        Acoperire acoperireForm = new Acoperire();
+        private void button_toAcoperireForm_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            acoperireForm.ShowDialog();
+        }
     }
 }

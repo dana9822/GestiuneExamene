@@ -605,24 +605,30 @@ namespace GestiuneExameneWindowsForms
                         }
                     } while (verificaId);
                 }
+                if (verificaId == false)
+                {
+                    ds.Tables["DISCIPLINA"].Clear();
 
-                ds.Tables["DISCIPLINA"].Clear();
+                    string insertDisciplina = "INSERT INTO Disciplina VALUES ('" + idDisciplinaDB.ToString() + "', '" + textBoxDenumireDisciplina.Text + "')";
 
-                string insertDisciplina = "INSERT INTO Disciplina VALUES ('" + idDisciplinaDB.ToString() + "', '" + textBoxDenumireDisciplina.Text + "')";
+                    con.Open();
+                    SqlCommand cmdInsertDisciplina = new SqlCommand(insertDisciplina, con);
+                    cmdInsertDisciplina.ExecuteNonQuery();
 
-                con.Open();
-                SqlCommand cmdInsertDisciplina = new SqlCommand(insertDisciplina, con);
-                cmdInsertDisciplina.ExecuteNonQuery();
+                    da = new SqlDataAdapter("SELECT * FROM Disciplina", con);
+                    da.Fill(ds, "DISCIPLINA");
 
-                da = new SqlDataAdapter("SELECT * FROM Disciplina", con);
-                da.Fill(ds, "DISCIPLINA");
-
-                con.Close();
-                MessageBox.Show("Disciplina " + textBoxDenumireDisciplina.Text.ToString() + " a fost adaugata cu succes!");
-                textBoxDenumireDisciplina.Clear();
-                idDisciplinaAdaugata = idDisciplinaDB.ToString();
-                this.Hide();
-                alocareForm.ShowDialog();
+                    con.Close();
+                    MessageBox.Show("Disciplina " + textBoxDenumireDisciplina.Text.ToString() + " a fost adaugata cu succes!");
+                    textBoxDenumireDisciplina.Clear();
+                    idDisciplinaAdaugata = idDisciplinaDB.ToString();
+                    this.Hide();
+                    alocareForm.ShowDialog();
+                }
+                else 
+                {
+                    MessageBox.Show("A aparut o eroare!");
+                }
             }
 
         }
@@ -759,7 +765,13 @@ namespace GestiuneExameneWindowsForms
                     MessageBox.Show("Sala exista deja in baza de date!");
             }
         }
-        
+
         #endregion
+
+        private void button_ToAcoperireDisc_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            acoperireForm.ShowDialog();
+        }
     }
 }

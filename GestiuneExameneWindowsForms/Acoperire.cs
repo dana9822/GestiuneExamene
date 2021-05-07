@@ -24,6 +24,7 @@ namespace GestiuneExameneWindowsForms
             conectare();
             completareDataSet();
             adaugaSpecializareToDropDownList();
+            adaugaDisciplinaToDropDownList();
             adaugaAnStudiuToDropDownList();
             adaugaProfesorToDropDownList();
             labelAcoperireDiscAnUniv.Visible = true;
@@ -103,16 +104,52 @@ namespace GestiuneExameneWindowsForms
         void adaugaSpecializareToDropDownList()
         {
             comboBoxDropDownListAcoperireDiscSpec.Items.Clear();
-
-            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+            List<string> specializari = new List<string>();
+            foreach (DataRow drAloc in ds.Tables["ALOCAREDISCIPLINA"].Rows)  // doar specializarile care au materii alocate
             {
-                if (dr.ItemArray.GetValue(3).ToString() == Form1.idFacultateSelectata.ToString())
+                foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
                 {
-                    comboBoxDropDownListAcoperireDiscSpec.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                    if (drAloc.ItemArray.GetValue(0).ToString() == dr.ItemArray.GetValue(0).ToString())
+                    {
+                        if (dr.ItemArray.GetValue(3).ToString() == Form1.idFacultateSelectata.ToString())  // doar specializarile care apartin de facultatea selectata la deschiderea aplicatiei
+                        {
+                            specializari.Add(dr.ItemArray.GetValue(1).ToString());
+                            //comboBoxDropDownListAcoperireDiscSpec.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                        }
+                    }
                 }
+            }
+            List<string> distinct = specializari.Distinct().ToList();
+            foreach (String spec in distinct)
+            {
+                comboBoxDropDownListAcoperireDiscSpec.Items.Add(spec);
             }
             if (comboBoxDropDownListAcoperireDiscSpec.Items.Count > 0)
                 comboBoxDropDownListAcoperireDiscSpec.SelectedIndex = 0;
+        }
+
+        void adaugaDisciplinaToDropDownList()
+        {
+            comboBoxDropDowListAcoperireDiscDisc.Items.Clear();
+            List<string> discipline = new List<string>();
+            foreach (DataRow drAloc in ds.Tables["ALOCAREDISCIPLINA"].Rows)
+            {
+                foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                {
+                    if (drAloc.ItemArray.GetValue(1).ToString() == dr.ItemArray.GetValue(0).ToString())
+                    {
+                        discipline.Add(dr.ItemArray.GetValue(1).ToString());
+                        //comboBoxDropDowListAcoperireDiscDisc.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                    }
+                }
+            }
+            List<string> distinct = discipline.Distinct().ToList();
+            foreach (String spec in distinct)
+            {
+                comboBoxDropDowListAcoperireDiscDisc.Items.Add(spec);
+            }
+            if (comboBoxDropDowListAcoperireDiscDisc.Items.Count > 0)
+                comboBoxDropDowListAcoperireDiscDisc.SelectedIndex = 0;
         }
 
         void adaugaAnStudiuToDropDownList()
@@ -133,7 +170,7 @@ namespace GestiuneExameneWindowsForms
             comboBoxDropDownListAcoperireDiscProf.Items.Clear();
 
             foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-                comboBoxDropDownListAcoperireDiscProf.Items.Add(dr.ItemArray.GetValue(3).ToString() + " " + dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString());
+                comboBoxDropDownListAcoperireDiscProf.Items.Add(dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString());
             if (comboBoxDropDownListAcoperireDiscProf.Items.Count > 0)
                 comboBoxDropDownListAcoperireDiscProf.SelectedIndex = 0;
         }
@@ -180,6 +217,18 @@ namespace GestiuneExameneWindowsForms
             }
             else
                 MessageBox.Show("Acoperirea exista deja in baza de date!");
+        }
+
+        private void button_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button_back_toAddData_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form form = Application.OpenForms["AddDataForm"];
+            form.Show();
         }
     }
 }

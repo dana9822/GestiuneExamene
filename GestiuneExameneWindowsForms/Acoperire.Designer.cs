@@ -40,6 +40,8 @@ namespace GestiuneExameneWindowsForms
             this.label23 = new System.Windows.Forms.Label();
             this.comboBoxDropDownListAcoperireDiscSpec = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.button_Exit = new System.Windows.Forms.Button();
+            this.button_back_toAddData = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAcoperireDisciplina
@@ -152,11 +154,35 @@ namespace GestiuneExameneWindowsForms
             this.label22.TabIndex = 13;
             this.label22.Text = "Specializare:";
             // 
+            // button_Exit
+            // 
+            this.button_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Exit.Location = new System.Drawing.Point(667, 395);
+            this.button_Exit.Name = "button_Exit";
+            this.button_Exit.Size = new System.Drawing.Size(121, 43);
+            this.button_Exit.TabIndex = 24;
+            this.button_Exit.Text = "Iesire";
+            this.button_Exit.UseVisualStyleBackColor = true;
+            this.button_Exit.Click += new System.EventHandler(this.button_Exit_Click);
+            // 
+            // button_back_toAddData
+            // 
+            this.button_back_toAddData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_back_toAddData.Location = new System.Drawing.Point(436, 395);
+            this.button_back_toAddData.Name = "button_back_toAddData";
+            this.button_back_toAddData.Size = new System.Drawing.Size(225, 43);
+            this.button_back_toAddData.TabIndex = 25;
+            this.button_back_toAddData.Text = "Inapoi la adaugare date";
+            this.button_back_toAddData.UseVisualStyleBackColor = true;
+            this.button_back_toAddData.Click += new System.EventHandler(this.button_back_toAddData_Click);
+            // 
             // Acoperire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_back_toAddData);
+            this.Controls.Add(this.button_Exit);
             this.Controls.Add(this.buttonAcoperireDisciplina);
             this.Controls.Add(this.labelAcoperireDiscAnUniv);
             this.Controls.Add(this.label26);
@@ -189,5 +215,7 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox comboBoxDropDownListAcoperireDiscSpec;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button button_Exit;
+        private System.Windows.Forms.Button button_back_toAddData;
     }
 }

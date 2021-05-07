@@ -35,90 +35,91 @@ namespace GestiuneExameneWindowsForms
             this.label_facultate_curenta = new System.Windows.Forms.Label();
             this.label_id_facultate_curenta = new System.Windows.Forms.Label();
             this.tabPageSala = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBoxDropDownListCorp = new System.Windows.Forms.ComboBox();
-            this.numericUpDownNrSala = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownEtaj = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.numericUpDownNrLocuriSala = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxTipSala = new System.Windows.Forms.GroupBox();
-            this.radioButtonSalaCurs = new System.Windows.Forms.RadioButton();
-            this.radioButtonSalaLaborator = new System.Windows.Forms.RadioButton();
-            this.radioButtonSalaSeminar = new System.Windows.Forms.RadioButton();
             this.buttonAdaugaSala = new System.Windows.Forms.Button();
+            this.groupBoxTipSala = new System.Windows.Forms.GroupBox();
+            this.radioButtonSalaSeminar = new System.Windows.Forms.RadioButton();
+            this.radioButtonSalaLaborator = new System.Windows.Forms.RadioButton();
+            this.radioButtonSalaCurs = new System.Windows.Forms.RadioButton();
+            this.numericUpDownNrLocuriSala = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.numericUpDownEtaj = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownNrSala = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxDropDownListCorp = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabPageCorp = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
+            this.buttonAdaugaCorp = new System.Windows.Forms.Button();
+            this.textBoxAdresaCorp = new System.Windows.Forms.TextBox();
             this.textBoxDenumireCorp = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBoxAdresaCorp = new System.Windows.Forms.TextBox();
-            this.buttonAdaugaCorp = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabPageSesiune = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBoxDropDownListSesiune = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.labelAnUniversitarCurentSesiune = new System.Windows.Forms.Label();
-            this.dateTimePickerSesiuneInceput = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dateTimePickerSesiuneFinal = new System.Windows.Forms.DateTimePicker();
             this.buttonAdaugaAnSesiune = new System.Windows.Forms.Button();
+            this.dateTimePickerSesiuneFinal = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dateTimePickerSesiuneInceput = new System.Windows.Forms.DateTimePicker();
+            this.labelAnUniversitarCurentSesiune = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxDropDownListSesiune = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabPageDisciplina = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxDenumireDisciplina = new System.Windows.Forms.TextBox();
             this.buttonAdaugaDisciplina = new System.Windows.Forms.Button();
+            this.textBoxDenumireDisciplina = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabPageProfesor = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBoxGradDidactic = new System.Windows.Forms.GroupBox();
-            this.radioButtonAsistent = new System.Windows.Forms.RadioButton();
-            this.radioButtonLector = new System.Windows.Forms.RadioButton();
-            this.radioButtonConferentiar = new System.Windows.Forms.RadioButton();
-            this.radioButtonProfesor = new System.Windows.Forms.RadioButton();
-            this.textBoxNumeProfesor = new System.Windows.Forms.TextBox();
-            this.textBoxPrenumeProfesor = new System.Windows.Forms.TextBox();
             this.buttonAdaugaProfesor = new System.Windows.Forms.Button();
+            this.textBoxPrenumeProfesor = new System.Windows.Forms.TextBox();
+            this.textBoxNumeProfesor = new System.Windows.Forms.TextBox();
+            this.groupBoxGradDidactic = new System.Windows.Forms.GroupBox();
+            this.radioButtonProfesor = new System.Windows.Forms.RadioButton();
+            this.radioButtonConferentiar = new System.Windows.Forms.RadioButton();
+            this.radioButtonLector = new System.Windows.Forms.RadioButton();
+            this.radioButtonAsistent = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabPageGrupa = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxDropDownListSpecializareGrupa = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDownNrGrupa = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxDropDownListAnStudiuGrupa = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelAnUniversitarGrupa = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDownNrStudentiGrupa = new System.Windows.Forms.NumericUpDown();
             this.buttonAdaugaGrupa = new System.Windows.Forms.Button();
+            this.numericUpDownNrStudentiGrupa = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelAnUniversitarGrupa = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxDropDownListAnStudiuGrupa = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDownNrGrupa = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxDropDownListSpecializareGrupa = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabPageSpecializare = new System.Windows.Forms.TabPage();
-            this.labelDenSpec = new System.Windows.Forms.Label();
-            this.groupBoxFormaInv = new System.Windows.Forms.GroupBox();
-            this.radioButtonLicenta = new System.Windows.Forms.RadioButton();
-            this.radioButtonMaster = new System.Windows.Forms.RadioButton();
-            this.textBoxDenumireSpecializare = new System.Windows.Forms.TextBox();
-            this.buttonAdaugaSpecializare = new System.Windows.Forms.Button();
             this.label_SpecTab_Facultate = new System.Windows.Forms.Label();
+            this.buttonAdaugaSpecializare = new System.Windows.Forms.Button();
+            this.textBoxDenumireSpecializare = new System.Windows.Forms.TextBox();
+            this.groupBoxFormaInv = new System.Windows.Forms.GroupBox();
+            this.radioButtonMaster = new System.Windows.Forms.RadioButton();
+            this.radioButtonLicenta = new System.Windows.Forms.RadioButton();
+            this.labelDenSpec = new System.Windows.Forms.Label();
             this.tabPageFacultate = new System.Windows.Forms.TabPage();
-            this.labelDenFac = new System.Windows.Forms.Label();
-            this.labelAdresaFac = new System.Windows.Forms.Label();
-            this.textBoxDenumireFacultate = new System.Windows.Forms.TextBox();
-            this.textBoxAdresaFacultate = new System.Windows.Forms.TextBox();
             this.buttonAdaugaFacultate = new System.Windows.Forms.Button();
+            this.textBoxAdresaFacultate = new System.Windows.Forms.TextBox();
+            this.textBoxDenumireFacultate = new System.Windows.Forms.TextBox();
+            this.labelAdresaFac = new System.Windows.Forms.Label();
+            this.labelDenFac = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.button_ToAcoperireDisc = new System.Windows.Forms.Button();
             this.tabPageSala.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrSala)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEtaj)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrLocuriSala)).BeginInit();
             this.groupBoxTipSala.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrLocuriSala)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEtaj)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrSala)).BeginInit();
             this.tabPageCorp.SuspendLayout();
             this.tabPageSesiune.SuspendLayout();
             this.tabPageDisciplina.SuspendLayout();
             this.tabPageProfesor.SuspendLayout();
             this.groupBoxGradDidactic.SuspendLayout();
             this.tabPageGrupa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrStudentiGrupa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).BeginInit();
             this.tabPageSpecializare.SuspendLayout();
             this.groupBoxFormaInv.SuspendLayout();
             this.tabPageFacultate.SuspendLayout();
@@ -198,91 +199,61 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSala.Text = "Sala";
             this.tabPageSala.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // buttonAdaugaSala
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(70, 11);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 24);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Corp:";
+            this.buttonAdaugaSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaSala.Location = new System.Drawing.Point(190, 285);
+            this.buttonAdaugaSala.Name = "buttonAdaugaSala";
+            this.buttonAdaugaSala.Size = new System.Drawing.Size(160, 35);
+            this.buttonAdaugaSala.TabIndex = 12;
+            this.buttonAdaugaSala.Text = "Adauga Sala";
+            this.buttonAdaugaSala.UseVisualStyleBackColor = true;
+            this.buttonAdaugaSala.Click += new System.EventHandler(this.buttonAdaugaSala_Click);
             // 
-            // comboBoxDropDownListCorp
+            // groupBoxTipSala
             // 
-            this.comboBoxDropDownListCorp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListCorp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxDropDownListCorp.FormattingEnabled = true;
-            this.comboBoxDropDownListCorp.Location = new System.Drawing.Point(135, 8);
-            this.comboBoxDropDownListCorp.Name = "comboBoxDropDownListCorp";
-            this.comboBoxDropDownListCorp.Size = new System.Drawing.Size(280, 32);
-            this.comboBoxDropDownListCorp.TabIndex = 4;
+            this.groupBoxTipSala.Controls.Add(this.radioButtonSalaSeminar);
+            this.groupBoxTipSala.Controls.Add(this.radioButtonSalaLaborator);
+            this.groupBoxTipSala.Controls.Add(this.radioButtonSalaCurs);
+            this.groupBoxTipSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxTipSala.Location = new System.Drawing.Point(135, 151);
+            this.groupBoxTipSala.Name = "groupBoxTipSala";
+            this.groupBoxTipSala.Size = new System.Drawing.Size(280, 128);
+            this.groupBoxTipSala.TabIndex = 11;
+            this.groupBoxTipSala.TabStop = false;
+            this.groupBoxTipSala.Text = "Tip sala";
             // 
-            // numericUpDownNrSala
+            // radioButtonSalaSeminar
             // 
-            this.numericUpDownNrSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownNrSala.Location = new System.Drawing.Point(135, 46);
-            this.numericUpDownNrSala.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownNrSala.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownNrSala.Name = "numericUpDownNrSala";
-            this.numericUpDownNrSala.Size = new System.Drawing.Size(280, 29);
-            this.numericUpDownNrSala.TabIndex = 5;
-            this.numericUpDownNrSala.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.radioButtonSalaSeminar.AutoSize = true;
+            this.radioButtonSalaSeminar.Location = new System.Drawing.Point(7, 99);
+            this.radioButtonSalaSeminar.Name = "radioButtonSalaSeminar";
+            this.radioButtonSalaSeminar.Size = new System.Drawing.Size(98, 28);
+            this.radioButtonSalaSeminar.TabIndex = 2;
+            this.radioButtonSalaSeminar.Text = "Seminar";
+            this.radioButtonSalaSeminar.UseVisualStyleBackColor = true;
             // 
-            // numericUpDownEtaj
+            // radioButtonSalaLaborator
             // 
-            this.numericUpDownEtaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownEtaj.Location = new System.Drawing.Point(135, 81);
-            this.numericUpDownEtaj.Maximum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.numericUpDownEtaj.Name = "numericUpDownEtaj";
-            this.numericUpDownEtaj.Size = new System.Drawing.Size(280, 29);
-            this.numericUpDownEtaj.TabIndex = 6;
+            this.radioButtonSalaLaborator.AutoSize = true;
+            this.radioButtonSalaLaborator.Location = new System.Drawing.Point(7, 64);
+            this.radioButtonSalaLaborator.Name = "radioButtonSalaLaborator";
+            this.radioButtonSalaLaborator.Size = new System.Drawing.Size(107, 28);
+            this.radioButtonSalaLaborator.TabIndex = 1;
+            this.radioButtonSalaLaborator.Text = "Laborator";
+            this.radioButtonSalaLaborator.UseVisualStyleBackColor = true;
             // 
-            // label16
+            // radioButtonSalaCurs
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(19, 48);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(110, 24);
-            this.label16.TabIndex = 7;
-            this.label16.Text = "Numar sala:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(80, 81);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(46, 24);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "Etaj:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(6, 116);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(123, 24);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "Numar locuri:";
+            this.radioButtonSalaCurs.AutoSize = true;
+            this.radioButtonSalaCurs.Checked = true;
+            this.radioButtonSalaCurs.Location = new System.Drawing.Point(7, 29);
+            this.radioButtonSalaCurs.Name = "radioButtonSalaCurs";
+            this.radioButtonSalaCurs.Size = new System.Drawing.Size(67, 28);
+            this.radioButtonSalaCurs.TabIndex = 0;
+            this.radioButtonSalaCurs.TabStop = true;
+            this.radioButtonSalaCurs.Text = "Curs";
+            this.radioButtonSalaCurs.UseVisualStyleBackColor = true;
             // 
             // numericUpDownNrLocuriSala
             // 
@@ -307,61 +278,91 @@ namespace GestiuneExameneWindowsForms
             0,
             0});
             // 
-            // groupBoxTipSala
+            // label18
             // 
-            this.groupBoxTipSala.Controls.Add(this.radioButtonSalaSeminar);
-            this.groupBoxTipSala.Controls.Add(this.radioButtonSalaLaborator);
-            this.groupBoxTipSala.Controls.Add(this.radioButtonSalaCurs);
-            this.groupBoxTipSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTipSala.Location = new System.Drawing.Point(135, 151);
-            this.groupBoxTipSala.Name = "groupBoxTipSala";
-            this.groupBoxTipSala.Size = new System.Drawing.Size(280, 128);
-            this.groupBoxTipSala.TabIndex = 11;
-            this.groupBoxTipSala.TabStop = false;
-            this.groupBoxTipSala.Text = "Tip sala";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(6, 116);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(123, 24);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Numar locuri:";
             // 
-            // radioButtonSalaCurs
+            // label17
             // 
-            this.radioButtonSalaCurs.AutoSize = true;
-            this.radioButtonSalaCurs.Checked = true;
-            this.radioButtonSalaCurs.Location = new System.Drawing.Point(7, 29);
-            this.radioButtonSalaCurs.Name = "radioButtonSalaCurs";
-            this.radioButtonSalaCurs.Size = new System.Drawing.Size(67, 28);
-            this.radioButtonSalaCurs.TabIndex = 0;
-            this.radioButtonSalaCurs.TabStop = true;
-            this.radioButtonSalaCurs.Text = "Curs";
-            this.radioButtonSalaCurs.UseVisualStyleBackColor = true;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(80, 81);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(46, 24);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Etaj:";
             // 
-            // radioButtonSalaLaborator
+            // label16
             // 
-            this.radioButtonSalaLaborator.AutoSize = true;
-            this.radioButtonSalaLaborator.Location = new System.Drawing.Point(7, 64);
-            this.radioButtonSalaLaborator.Name = "radioButtonSalaLaborator";
-            this.radioButtonSalaLaborator.Size = new System.Drawing.Size(107, 28);
-            this.radioButtonSalaLaborator.TabIndex = 1;
-            this.radioButtonSalaLaborator.Text = "Laborator";
-            this.radioButtonSalaLaborator.UseVisualStyleBackColor = true;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(19, 48);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(110, 24);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Numar sala:";
             // 
-            // radioButtonSalaSeminar
+            // numericUpDownEtaj
             // 
-            this.radioButtonSalaSeminar.AutoSize = true;
-            this.radioButtonSalaSeminar.Location = new System.Drawing.Point(7, 99);
-            this.radioButtonSalaSeminar.Name = "radioButtonSalaSeminar";
-            this.radioButtonSalaSeminar.Size = new System.Drawing.Size(98, 28);
-            this.radioButtonSalaSeminar.TabIndex = 2;
-            this.radioButtonSalaSeminar.Text = "Seminar";
-            this.radioButtonSalaSeminar.UseVisualStyleBackColor = true;
+            this.numericUpDownEtaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownEtaj.Location = new System.Drawing.Point(135, 81);
+            this.numericUpDownEtaj.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDownEtaj.Name = "numericUpDownEtaj";
+            this.numericUpDownEtaj.Size = new System.Drawing.Size(280, 29);
+            this.numericUpDownEtaj.TabIndex = 6;
             // 
-            // buttonAdaugaSala
+            // numericUpDownNrSala
             // 
-            this.buttonAdaugaSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaSala.Location = new System.Drawing.Point(190, 285);
-            this.buttonAdaugaSala.Name = "buttonAdaugaSala";
-            this.buttonAdaugaSala.Size = new System.Drawing.Size(160, 35);
-            this.buttonAdaugaSala.TabIndex = 12;
-            this.buttonAdaugaSala.Text = "Adauga Sala";
-            this.buttonAdaugaSala.UseVisualStyleBackColor = true;
-            this.buttonAdaugaSala.Click += new System.EventHandler(this.buttonAdaugaSala_Click);
+            this.numericUpDownNrSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownNrSala.Location = new System.Drawing.Point(135, 46);
+            this.numericUpDownNrSala.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownNrSala.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownNrSala.Name = "numericUpDownNrSala";
+            this.numericUpDownNrSala.Size = new System.Drawing.Size(280, 29);
+            this.numericUpDownNrSala.TabIndex = 5;
+            this.numericUpDownNrSala.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // comboBoxDropDownListCorp
+            // 
+            this.comboBoxDropDownListCorp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDropDownListCorp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDropDownListCorp.FormattingEnabled = true;
+            this.comboBoxDropDownListCorp.Location = new System.Drawing.Point(135, 8);
+            this.comboBoxDropDownListCorp.Name = "comboBoxDropDownListCorp";
+            this.comboBoxDropDownListCorp.Size = new System.Drawing.Size(280, 32);
+            this.comboBoxDropDownListCorp.TabIndex = 4;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(70, 11);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 24);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Corp:";
             // 
             // tabPageCorp
             // 
@@ -378,15 +379,24 @@ namespace GestiuneExameneWindowsForms
             this.tabPageCorp.Text = "Corp";
             this.tabPageCorp.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // buttonAdaugaCorp
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(6, 32);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(98, 24);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Denumire:";
+            this.buttonAdaugaCorp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaCorp.Location = new System.Drawing.Point(140, 117);
+            this.buttonAdaugaCorp.Name = "buttonAdaugaCorp";
+            this.buttonAdaugaCorp.Size = new System.Drawing.Size(198, 39);
+            this.buttonAdaugaCorp.TabIndex = 6;
+            this.buttonAdaugaCorp.Text = "Adauga corp";
+            this.buttonAdaugaCorp.UseVisualStyleBackColor = true;
+            this.buttonAdaugaCorp.Click += new System.EventHandler(this.buttonAdaugaCorp_Click);
+            // 
+            // textBoxAdresaCorp
+            // 
+            this.textBoxAdresaCorp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAdresaCorp.Location = new System.Drawing.Point(110, 71);
+            this.textBoxAdresaCorp.Name = "textBoxAdresaCorp";
+            this.textBoxAdresaCorp.Size = new System.Drawing.Size(261, 29);
+            this.textBoxAdresaCorp.TabIndex = 5;
             // 
             // textBoxDenumireCorp
             // 
@@ -406,24 +416,15 @@ namespace GestiuneExameneWindowsForms
             this.label14.TabIndex = 4;
             this.label14.Text = "Adresa:";
             // 
-            // textBoxAdresaCorp
+            // label13
             // 
-            this.textBoxAdresaCorp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAdresaCorp.Location = new System.Drawing.Point(110, 71);
-            this.textBoxAdresaCorp.Name = "textBoxAdresaCorp";
-            this.textBoxAdresaCorp.Size = new System.Drawing.Size(261, 29);
-            this.textBoxAdresaCorp.TabIndex = 5;
-            // 
-            // buttonAdaugaCorp
-            // 
-            this.buttonAdaugaCorp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaCorp.Location = new System.Drawing.Point(140, 117);
-            this.buttonAdaugaCorp.Name = "buttonAdaugaCorp";
-            this.buttonAdaugaCorp.Size = new System.Drawing.Size(198, 39);
-            this.buttonAdaugaCorp.TabIndex = 6;
-            this.buttonAdaugaCorp.Text = "Adauga corp";
-            this.buttonAdaugaCorp.UseVisualStyleBackColor = true;
-            this.buttonAdaugaCorp.Click += new System.EventHandler(this.buttonAdaugaCorp_Click);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(6, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(98, 24);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Denumire:";
             // 
             // tabPageSesiune
             // 
@@ -444,81 +445,6 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSesiune.Text = "Sesiune";
             this.tabPageSesiune.UseVisualStyleBackColor = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(41, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 24);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Sesiune:";
-            // 
-            // comboBoxDropDownListSesiune
-            // 
-            this.comboBoxDropDownListSesiune.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListSesiune.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxDropDownListSesiune.FormattingEnabled = true;
-            this.comboBoxDropDownListSesiune.Location = new System.Drawing.Point(131, 19);
-            this.comboBoxDropDownListSesiune.Name = "comboBoxDropDownListSesiune";
-            this.comboBoxDropDownListSesiune.Size = new System.Drawing.Size(326, 32);
-            this.comboBoxDropDownListSesiune.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 73);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(129, 24);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "An universitar:";
-            // 
-            // labelAnUniversitarCurentSesiune
-            // 
-            this.labelAnUniversitarCurentSesiune.AutoSize = true;
-            this.labelAnUniversitarCurentSesiune.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAnUniversitarCurentSesiune.Location = new System.Drawing.Point(243, 73);
-            this.labelAnUniversitarCurentSesiune.Name = "labelAnUniversitarCurentSesiune";
-            this.labelAnUniversitarCurentSesiune.Size = new System.Drawing.Size(0, 24);
-            this.labelAnUniversitarCurentSesiune.TabIndex = 8;
-            // 
-            // dateTimePickerSesiuneInceput
-            // 
-            this.dateTimePickerSesiuneInceput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerSesiuneInceput.Location = new System.Drawing.Point(131, 119);
-            this.dateTimePickerSesiuneInceput.Name = "dateTimePickerSesiuneInceput";
-            this.dateTimePickerSesiuneInceput.Size = new System.Drawing.Size(326, 29);
-            this.dateTimePickerSesiuneInceput.TabIndex = 9;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 124);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(119, 24);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Data inceput:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(35, 172);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(90, 24);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Data final:";
-            // 
-            // dateTimePickerSesiuneFinal
-            // 
-            this.dateTimePickerSesiuneFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerSesiuneFinal.Location = new System.Drawing.Point(131, 172);
-            this.dateTimePickerSesiuneFinal.Name = "dateTimePickerSesiuneFinal";
-            this.dateTimePickerSesiuneFinal.Size = new System.Drawing.Size(326, 29);
-            this.dateTimePickerSesiuneFinal.TabIndex = 12;
-            // 
             // buttonAdaugaAnSesiune
             // 
             this.buttonAdaugaAnSesiune.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -530,8 +456,84 @@ namespace GestiuneExameneWindowsForms
             this.buttonAdaugaAnSesiune.UseVisualStyleBackColor = true;
             this.buttonAdaugaAnSesiune.Click += new System.EventHandler(this.buttonAdaugaAnSesiune_Click);
             // 
+            // dateTimePickerSesiuneFinal
+            // 
+            this.dateTimePickerSesiuneFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerSesiuneFinal.Location = new System.Drawing.Point(131, 172);
+            this.dateTimePickerSesiuneFinal.Name = "dateTimePickerSesiuneFinal";
+            this.dateTimePickerSesiuneFinal.Size = new System.Drawing.Size(326, 29);
+            this.dateTimePickerSesiuneFinal.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(35, 172);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(90, 24);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Data final:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 124);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(119, 24);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Data inceput:";
+            // 
+            // dateTimePickerSesiuneInceput
+            // 
+            this.dateTimePickerSesiuneInceput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerSesiuneInceput.Location = new System.Drawing.Point(131, 119);
+            this.dateTimePickerSesiuneInceput.Name = "dateTimePickerSesiuneInceput";
+            this.dateTimePickerSesiuneInceput.Size = new System.Drawing.Size(326, 29);
+            this.dateTimePickerSesiuneInceput.TabIndex = 9;
+            // 
+            // labelAnUniversitarCurentSesiune
+            // 
+            this.labelAnUniversitarCurentSesiune.AutoSize = true;
+            this.labelAnUniversitarCurentSesiune.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAnUniversitarCurentSesiune.Location = new System.Drawing.Point(243, 73);
+            this.labelAnUniversitarCurentSesiune.Name = "labelAnUniversitarCurentSesiune";
+            this.labelAnUniversitarCurentSesiune.Size = new System.Drawing.Size(0, 24);
+            this.labelAnUniversitarCurentSesiune.TabIndex = 8;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 73);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 24);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "An universitar:";
+            // 
+            // comboBoxDropDownListSesiune
+            // 
+            this.comboBoxDropDownListSesiune.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDropDownListSesiune.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDropDownListSesiune.FormattingEnabled = true;
+            this.comboBoxDropDownListSesiune.Location = new System.Drawing.Point(131, 19);
+            this.comboBoxDropDownListSesiune.Name = "comboBoxDropDownListSesiune";
+            this.comboBoxDropDownListSesiune.Size = new System.Drawing.Size(326, 32);
+            this.comboBoxDropDownListSesiune.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(41, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 24);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Sesiune:";
+            // 
             // tabPageDisciplina
             // 
+            this.tabPageDisciplina.Controls.Add(this.button_ToAcoperireDisc);
             this.tabPageDisciplina.Controls.Add(this.buttonAdaugaDisciplina);
             this.tabPageDisciplina.Controls.Add(this.textBoxDenumireDisciplina);
             this.tabPageDisciplina.Controls.Add(this.label8);
@@ -543,24 +545,6 @@ namespace GestiuneExameneWindowsForms
             this.tabPageDisciplina.Text = "Disciplina";
             this.tabPageDisciplina.UseVisualStyleBackColor = true;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 19);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 24);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Denumire:";
-            // 
-            // textBoxDenumireDisciplina
-            // 
-            this.textBoxDenumireDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDenumireDisciplina.Location = new System.Drawing.Point(110, 16);
-            this.textBoxDenumireDisciplina.Name = "textBoxDenumireDisciplina";
-            this.textBoxDenumireDisciplina.Size = new System.Drawing.Size(322, 29);
-            this.textBoxDenumireDisciplina.TabIndex = 3;
-            // 
             // buttonAdaugaDisciplina
             // 
             this.buttonAdaugaDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -571,6 +555,24 @@ namespace GestiuneExameneWindowsForms
             this.buttonAdaugaDisciplina.Text = "Adauga Disciplina";
             this.buttonAdaugaDisciplina.UseVisualStyleBackColor = true;
             this.buttonAdaugaDisciplina.Click += new System.EventHandler(this.buttonAdaugaDisciplina_Click);
+            // 
+            // textBoxDenumireDisciplina
+            // 
+            this.textBoxDenumireDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDenumireDisciplina.Location = new System.Drawing.Point(110, 16);
+            this.textBoxDenumireDisciplina.Name = "textBoxDenumireDisciplina";
+            this.textBoxDenumireDisciplina.Size = new System.Drawing.Size(322, 29);
+            this.textBoxDenumireDisciplina.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 24);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Denumire:";
             // 
             // tabPageProfesor
             // 
@@ -588,25 +590,32 @@ namespace GestiuneExameneWindowsForms
             this.tabPageProfesor.Text = "Profesor";
             this.tabPageProfesor.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // buttonAdaugaProfesor
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 24);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Nume:";
+            this.buttonAdaugaProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaProfesor.Location = new System.Drawing.Point(134, 275);
+            this.buttonAdaugaProfesor.Name = "buttonAdaugaProfesor";
+            this.buttonAdaugaProfesor.Size = new System.Drawing.Size(200, 41);
+            this.buttonAdaugaProfesor.TabIndex = 6;
+            this.buttonAdaugaProfesor.Text = "Adauga Profesor";
+            this.buttonAdaugaProfesor.UseVisualStyleBackColor = true;
+            this.buttonAdaugaProfesor.Click += new System.EventHandler(this.buttonAdaugaProfesor_Click);
             // 
-            // label7
+            // textBoxPrenumeProfesor
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 24);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Prenume:";
+            this.textBoxPrenumeProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPrenumeProfesor.Location = new System.Drawing.Point(96, 53);
+            this.textBoxPrenumeProfesor.Name = "textBoxPrenumeProfesor";
+            this.textBoxPrenumeProfesor.Size = new System.Drawing.Size(287, 29);
+            this.textBoxPrenumeProfesor.TabIndex = 5;
+            // 
+            // textBoxNumeProfesor
+            // 
+            this.textBoxNumeProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumeProfesor.Location = new System.Drawing.Point(96, 15);
+            this.textBoxNumeProfesor.Name = "textBoxNumeProfesor";
+            this.textBoxNumeProfesor.Size = new System.Drawing.Size(287, 29);
+            this.textBoxNumeProfesor.TabIndex = 4;
             // 
             // groupBoxGradDidactic
             // 
@@ -622,6 +631,36 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxGradDidactic.TabStop = false;
             this.groupBoxGradDidactic.Text = "Grad didactic";
             // 
+            // radioButtonProfesor
+            // 
+            this.radioButtonProfesor.AutoSize = true;
+            this.radioButtonProfesor.Location = new System.Drawing.Point(7, 134);
+            this.radioButtonProfesor.Name = "radioButtonProfesor";
+            this.radioButtonProfesor.Size = new System.Drawing.Size(98, 28);
+            this.radioButtonProfesor.TabIndex = 3;
+            this.radioButtonProfesor.Text = "Profesor";
+            this.radioButtonProfesor.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonConferentiar
+            // 
+            this.radioButtonConferentiar.AutoSize = true;
+            this.radioButtonConferentiar.Location = new System.Drawing.Point(7, 99);
+            this.radioButtonConferentiar.Name = "radioButtonConferentiar";
+            this.radioButtonConferentiar.Size = new System.Drawing.Size(130, 28);
+            this.radioButtonConferentiar.TabIndex = 2;
+            this.radioButtonConferentiar.Text = "Conferentiar";
+            this.radioButtonConferentiar.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLector
+            // 
+            this.radioButtonLector.AutoSize = true;
+            this.radioButtonLector.Location = new System.Drawing.Point(7, 64);
+            this.radioButtonLector.Name = "radioButtonLector";
+            this.radioButtonLector.Size = new System.Drawing.Size(80, 28);
+            this.radioButtonLector.TabIndex = 1;
+            this.radioButtonLector.Text = "Lector";
+            this.radioButtonLector.UseVisualStyleBackColor = true;
+            // 
             // radioButtonAsistent
             // 
             this.radioButtonAsistent.AutoSize = true;
@@ -634,62 +673,25 @@ namespace GestiuneExameneWindowsForms
             this.radioButtonAsistent.Text = "Asistent";
             this.radioButtonAsistent.UseVisualStyleBackColor = true;
             // 
-            // radioButtonLector
+            // label7
             // 
-            this.radioButtonLector.AutoSize = true;
-            this.radioButtonLector.Location = new System.Drawing.Point(7, 64);
-            this.radioButtonLector.Name = "radioButtonLector";
-            this.radioButtonLector.Size = new System.Drawing.Size(80, 28);
-            this.radioButtonLector.TabIndex = 1;
-            this.radioButtonLector.Text = "Lector";
-            this.radioButtonLector.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 24);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Prenume:";
             // 
-            // radioButtonConferentiar
+            // label6
             // 
-            this.radioButtonConferentiar.AutoSize = true;
-            this.radioButtonConferentiar.Location = new System.Drawing.Point(7, 99);
-            this.radioButtonConferentiar.Name = "radioButtonConferentiar";
-            this.radioButtonConferentiar.Size = new System.Drawing.Size(130, 28);
-            this.radioButtonConferentiar.TabIndex = 2;
-            this.radioButtonConferentiar.Text = "Conferentiar";
-            this.radioButtonConferentiar.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonProfesor
-            // 
-            this.radioButtonProfesor.AutoSize = true;
-            this.radioButtonProfesor.Location = new System.Drawing.Point(7, 134);
-            this.radioButtonProfesor.Name = "radioButtonProfesor";
-            this.radioButtonProfesor.Size = new System.Drawing.Size(98, 28);
-            this.radioButtonProfesor.TabIndex = 3;
-            this.radioButtonProfesor.Text = "Profesor";
-            this.radioButtonProfesor.UseVisualStyleBackColor = true;
-            // 
-            // textBoxNumeProfesor
-            // 
-            this.textBoxNumeProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNumeProfesor.Location = new System.Drawing.Point(96, 15);
-            this.textBoxNumeProfesor.Name = "textBoxNumeProfesor";
-            this.textBoxNumeProfesor.Size = new System.Drawing.Size(287, 29);
-            this.textBoxNumeProfesor.TabIndex = 4;
-            // 
-            // textBoxPrenumeProfesor
-            // 
-            this.textBoxPrenumeProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPrenumeProfesor.Location = new System.Drawing.Point(96, 53);
-            this.textBoxPrenumeProfesor.Name = "textBoxPrenumeProfesor";
-            this.textBoxPrenumeProfesor.Size = new System.Drawing.Size(287, 29);
-            this.textBoxPrenumeProfesor.TabIndex = 5;
-            // 
-            // buttonAdaugaProfesor
-            // 
-            this.buttonAdaugaProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaProfesor.Location = new System.Drawing.Point(134, 275);
-            this.buttonAdaugaProfesor.Name = "buttonAdaugaProfesor";
-            this.buttonAdaugaProfesor.Size = new System.Drawing.Size(200, 41);
-            this.buttonAdaugaProfesor.TabIndex = 6;
-            this.buttonAdaugaProfesor.Text = "Adauga Profesor";
-            this.buttonAdaugaProfesor.UseVisualStyleBackColor = true;
-            this.buttonAdaugaProfesor.Click += new System.EventHandler(this.buttonAdaugaProfesor_Click);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(23, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 24);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Nume:";
             // 
             // tabPageGrupa
             // 
@@ -713,103 +715,16 @@ namespace GestiuneExameneWindowsForms
             this.tabPageGrupa.Text = "Grupa";
             this.tabPageGrupa.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // buttonAdaugaGrupa
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Specializare:";
-            // 
-            // comboBoxDropDownListSpecializareGrupa
-            // 
-            this.comboBoxDropDownListSpecializareGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListSpecializareGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxDropDownListSpecializareGrupa.FormattingEnabled = true;
-            this.comboBoxDropDownListSpecializareGrupa.Location = new System.Drawing.Point(206, 25);
-            this.comboBoxDropDownListSpecializareGrupa.Name = "comboBoxDropDownListSpecializareGrupa";
-            this.comboBoxDropDownListSpecializareGrupa.Size = new System.Drawing.Size(294, 39);
-            this.comboBoxDropDownListSpecializareGrupa.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 31);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Numar grupa:";
-            // 
-            // numericUpDownNrGrupa
-            // 
-            this.numericUpDownNrGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownNrGrupa.Location = new System.Drawing.Point(206, 76);
-            this.numericUpDownNrGrupa.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownNrGrupa.Name = "numericUpDownNrGrupa";
-            this.numericUpDownNrGrupa.Size = new System.Drawing.Size(294, 38);
-            this.numericUpDownNrGrupa.TabIndex = 3;
-            this.numericUpDownNrGrupa.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(65, 133);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(135, 31);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "An studiu:";
-            // 
-            // comboBoxDropDownListAnStudiuGrupa
-            // 
-            this.comboBoxDropDownListAnStudiuGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListAnStudiuGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxDropDownListAnStudiuGrupa.FormattingEnabled = true;
-            this.comboBoxDropDownListAnStudiuGrupa.Location = new System.Drawing.Point(206, 130);
-            this.comboBoxDropDownListAnStudiuGrupa.Name = "comboBoxDropDownListAnStudiuGrupa";
-            this.comboBoxDropDownListAnStudiuGrupa.Size = new System.Drawing.Size(294, 39);
-            this.comboBoxDropDownListAnStudiuGrupa.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 183);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(188, 31);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "An universitar:";
-            // 
-            // labelAnUniversitarGrupa
-            // 
-            this.labelAnUniversitarGrupa.AutoSize = true;
-            this.labelAnUniversitarGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAnUniversitarGrupa.Location = new System.Drawing.Point(265, 183);
-            this.labelAnUniversitarGrupa.Name = "labelAnUniversitarGrupa";
-            this.labelAnUniversitarGrupa.Size = new System.Drawing.Size(157, 31);
-            this.labelAnUniversitarGrupa.TabIndex = 7;
-            this.labelAnUniversitarGrupa.Text = "2000 - 2001";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 236);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(206, 31);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Numar studenti:";
+            this.buttonAdaugaGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaGrupa.Location = new System.Drawing.Point(235, 292);
+            this.buttonAdaugaGrupa.Name = "buttonAdaugaGrupa";
+            this.buttonAdaugaGrupa.Size = new System.Drawing.Size(240, 71);
+            this.buttonAdaugaGrupa.TabIndex = 10;
+            this.buttonAdaugaGrupa.Text = "Adauga Grupa";
+            this.buttonAdaugaGrupa.UseVisualStyleBackColor = true;
+            this.buttonAdaugaGrupa.Click += new System.EventHandler(this.buttonAdaugaGrupa_Click);
             // 
             // numericUpDownNrStudentiGrupa
             // 
@@ -834,16 +749,103 @@ namespace GestiuneExameneWindowsForms
             0,
             0});
             // 
-            // buttonAdaugaGrupa
+            // label5
             // 
-            this.buttonAdaugaGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaGrupa.Location = new System.Drawing.Point(235, 292);
-            this.buttonAdaugaGrupa.Name = "buttonAdaugaGrupa";
-            this.buttonAdaugaGrupa.Size = new System.Drawing.Size(240, 71);
-            this.buttonAdaugaGrupa.TabIndex = 10;
-            this.buttonAdaugaGrupa.Text = "Adauga Grupa";
-            this.buttonAdaugaGrupa.UseVisualStyleBackColor = true;
-            this.buttonAdaugaGrupa.Click += new System.EventHandler(this.buttonAdaugaGrupa_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 236);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(206, 31);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Numar studenti:";
+            // 
+            // labelAnUniversitarGrupa
+            // 
+            this.labelAnUniversitarGrupa.AutoSize = true;
+            this.labelAnUniversitarGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAnUniversitarGrupa.Location = new System.Drawing.Point(265, 183);
+            this.labelAnUniversitarGrupa.Name = "labelAnUniversitarGrupa";
+            this.labelAnUniversitarGrupa.Size = new System.Drawing.Size(157, 31);
+            this.labelAnUniversitarGrupa.TabIndex = 7;
+            this.labelAnUniversitarGrupa.Text = "2000 - 2001";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(20, 183);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(188, 31);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "An universitar:";
+            // 
+            // comboBoxDropDownListAnStudiuGrupa
+            // 
+            this.comboBoxDropDownListAnStudiuGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDropDownListAnStudiuGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDropDownListAnStudiuGrupa.FormattingEnabled = true;
+            this.comboBoxDropDownListAnStudiuGrupa.Location = new System.Drawing.Point(206, 130);
+            this.comboBoxDropDownListAnStudiuGrupa.Name = "comboBoxDropDownListAnStudiuGrupa";
+            this.comboBoxDropDownListAnStudiuGrupa.Size = new System.Drawing.Size(294, 39);
+            this.comboBoxDropDownListAnStudiuGrupa.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(65, 133);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 31);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "An studiu:";
+            // 
+            // numericUpDownNrGrupa
+            // 
+            this.numericUpDownNrGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownNrGrupa.Location = new System.Drawing.Point(206, 76);
+            this.numericUpDownNrGrupa.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownNrGrupa.Name = "numericUpDownNrGrupa";
+            this.numericUpDownNrGrupa.Size = new System.Drawing.Size(294, 38);
+            this.numericUpDownNrGrupa.TabIndex = 3;
+            this.numericUpDownNrGrupa.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(21, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(179, 31);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Numar grupa:";
+            // 
+            // comboBoxDropDownListSpecializareGrupa
+            // 
+            this.comboBoxDropDownListSpecializareGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDropDownListSpecializareGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDropDownListSpecializareGrupa.FormattingEnabled = true;
+            this.comboBoxDropDownListSpecializareGrupa.Location = new System.Drawing.Point(206, 25);
+            this.comboBoxDropDownListSpecializareGrupa.Name = "comboBoxDropDownListSpecializareGrupa";
+            this.comboBoxDropDownListSpecializareGrupa.Size = new System.Drawing.Size(294, 39);
+            this.comboBoxDropDownListSpecializareGrupa.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(30, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Specializare:";
             // 
             // tabPageSpecializare
             // 
@@ -861,15 +863,34 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSpecializare.Text = "Specializare";
             this.tabPageSpecializare.UseVisualStyleBackColor = true;
             // 
-            // labelDenSpec
+            // label_SpecTab_Facultate
             // 
-            this.labelDenSpec.AutoSize = true;
-            this.labelDenSpec.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDenSpec.Location = new System.Drawing.Point(6, 29);
-            this.labelDenSpec.Name = "labelDenSpec";
-            this.labelDenSpec.Size = new System.Drawing.Size(139, 31);
-            this.labelDenSpec.TabIndex = 0;
-            this.labelDenSpec.Text = "Denumire:";
+            this.label_SpecTab_Facultate.AutoSize = true;
+            this.label_SpecTab_Facultate.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SpecTab_Facultate.Location = new System.Drawing.Point(6, 95);
+            this.label_SpecTab_Facultate.Name = "label_SpecTab_Facultate";
+            this.label_SpecTab_Facultate.Size = new System.Drawing.Size(157, 31);
+            this.label_SpecTab_Facultate.TabIndex = 6;
+            this.label_SpecTab_Facultate.Text = "Placeholder";
+            // 
+            // buttonAdaugaSpecializare
+            // 
+            this.buttonAdaugaSpecializare.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaSpecializare.Location = new System.Drawing.Point(233, 315);
+            this.buttonAdaugaSpecializare.Name = "buttonAdaugaSpecializare";
+            this.buttonAdaugaSpecializare.Size = new System.Drawing.Size(320, 56);
+            this.buttonAdaugaSpecializare.TabIndex = 5;
+            this.buttonAdaugaSpecializare.Text = "Adauga Specializare";
+            this.buttonAdaugaSpecializare.UseVisualStyleBackColor = true;
+            this.buttonAdaugaSpecializare.Click += new System.EventHandler(this.buttonAdaugaSpecializare_Click);
+            // 
+            // textBoxDenumireSpecializare
+            // 
+            this.textBoxDenumireSpecializare.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDenumireSpecializare.Location = new System.Drawing.Point(151, 29);
+            this.textBoxDenumireSpecializare.Name = "textBoxDenumireSpecializare";
+            this.textBoxDenumireSpecializare.Size = new System.Drawing.Size(479, 38);
+            this.textBoxDenumireSpecializare.TabIndex = 3;
             // 
             // groupBoxFormaInv
             // 
@@ -883,6 +904,16 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxFormaInv.TabStop = false;
             this.groupBoxFormaInv.Text = "Forma invatamant";
             // 
+            // radioButtonMaster
+            // 
+            this.radioButtonMaster.AutoSize = true;
+            this.radioButtonMaster.Location = new System.Drawing.Point(194, 68);
+            this.radioButtonMaster.Name = "radioButtonMaster";
+            this.radioButtonMaster.Size = new System.Drawing.Size(115, 35);
+            this.radioButtonMaster.TabIndex = 1;
+            this.radioButtonMaster.Text = "Master";
+            this.radioButtonMaster.UseVisualStyleBackColor = true;
+            // 
             // radioButtonLicenta
             // 
             this.radioButtonLicenta.AutoSize = true;
@@ -895,44 +926,15 @@ namespace GestiuneExameneWindowsForms
             this.radioButtonLicenta.Text = "Licenta";
             this.radioButtonLicenta.UseVisualStyleBackColor = true;
             // 
-            // radioButtonMaster
+            // labelDenSpec
             // 
-            this.radioButtonMaster.AutoSize = true;
-            this.radioButtonMaster.Location = new System.Drawing.Point(194, 68);
-            this.radioButtonMaster.Name = "radioButtonMaster";
-            this.radioButtonMaster.Size = new System.Drawing.Size(115, 35);
-            this.radioButtonMaster.TabIndex = 1;
-            this.radioButtonMaster.Text = "Master";
-            this.radioButtonMaster.UseVisualStyleBackColor = true;
-            // 
-            // textBoxDenumireSpecializare
-            // 
-            this.textBoxDenumireSpecializare.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDenumireSpecializare.Location = new System.Drawing.Point(151, 29);
-            this.textBoxDenumireSpecializare.Name = "textBoxDenumireSpecializare";
-            this.textBoxDenumireSpecializare.Size = new System.Drawing.Size(479, 38);
-            this.textBoxDenumireSpecializare.TabIndex = 3;
-            // 
-            // buttonAdaugaSpecializare
-            // 
-            this.buttonAdaugaSpecializare.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaSpecializare.Location = new System.Drawing.Point(233, 315);
-            this.buttonAdaugaSpecializare.Name = "buttonAdaugaSpecializare";
-            this.buttonAdaugaSpecializare.Size = new System.Drawing.Size(320, 56);
-            this.buttonAdaugaSpecializare.TabIndex = 5;
-            this.buttonAdaugaSpecializare.Text = "Adauga Specializare";
-            this.buttonAdaugaSpecializare.UseVisualStyleBackColor = true;
-            this.buttonAdaugaSpecializare.Click += new System.EventHandler(this.buttonAdaugaSpecializare_Click);
-            // 
-            // label_SpecTab_Facultate
-            // 
-            this.label_SpecTab_Facultate.AutoSize = true;
-            this.label_SpecTab_Facultate.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_SpecTab_Facultate.Location = new System.Drawing.Point(6, 95);
-            this.label_SpecTab_Facultate.Name = "label_SpecTab_Facultate";
-            this.label_SpecTab_Facultate.Size = new System.Drawing.Size(157, 31);
-            this.label_SpecTab_Facultate.TabIndex = 6;
-            this.label_SpecTab_Facultate.Text = "Placeholder";
+            this.labelDenSpec.AutoSize = true;
+            this.labelDenSpec.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDenSpec.Location = new System.Drawing.Point(6, 29);
+            this.labelDenSpec.Name = "labelDenSpec";
+            this.labelDenSpec.Size = new System.Drawing.Size(139, 31);
+            this.labelDenSpec.TabIndex = 0;
+            this.labelDenSpec.Text = "Denumire:";
             // 
             // tabPageFacultate
             // 
@@ -950,15 +952,29 @@ namespace GestiuneExameneWindowsForms
             this.tabPageFacultate.Text = "Facultate";
             this.tabPageFacultate.UseVisualStyleBackColor = true;
             // 
-            // labelDenFac
+            // buttonAdaugaFacultate
             // 
-            this.labelDenFac.AutoSize = true;
-            this.labelDenFac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDenFac.Location = new System.Drawing.Point(6, 30);
-            this.labelDenFac.Name = "labelDenFac";
-            this.labelDenFac.Size = new System.Drawing.Size(98, 24);
-            this.labelDenFac.TabIndex = 0;
-            this.labelDenFac.Text = "Denumire:";
+            this.buttonAdaugaFacultate.Location = new System.Drawing.Point(144, 116);
+            this.buttonAdaugaFacultate.Name = "buttonAdaugaFacultate";
+            this.buttonAdaugaFacultate.Size = new System.Drawing.Size(258, 44);
+            this.buttonAdaugaFacultate.TabIndex = 4;
+            this.buttonAdaugaFacultate.Text = "Adauga facultate";
+            this.buttonAdaugaFacultate.UseVisualStyleBackColor = true;
+            this.buttonAdaugaFacultate.Click += new System.EventHandler(this.buttonAdaugaFacultate_Click);
+            // 
+            // textBoxAdresaFacultate
+            // 
+            this.textBoxAdresaFacultate.Location = new System.Drawing.Point(111, 71);
+            this.textBoxAdresaFacultate.Name = "textBoxAdresaFacultate";
+            this.textBoxAdresaFacultate.Size = new System.Drawing.Size(321, 29);
+            this.textBoxAdresaFacultate.TabIndex = 3;
+            // 
+            // textBoxDenumireFacultate
+            // 
+            this.textBoxDenumireFacultate.Location = new System.Drawing.Point(110, 25);
+            this.textBoxDenumireFacultate.Name = "textBoxDenumireFacultate";
+            this.textBoxDenumireFacultate.Size = new System.Drawing.Size(322, 29);
+            this.textBoxDenumireFacultate.TabIndex = 2;
             // 
             // labelAdresaFac
             // 
@@ -969,29 +985,15 @@ namespace GestiuneExameneWindowsForms
             this.labelAdresaFac.TabIndex = 1;
             this.labelAdresaFac.Text = "Adresa:";
             // 
-            // textBoxDenumireFacultate
+            // labelDenFac
             // 
-            this.textBoxDenumireFacultate.Location = new System.Drawing.Point(110, 25);
-            this.textBoxDenumireFacultate.Name = "textBoxDenumireFacultate";
-            this.textBoxDenumireFacultate.Size = new System.Drawing.Size(322, 29);
-            this.textBoxDenumireFacultate.TabIndex = 2;
-            // 
-            // textBoxAdresaFacultate
-            // 
-            this.textBoxAdresaFacultate.Location = new System.Drawing.Point(111, 71);
-            this.textBoxAdresaFacultate.Name = "textBoxAdresaFacultate";
-            this.textBoxAdresaFacultate.Size = new System.Drawing.Size(321, 29);
-            this.textBoxAdresaFacultate.TabIndex = 3;
-            // 
-            // buttonAdaugaFacultate
-            // 
-            this.buttonAdaugaFacultate.Location = new System.Drawing.Point(144, 116);
-            this.buttonAdaugaFacultate.Name = "buttonAdaugaFacultate";
-            this.buttonAdaugaFacultate.Size = new System.Drawing.Size(258, 44);
-            this.buttonAdaugaFacultate.TabIndex = 4;
-            this.buttonAdaugaFacultate.Text = "Adauga facultate";
-            this.buttonAdaugaFacultate.UseVisualStyleBackColor = true;
-            this.buttonAdaugaFacultate.Click += new System.EventHandler(this.buttonAdaugaFacultate_Click);
+            this.labelDenFac.AutoSize = true;
+            this.labelDenFac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDenFac.Location = new System.Drawing.Point(6, 30);
+            this.labelDenFac.Name = "labelDenFac";
+            this.labelDenFac.Size = new System.Drawing.Size(98, 24);
+            this.labelDenFac.TabIndex = 0;
+            this.labelDenFac.Text = "Denumire:";
             // 
             // tabControl1
             // 
@@ -1009,6 +1011,17 @@ namespace GestiuneExameneWindowsForms
             this.tabControl1.Size = new System.Drawing.Size(838, 415);
             this.tabControl1.TabIndex = 3;
             // 
+            // button_ToAcoperireDisc
+            // 
+            this.button_ToAcoperireDisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ToAcoperireDisc.Location = new System.Drawing.Point(590, 331);
+            this.button_ToAcoperireDisc.Name = "button_ToAcoperireDisc";
+            this.button_ToAcoperireDisc.Size = new System.Drawing.Size(223, 40);
+            this.button_ToAcoperireDisc.TabIndex = 5;
+            this.button_ToAcoperireDisc.Text = "Acoperire discipline";
+            this.button_ToAcoperireDisc.UseVisualStyleBackColor = true;
+            this.button_ToAcoperireDisc.Click += new System.EventHandler(this.button_ToAcoperireDisc_Click);
+            // 
             // AddDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1025,11 +1038,11 @@ namespace GestiuneExameneWindowsForms
             this.Load += new System.EventHandler(this.AddDataForm_Load);
             this.tabPageSala.ResumeLayout(false);
             this.tabPageSala.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrSala)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEtaj)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrLocuriSala)).EndInit();
             this.groupBoxTipSala.ResumeLayout(false);
             this.groupBoxTipSala.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrLocuriSala)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEtaj)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrSala)).EndInit();
             this.tabPageCorp.ResumeLayout(false);
             this.tabPageCorp.PerformLayout();
             this.tabPageSesiune.ResumeLayout(false);
@@ -1042,8 +1055,8 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxGradDidactic.PerformLayout();
             this.tabPageGrupa.ResumeLayout(false);
             this.tabPageGrupa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrStudentiGrupa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNrGrupa)).EndInit();
             this.tabPageSpecializare.ResumeLayout(false);
             this.tabPageSpecializare.PerformLayout();
             this.groupBoxFormaInv.ResumeLayout(false);
@@ -1135,5 +1148,6 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.Label labelAdresaFac;
         private System.Windows.Forms.Label labelDenFac;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Button button_ToAcoperireDisc;
     }
 }

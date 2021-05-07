@@ -42,9 +42,13 @@ namespace GestiuneExameneWindowsForms
             this.comboBoxDropDownListAlocareDiscAnStudiuList = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.comboBoxDropDownListAlocareDisSpecList = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label_DisciplinaAdaugata = new System.Windows.Forms.Label();
+            this.panel_CheckList_Alocare_Disciplina_Spec = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonIesire = new System.Windows.Forms.Button();
+            this.button_back_AddDataForm = new System.Windows.Forms.Button();
+            this.button_toAcoperireForm = new System.Windows.Forms.Button();
             this.groupBoxAlocareDiscStatus.SuspendLayout();
             this.groupBoxAlocDiscTipEvaluare.SuspendLayout();
             this.groupBoxAlocDiscSemestru.SuspendLayout();
@@ -53,7 +57,7 @@ namespace GestiuneExameneWindowsForms
             // buttonAlocaDisciplina
             // 
             this.buttonAlocaDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAlocaDisciplina.Location = new System.Drawing.Point(290, 340);
+            this.buttonAlocaDisciplina.Location = new System.Drawing.Point(183, 321);
             this.buttonAlocaDisciplina.Name = "buttonAlocaDisciplina";
             this.buttonAlocaDisciplina.Size = new System.Drawing.Size(195, 32);
             this.buttonAlocaDisciplina.TabIndex = 20;
@@ -66,7 +70,7 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxAlocareDiscStatus.Controls.Add(this.radioButtonInactiv);
             this.groupBoxAlocareDiscStatus.Controls.Add(this.radioButtonActiv);
             this.groupBoxAlocareDiscStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAlocareDiscStatus.Location = new System.Drawing.Point(252, 284);
+            this.groupBoxAlocareDiscStatus.Location = new System.Drawing.Point(145, 265);
             this.groupBoxAlocareDiscStatus.Name = "groupBoxAlocareDiscStatus";
             this.groupBoxAlocareDiscStatus.Size = new System.Drawing.Size(265, 50);
             this.groupBoxAlocareDiscStatus.TabIndex = 19;
@@ -100,7 +104,7 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxAlocDiscTipEvaluare.Controls.Add(this.radioButtonExamen);
             this.groupBoxAlocDiscTipEvaluare.Controls.Add(this.radioButtonVerificare);
             this.groupBoxAlocDiscTipEvaluare.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAlocDiscTipEvaluare.Location = new System.Drawing.Point(252, 222);
+            this.groupBoxAlocDiscTipEvaluare.Location = new System.Drawing.Point(145, 203);
             this.groupBoxAlocDiscTipEvaluare.Name = "groupBoxAlocDiscTipEvaluare";
             this.groupBoxAlocDiscTipEvaluare.Size = new System.Drawing.Size(265, 58);
             this.groupBoxAlocDiscTipEvaluare.TabIndex = 18;
@@ -134,7 +138,7 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxAlocDiscSemestru.Controls.Add(this.radioButtonSem2);
             this.groupBoxAlocDiscSemestru.Controls.Add(this.radioButtonSem1);
             this.groupBoxAlocDiscSemestru.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAlocDiscSemestru.Location = new System.Drawing.Point(252, 158);
+            this.groupBoxAlocDiscSemestru.Location = new System.Drawing.Point(145, 139);
             this.groupBoxAlocDiscSemestru.Name = "groupBoxAlocDiscSemestru";
             this.groupBoxAlocDiscSemestru.Size = new System.Drawing.Size(265, 58);
             this.groupBoxAlocDiscSemestru.TabIndex = 17;
@@ -168,7 +172,7 @@ namespace GestiuneExameneWindowsForms
             this.comboBoxDropDownListAlocareDiscAnStudiuList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDropDownListAlocareDiscAnStudiuList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDropDownListAlocareDiscAnStudiuList.FormattingEnabled = true;
-            this.comboBoxDropDownListAlocareDiscAnStudiuList.Location = new System.Drawing.Point(252, 120);
+            this.comboBoxDropDownListAlocareDiscAnStudiuList.Location = new System.Drawing.Point(145, 101);
             this.comboBoxDropDownListAlocareDiscAnStudiuList.Name = "comboBoxDropDownListAlocareDiscAnStudiuList";
             this.comboBoxDropDownListAlocareDiscAnStudiuList.Size = new System.Drawing.Size(265, 32);
             this.comboBoxDropDownListAlocareDiscAnStudiuList.TabIndex = 16;
@@ -177,7 +181,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(152, 120);
+            this.label21.Location = new System.Drawing.Point(45, 101);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(94, 24);
             this.label21.TabIndex = 15;
@@ -187,47 +191,92 @@ namespace GestiuneExameneWindowsForms
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(151, 82);
+            this.label20.Location = new System.Drawing.Point(44, 63);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(95, 24);
             this.label20.TabIndex = 13;
             this.label20.Text = "Disciplina:";
             // 
-            // comboBoxDropDownListAlocareDisSpecList
-            // 
-            this.comboBoxDropDownListAlocareDisSpecList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDropDownListAlocareDisSpecList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxDropDownListAlocareDisSpecList.FormattingEnabled = true;
-            this.comboBoxDropDownListAlocareDisSpecList.Location = new System.Drawing.Point(252, 44);
-            this.comboBoxDropDownListAlocareDisSpecList.Name = "comboBoxDropDownListAlocareDisSpecList";
-            this.comboBoxDropDownListAlocareDisSpecList.Size = new System.Drawing.Size(265, 32);
-            this.comboBoxDropDownListAlocareDisSpecList.TabIndex = 12;
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(129, 47);
+            this.label19.Location = new System.Drawing.Point(310, 9);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(117, 24);
+            this.label19.Size = new System.Drawing.Size(158, 24);
             this.label19.TabIndex = 11;
-            this.label19.Text = "Specializare:";
+            this.label19.Text = "Alocare disciplina";
             // 
             // label_DisciplinaAdaugata
             // 
             this.label_DisciplinaAdaugata.AutoSize = true;
             this.label_DisciplinaAdaugata.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_DisciplinaAdaugata.Location = new System.Drawing.Point(332, 82);
+            this.label_DisciplinaAdaugata.Location = new System.Drawing.Point(225, 63);
             this.label_DisciplinaAdaugata.Name = "label_DisciplinaAdaugata";
             this.label_DisciplinaAdaugata.Size = new System.Drawing.Size(111, 24);
             this.label_DisciplinaAdaugata.TabIndex = 21;
             this.label_DisciplinaAdaugata.Text = "Placeholder";
+            // 
+            // panel_CheckList_Alocare_Disciplina_Spec
+            // 
+            this.panel_CheckList_Alocare_Disciplina_Spec.Location = new System.Drawing.Point(488, 90);
+            this.panel_CheckList_Alocare_Disciplina_Spec.Name = "panel_CheckList_Alocare_Disciplina_Spec";
+            this.panel_CheckList_Alocare_Disciplina_Spec.Size = new System.Drawing.Size(235, 263);
+            this.panel_CheckList_Alocare_Disciplina_Spec.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(547, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 24);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Specializari:";
+            // 
+            // buttonIesire
+            // 
+            this.buttonIesire.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIesire.Location = new System.Drawing.Point(704, 406);
+            this.buttonIesire.Name = "buttonIesire";
+            this.buttonIesire.Size = new System.Drawing.Size(84, 32);
+            this.buttonIesire.TabIndex = 24;
+            this.buttonIesire.Text = "Iesire";
+            this.buttonIesire.UseVisualStyleBackColor = true;
+            this.buttonIesire.Click += new System.EventHandler(this.buttonIesire_Click);
+            // 
+            // button_back_AddDataForm
+            // 
+            this.button_back_AddDataForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_back_AddDataForm.Location = new System.Drawing.Point(471, 406);
+            this.button_back_AddDataForm.Name = "button_back_AddDataForm";
+            this.button_back_AddDataForm.Size = new System.Drawing.Size(227, 32);
+            this.button_back_AddDataForm.TabIndex = 25;
+            this.button_back_AddDataForm.Text = "Inapoi la adaugare date";
+            this.button_back_AddDataForm.UseVisualStyleBackColor = true;
+            this.button_back_AddDataForm.Click += new System.EventHandler(this.button_back_AddDataForm_Click);
+            // 
+            // button_toAcoperireForm
+            // 
+            this.button_toAcoperireForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_toAcoperireForm.Location = new System.Drawing.Point(270, 406);
+            this.button_toAcoperireForm.Name = "button_toAcoperireForm";
+            this.button_toAcoperireForm.Size = new System.Drawing.Size(195, 32);
+            this.button_toAcoperireForm.TabIndex = 26;
+            this.button_toAcoperireForm.Text = "Acoperire disciplina";
+            this.button_toAcoperireForm.UseVisualStyleBackColor = true;
+            this.button_toAcoperireForm.Click += new System.EventHandler(this.button_toAcoperireForm_Click);
             // 
             // Alocare
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_toAcoperireForm);
+            this.Controls.Add(this.button_back_AddDataForm);
+            this.Controls.Add(this.buttonIesire);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel_CheckList_Alocare_Disciplina_Spec);
             this.Controls.Add(this.label_DisciplinaAdaugata);
             this.Controls.Add(this.buttonAlocaDisciplina);
             this.Controls.Add(this.groupBoxAlocareDiscStatus);
@@ -236,7 +285,6 @@ namespace GestiuneExameneWindowsForms
             this.Controls.Add(this.comboBoxDropDownListAlocareDiscAnStudiuList);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.comboBoxDropDownListAlocareDisSpecList);
             this.Controls.Add(this.label19);
             this.Name = "Alocare";
             this.Text = "Alocare";
@@ -267,8 +315,12 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.ComboBox comboBoxDropDownListAlocareDiscAnStudiuList;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBoxDropDownListAlocareDisSpecList;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label_DisciplinaAdaugata;
+        private System.Windows.Forms.Panel panel_CheckList_Alocare_Disciplina_Spec;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonIesire;
+        private System.Windows.Forms.Button button_back_AddDataForm;
+        private System.Windows.Forms.Button button_toAcoperireForm;
     }
 }
