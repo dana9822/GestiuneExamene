@@ -23,6 +23,7 @@ namespace GestiuneExameneWindowsForms
         {
             conectare();
             completareDataSet();
+            adaugaRadioButtonInList();
             adaugaSpecializareToDropDownList();
             adaugaDisciplinaToDropDownList();
             adaugaAnStudiuToDropDownList();
@@ -35,6 +36,7 @@ namespace GestiuneExameneWindowsForms
         SqlConnection con;
         SqlDataAdapter da;
         DataSet ds = new DataSet();
+        List<RadioButton> listRadioButtonSemestru = new List<RadioButton>();
         #endregion
 
         #region conectare
@@ -107,14 +109,20 @@ namespace GestiuneExameneWindowsForms
             List<string> specializari = new List<string>();
             foreach (DataRow drAloc in ds.Tables["ALOCAREDISCIPLINA"].Rows)  // doar specializarile care au materii alocate
             {
-                foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                if (drAloc.ItemArray.GetValue(5).ToString() == "Activ")  //daca disciplina este inca valida la specializarea x pentru anul in curs
                 {
-                    if (drAloc.ItemArray.GetValue(0).ToString() == dr.ItemArray.GetValue(0).ToString())
+                    if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
                     {
-                        if (dr.ItemArray.GetValue(3).ToString() == Form1.idFacultateSelectata.ToString())  // doar specializarile care apartin de facultatea selectata la deschiderea aplicatiei
+                        foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
                         {
-                            specializari.Add(dr.ItemArray.GetValue(1).ToString());
-                            //comboBoxDropDownListAcoperireDiscSpec.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                            if (drAloc.ItemArray.GetValue(0).ToString() == dr.ItemArray.GetValue(0).ToString()) //daca specializarea are disciplina alocata
+                            {
+                                if (dr.ItemArray.GetValue(3).ToString() == Form1.idFacultateSelectata.ToString())  // doar specializarile care apartin de facultatea selectata la deschiderea aplicatiei
+                                {
+                                    specializari.Add(dr.ItemArray.GetValue(1).ToString());
+                                    //comboBoxDropDownListAcoperireDiscSpec.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                                }
+                            }
                         }
                     }
                 }
@@ -128,18 +136,44 @@ namespace GestiuneExameneWindowsForms
                 comboBoxDropDownListAcoperireDiscSpec.SelectedIndex = 0;
         }
 
+        bool activareEvenimentDropDownListSpecializare = false;
+
+        private void specializare_selectedIndexChanged(object sender, EventArgs e)
+        {
+            //false => se modifica interactiv lista in functie de selectie
+            if (!activareEvenimentDropDownListSpecializare)
+            {
+                adaugaDisciplinaToDropDownList();
+                //adaugaAnStudiuToDropDownList(); E necesar sa apelez ptr ambele liste sau eventul de la lista disc se triggeruieste si actualizeaza anStudiu singur?
+            }
+        }
         void adaugaDisciplinaToDropDownList()
         {
             comboBoxDropDowListAcoperireDiscDisc.Items.Clear();
             List<string> discipline = new List<string>();
+            string idSpecializareSelectata = "";
+
+            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString())
+                    idSpecializareSelectata = dr.ItemArray.GetValue(0).ToString();
+
             foreach (DataRow drAloc in ds.Tables["ALOCAREDISCIPLINA"].Rows)
             {
-                foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                if (drAloc.ItemArray.GetValue(0).ToString() == idSpecializareSelectata)  // daca disciplina este alocata specializarii selectate
                 {
-                    if (drAloc.ItemArray.GetValue(1).ToString() == dr.ItemArray.GetValue(0).ToString())
+                    if (drAloc.ItemArray.GetValue(5).ToString() == "Activ")  // daca este activa pentru anul universitar in curs
                     {
-                        discipline.Add(dr.ItemArray.GetValue(1).ToString());
-                        //comboBoxDropDowListAcoperireDiscDisc.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                        if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
+                        {
+                            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                            {
+                                if (drAloc.ItemArray.GetValue(1).ToString() == dr.ItemArray.GetValue(0).ToString())
+                                {
+                                    discipline.Add(dr.ItemArray.GetValue(1).ToString());
+                                    //comboBoxDropDowListAcoperireDiscDisc.Items.Add(dr.ItemArray.GetValue(1).ToString());
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -152,15 +186,56 @@ namespace GestiuneExameneWindowsForms
                 comboBoxDropDowListAcoperireDiscDisc.SelectedIndex = 0;
         }
 
+        bool activareEvenimentDropDownListDisciplina = false;
+
+        private void disciplina_selectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!activareEvenimentDropDownListDisciplina)
+                adaugaAnStudiuToDropDownList();
+        }
+
         void adaugaAnStudiuToDropDownList()
         {
             comboBoxDropDownListAcoperireDiscAnStudiu.Items.Clear();
 
-            foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
-            {
-                comboBoxDropDownListAcoperireDiscAnStudiu.Items.Add(dr.ItemArray.GetValue(0).ToString());
-            }
+            List<string> aniStudiu = new List<string>();
+            string idSpecializareSelectata = "";
+            string idDisciplinaSelectata = "";
 
+            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString())
+                    idSpecializareSelectata = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDowListAcoperireDiscDisc.SelectedItem.ToString())
+                    idDisciplinaSelectata = dr.ItemArray.GetValue(0).ToString();
+
+            foreach (DataRow drAloc in ds.Tables["ALOCAREDISCIPLINA"].Rows)
+            {
+                if (drAloc.ItemArray.GetValue(0).ToString() == idSpecializareSelectata)  // daca anul corespunde pe inregistrarea care este alocata specializarii selectate
+                {
+                    if (drAloc.ItemArray.GetValue(1).ToString() == idDisciplinaSelectata)  // daca si disciplina corespunde
+                    {
+                        if (drAloc.ItemArray.GetValue(5).ToString() == "Activ")  // daca este activ pentru anul universitar in curs
+                        {
+                            if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
+                            {
+                                foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+                                {
+                                    if (drAloc.ItemArray.GetValue(2).ToString() == dr.ItemArray.GetValue(0).ToString())
+                                    {
+                                        aniStudiu.Add(dr.ItemArray.GetValue(0).ToString());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            List<string> distinct = aniStudiu.Distinct().ToList();
+            foreach (String spec in distinct)
+            {
+                comboBoxDropDownListAcoperireDiscAnStudiu.Items.Add(spec);
+            }
             if (comboBoxDropDownListAcoperireDiscAnStudiu.Items.Count > 0)
                 comboBoxDropDownListAcoperireDiscAnStudiu.SelectedIndex = 0;
         }
@@ -176,6 +251,22 @@ namespace GestiuneExameneWindowsForms
         }
         #endregion
 
+        #region RadioButtonMethod
+        void adaugaRadioButtonInList()
+        {
+            foreach (Control c in groupBoxAcoperireDiscSemestru.Controls)
+                listRadioButtonSemestru.Add((RadioButton)c);
+
+        }
+
+        string returnRadioButtonName(List<RadioButton> listaRadioButtons)
+        {
+            foreach (RadioButton rb in listaRadioButtons)
+                if (rb.Checked)
+                    return rb.Text;
+            return "";
+        }
+        #endregion
         private void buttonAcoperireDisciplina_Click(object sender, EventArgs e)
         {
             string codSpec = "";
