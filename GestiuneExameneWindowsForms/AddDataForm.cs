@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -609,17 +610,33 @@ namespace GestiuneExameneWindowsForms
        
         private void buttonAdaugaDisciplina_Click(object sender, EventArgs e)
         {
+            string discOriginalText = textBoxDenumireDisciplina.Text.ToString();
+            string concatenatedString = concatenateString(textBoxDenumireDisciplina.Text.ToString());
+            bool exista = false;
             bool verificaId = false;
             int nrCaractereExtrase = 0;
             int pozCaracterExtras = 0;
             StringBuilder idDisciplinaDB = new StringBuilder();
             string[] idDisciplina;
 
+            if (!string.IsNullOrEmpty(textBoxDenumireDisciplina.Text))
+            {
+                string dbConcatenatedString = "";
+                foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                {
+                    dbConcatenatedString = concatenateString(dr.ItemArray.GetValue(1).ToString());
+                    if (dbConcatenatedString.ToUpper() == concatenatedString.ToUpper())
+                        exista = true;
+                }
+            }
+
             if (string.IsNullOrEmpty(textBoxDenumireDisciplina.Text))
                 MessageBox.Show("Introduceti denumirea disciplinei!");
+            if( exista == true)
+                MessageBox.Show("Disciplina " + discOriginalText + " exista deja in baza de date!");
             else
             {
-                idDisciplina = textBoxDenumireDisciplina.Text.ToString().Split(' ');
+                idDisciplina = discOriginalText.ToUpper().Split(' ');
 
                 if (idDisciplina.Length > 1)
                 {
@@ -651,7 +668,7 @@ namespace GestiuneExameneWindowsForms
                     {
                         verificaId = false;
                         idDisciplinaDB.Clear();
-                        idDisciplinaDB.Append(textBoxDenumireDisciplina.Text.Substring(0, nrCaractereExtrase));
+                        idDisciplinaDB.Append(discOriginalText.Substring(0, nrCaractereExtrase));
                         foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
                         {
                             if (dr.ItemArray.GetValue(0).ToString() == idDisciplinaDB.ToString())
@@ -666,7 +683,7 @@ namespace GestiuneExameneWindowsForms
                 {
                     ds.Tables["DISCIPLINA"].Clear();
 
-                    string insertDisciplina = "INSERT INTO Disciplina VALUES ('" + idDisciplinaDB.ToString() + "', '" + textBoxDenumireDisciplina.Text + "')";
+                    string insertDisciplina = "INSERT INTO Disciplina VALUES ('" + idDisciplinaDB.ToString() + "', '" + discOriginalText + "')";
 
                     con.Open();
                     SqlCommand cmdInsertDisciplina = new SqlCommand(insertDisciplina, con);
@@ -676,7 +693,7 @@ namespace GestiuneExameneWindowsForms
                     da.Fill(ds, "DISCIPLINA");
 
                     con.Close();
-                    MessageBox.Show("Disciplina " + textBoxDenumireDisciplina.Text.ToString() + " a fost adaugata cu succes!");
+                    MessageBox.Show("Disciplina " + discOriginalText.ToString() + " a fost adaugata cu succes!");
                     textBoxDenumireDisciplina.Clear();
                     idDisciplinaAdaugata = idDisciplinaDB.ToString();
                     this.Hide();
@@ -716,7 +733,7 @@ namespace GestiuneExameneWindowsForms
 
                 foreach (DataRow dr in ds.Tables["ANSESIUNE"].Rows)
                 {
-                    if (dr.ItemArray.GetValue(0).ToString() == idSesiune.ToString());  //daca mai exista sesiune in acelasi tip de sesiune -Vara,Iarna,Restanta
+                    if (dr.ItemArray.GetValue(0).ToString() == idSesiune.ToString())  //daca mai exista sesiune in acelasi tip de sesiune -Vara,Iarna,Restanta
                     {
                         if (dr.ItemArray.GetValue(1).ToString() == anUniversitarCurent.ToString())  //daca mai exista sesiune inregistrata in acelasi an
                         {
@@ -755,36 +772,55 @@ namespace GestiuneExameneWindowsForms
             con.Close();
             DataTable dt = ds.Tables["CORP"];
             DataRow dr1 = dt.NewRow();
+            string corpOriginalText = textBoxDenumireCorp.Text.ToString();
+            string stringWithoutSpclCharac = Regex.Replace(textBoxDenumireCorp.Text.ToString(), @"[^0-9a-zA-Z\._]", "");
+            string concatenatedString = concatenateString(stringWithoutSpclCharac);
+            bool exista = false;
 
-            List<Int32> listIdCorp = new List<int>();
-            if (ds.Tables["CORP"].Rows.Count == 0)  //daca nu exista inregistrari, pentru primul insert in tabel,tratare exceptie " no element found "
+            if (!string.IsNullOrEmpty(textBoxDenumireCorp.Text))
             {
-                dr1[0] = "1";
-                dr1[1] = textBoxDenumireCorp.Text.ToString();
-                dr1[2] = textBoxAdresaCorp.Text.ToString();
-            }
-            else
-            {
+                string dbConcatenatedString = "";
                 foreach (DataRow dr in ds.Tables["CORP"].Rows)
                 {
-                        listIdCorp.Add(Convert.ToInt32(dr.ItemArray.GetValue(0)));
+                    dbConcatenatedString = concatenateString(dr.ItemArray.GetValue(1).ToString());
+                    if (dbConcatenatedString.ToUpper() == concatenatedString.ToUpper())
+                        exista = true;
                 }
-                string newIdCorp = (listIdCorp.Max() + 1).ToString();
-
-                dr1[0] = newIdCorp;
-                dr1[1] = textBoxDenumireCorp.Text.ToString();
-                dr1[2] = textBoxAdresaCorp.Text.ToString();
-
             }
-            dt.Rows.Add(dr1);
-            SqlCommandBuilder cb = new SqlCommandBuilder(daCorp);
-            cb.DataAdapter.Update(dt);
+            if (exista == true)
+                MessageBox.Show("Corpul " + corpOriginalText + " exista deja in baza de date!");
+            else
+            {
+                List<Int32> listIdCorp = new List<int>();
+                if (ds.Tables["CORP"].Rows.Count == 0)  //daca nu exista inregistrari, pentru primul insert in tabel,tratare exceptie " no element found "
+                {
+                    dr1[0] = "1";
+                    dr1[1] = textBoxDenumireCorp.Text.ToString();
+                    dr1[2] = textBoxAdresaCorp.Text.ToString();
+                }
+                else
+                {
+                    foreach (DataRow dr in ds.Tables["CORP"].Rows)
+                    {
+                        listIdCorp.Add(Convert.ToInt32(dr.ItemArray.GetValue(0)));
+                    }
+                    string newIdCorp = (listIdCorp.Max() + 1).ToString();
 
-            MessageBox.Show("Corpul " + textBoxDenumireCorp.Text.ToString() + " a fost adaugat cu succes in baza de date!");
-            textBoxDenumireCorp.Clear();
-            textBoxAdresaCorp.Clear();
-            comboBoxDropDownListCorp.Items.Clear();
-            adaugaCorpToDropDownList();
+                    dr1[0] = newIdCorp;
+                    dr1[1] = corpOriginalText;
+                    dr1[2] = textBoxAdresaCorp.Text.ToString();
+
+                }
+                dt.Rows.Add(dr1);
+                SqlCommandBuilder cb = new SqlCommandBuilder(daCorp);
+                cb.DataAdapter.Update(dt);
+
+                MessageBox.Show("Corpul " + corpOriginalText + " a fost adaugat cu succes in baza de date!");
+                textBoxDenumireCorp.Clear();
+                textBoxAdresaCorp.Clear();
+                comboBoxDropDownListCorp.Items.Clear();
+                adaugaCorpToDropDownList();
+            }
         }
         
         private void buttonAdaugaSala_Click(object sender, EventArgs e)

@@ -120,7 +120,6 @@ namespace GestiuneExameneWindowsForms
                                 if (dr.ItemArray.GetValue(3).ToString() == Form1.idFacultateSelectata.ToString())  // doar specializarile care apartin de facultatea selectata la deschiderea aplicatiei
                                 {
                                     specializari.Add(dr.ItemArray.GetValue(1).ToString());
-                                    //comboBoxDropDownListAcoperireDiscSpec.Items.Add(dr.ItemArray.GetValue(1).ToString());
                                 }
                             }
                         }
@@ -178,9 +177,9 @@ namespace GestiuneExameneWindowsForms
                 }
             }
             List<string> distinct = discipline.Distinct().ToList();
-            foreach (String spec in distinct)
+            foreach (String disc in distinct)
             {
-                comboBoxDropDowListAcoperireDiscDisc.Items.Add(spec);
+                comboBoxDropDowListAcoperireDiscDisc.Items.Add(disc);
             }
             if (comboBoxDropDowListAcoperireDiscDisc.Items.Count > 0)
                 comboBoxDropDowListAcoperireDiscDisc.SelectedIndex = 0;
@@ -274,18 +273,18 @@ namespace GestiuneExameneWindowsForms
             string marcaProf = "";
             string anStudiuId = "";
             bool exista = false;
-            //foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
-            //    if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAlocareDisSpecList.SelectedItem.ToString())
-            //        codSpec = dr.ItemArray.GetValue(0).ToString();
-            //foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
-            //    if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAlocareDiscDiscList.SelectedItem.ToString())
-            //        idDisc = dr.ItemArray.GetValue(0).ToString();
-            //foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-            //    if (dr.ItemArray.GetValue(3).ToString() + " " + dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString())
-            //        marcaProf = dr.ItemArray.GetValue(0).ToString();
-            //foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
-            //    if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString())
-            //        anStudiuId = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString())
+                    codSpec = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDowListAcoperireDiscDisc.SelectedItem.ToString())
+                    idDisc = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString())
+                    marcaProf = dr.ItemArray.GetValue(0).ToString();
+            foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+                if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAcoperireDiscAnStudiu.SelectedItem.ToString())
+                    anStudiuId = dr.ItemArray.GetValue(0).ToString();
 
             foreach (DataRow dr in ds.Tables["ACOPERIREDISCIPLINA"].Rows)
                 if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == idDisc.ToString() && dr.ItemArray.GetValue(2).ToString() == marcaProf.ToString() && dr.ItemArray.GetValue(3).ToString() == anStudiuId.ToString() && dr.ItemArray.GetValue(4).ToString() == AddDataForm.anUniversitarCurent.ToString())
