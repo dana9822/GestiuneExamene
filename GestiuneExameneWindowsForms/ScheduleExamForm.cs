@@ -398,7 +398,10 @@ namespace GestiuneExameneWindowsForms
         private void disciplina_selectedIndexChanged(object sender, EventArgs e)
         {
             if (!activareEvenimentDropDownListDisciplina)
+            {
                 getTipEvaluareDisciplina();
+                adaugaProfesorTitularToDropDownList();
+            }
         }
         void adaugaSalaToDropDownList()
         {
@@ -414,15 +417,292 @@ namespace GestiuneExameneWindowsForms
             if (comboBoxExamenSala.Items.Count > 0)
                 comboBoxExamenSala.SelectedIndex = 0;
         }
+
+        void adaugaProfesorTitularToDropDownList()
+        {
+            comboBoxExamenProfTitular.Items.Clear();
+
+            List<string> profesoriTitulari = new List<string>();
+            string idDisciplinaSelectata = "";
+
+            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxExamenDisciplina.SelectedItem.ToString())
+                    idDisciplinaSelectata = dr.ItemArray.GetValue(0).ToString();
+
+            foreach (DataRow drAloc in ds.Tables["DisciplinaAlocataAcoperita"].Rows)
+            {
+                if (drAloc.ItemArray.GetValue(1).ToString() == idDisciplinaSelectata)
+                {
+                    if (drAloc.ItemArray.GetValue(5).ToString() == "Activ")
+                    {
+                        if (drAloc.ItemArray.GetValue(6).ToString() == anUniversitarCurent)
+                        {
+                            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                            {
+                                if (drAloc.ItemArray.GetValue(7).ToString() == dr.ItemArray.GetValue(0).ToString())
+                                {
+                                    profesoriTitulari.Add(dr.ItemArray.GetValue(1).ToString()+" "+ dr.ItemArray.GetValue(2).ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            List<string> distinct = profesoriTitulari.Distinct().ToList();
+            foreach (String prof in distinct)
+            {
+                comboBoxExamenProfTitular.Items.Add(prof);
+            }
+
+            if (comboBoxExamenProfTitular.Items.Count > 0)
+                comboBoxExamenProfTitular.SelectedIndex = 0;
+        }
+
+        bool activareEvenimentDropDownListProfTitular = false;
+
+        private void profTitular_selectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!activareEvenimentDropDownListProfTitular)
+                adaugaProfesorSupraveghetorToDropDownList();
+        }
+
+        void adaugaProfesorSupraveghetorToDropDownList()
+        {
+            comboBoxExamenProfSuprav.Items.Clear();
+
+            List<string> profesorSuprav = new List<string>();
+            string marcaProfesorTitular = "";
+
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString()+" "+ dr.ItemArray.GetValue(2).ToString() == comboBoxExamenProfTitular.SelectedItem.ToString())
+                    marcaProfesorTitular = dr.ItemArray.GetValue(0).ToString();
+
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                if (dr.ItemArray.GetValue(0).ToString() != marcaProfesorTitular)
+                    profesorSuprav.Add(dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString());
+
+            List<string> distinct = profesorSuprav.Distinct().ToList();
+            foreach (String prof in distinct)
+            {
+                comboBoxExamenProfSuprav.Items.Add(prof);
+            }
+
+            if (comboBoxExamenProfSuprav.Items.Count > 0)
+                comboBoxExamenProfSuprav.SelectedIndex = 0;
+        }
         #endregion
 
-        #region ProgramareButtons
+        #region ProgramareExamenButtons
 
-        private void buttonProgrameazaExamen_Click(object sender, EventArgs e)
+        private bool ValidareExamen()
         {
 
+            if (dateTimePickerDataExamen.Value.Date > Convert.ToDateTime(dataFinalSesiuneCurenta))
+            {
+                //functioneaza
+                MessageBox.Show("Nu puteti programa examene in afara sesiunii!\nData este prea tarzie!");
+                return false;
+            }
+            else
+                if (dateTimePickerDataExamen.Value.Date < Convert.ToDateTime(dataInceputSesiuneCurenta) && labelExamenTipEvaluare.Text == "Examen")
+            {
+                //functioneaza
+                MessageBox.Show("Examenele nu pot avea loc la date care sunt inaintea inceperii sesiunii!");
+                return false;
+            }
+            //else
+            //{
+            //    ds.Tables["EXAMEN"].Clear();
+            //    adaugaExamenToDataSet();
+            //    string codSpec = "";
+            //    ds.Tables["SPEC"].Clear();
+            //    adaugaSpecToDataSet();
+            //    List<DateTime> listaDateExameneSpecGr = new List<DateTime>();
+            //    foreach (DataRow dr in ds.Tables["SPEC"].Rows)
+            //    {
+            //        if (dr.ItemArray.GetValue(1).ToString() == Specializare.SelectedItem.ToString())
+            //            codSpec = dr.ItemArray.GetValue(0).ToString();
+            //    }
+            //    int capacitateSala = 0;
+            //    int nrStudentiGrupa = 0;
+            //    ds.Tables["SALA"].Clear();
+            //    adaugaSalaToDataSet();
+            //    ds.Tables["GRUPA"].Clear();
+            //    adaugaGrToDataSet();
+            //    foreach (DataRow dr in ds.Tables["SALA"].Rows)
+            //    {
+            //        if (dr.ItemArray.GetValue(0).ToString() == Sali.SelectedItem.ToString())
+            //            capacitateSala = Convert.ToInt32(dr.ItemArray.GetValue(1).ToString());
+            //    }
+            //    foreach (DataRow dr in ds.Tables["GRUPA"].Rows)
+            //    {
+            //        if (dr.ItemArray.GetValue(0).ToString() == codSpec && dr.ItemArray.GetValue(1).ToString() == Grupa.SelectedItem.ToString())
+            //            nrStudentiGrupa = Convert.ToInt32(dr.ItemArray.GetValue(2).ToString());
+            //    }
+            //    string data;
+            //    DateTime dataSelectataUserB = Convert.ToDateTime(dateTimePicker1.Value.AddDays(-3).ToShortDateString()); //before exam ,pentru minim 3 zile inainte/dupa examen
+            //    DateTime dataSelectataUserA = Convert.ToDateTime(dateTimePicker1.Value.AddDays(+3).ToShortDateString()); //after exam
+            //    foreach (DataRow dr in ds.Tables["EXAMEN"].Rows)
+            //    {
+            //        data = dr.ItemArray.GetValue(7).ToString();
+            //        if (dr.ItemArray.GetValue(2).ToString() == anUniversitarCurent && dr.ItemArray.GetValue(3).ToString() == idSesiuneCurenta &&
+            //            dr.ItemArray.GetValue(5).ToString() == codSpec && dr.ItemArray.GetValue(6).ToString() == Grupa.SelectedItem.ToString() &&
+            //            Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePicker1.Value.ToShortDateString()))
+            //        {
+            //            //grupa deja are examen=> Functioneaza
+            //            MessageBox.Show("Grupa " + Grupa.SelectedItem.ToString() + " de la specializarea " + Specializare.SelectedItem.ToString() +
+            //                " are deja un examen programat la data :" + dateTimePicker1.Value.ToShortDateString());
+            //            return false;
+            //        }
+            //        if (dr["anUniv"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+            //           Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePicker1.Value.ToShortDateString()) && dr["ora"].ToString() == numericUpDownOra.Value.ToString()
+            //            && dr["codSala"].ToString() == Sali.SelectedItem.ToString())
+            //        {
+            //            //sala e deja ocupata
+            //            MessageBox.Show("Sala " + Sali.SelectedItem.ToString() + " este ocupata la data " + dateTimePicker1.Value.ToShortDateString() +
+            //                " ora: " + numericUpDownOra.Value.ToString());
+            //            return false;
+            //        }
+            //        if (capacitateSala < nrStudentiGrupa)
+            //        {
+            //            //capacitatea salii este prea mica =>FUNCTIONEAZA
+            //            MessageBox.Show("Sala nu are suficiente locuri (" + capacitateSala + ") pentru numarul de studenti (" + nrStudentiGrupa +
+            //                ") de la grupa " + Grupa.SelectedItem.ToString());
+            //            return false;
+            //        }
+            //        if (dr["anUniv"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+            //            dr["idSpec"].ToString() == codSpec && dr["idGr"].ToString() == Grupa.SelectedItem.ToString())
+            //        {
+            //            //lista date examene pentru spec+gr selectate ,din anUniv+sesiune curenta
+            //            listaDateExameneSpecGr.Add(Convert.ToDateTime(dr["data"].ToString()));
+            //            //if (dataSelectataUserB <= Convert.ToDateTime(data) && dataSelectataUserA >= Convert.ToDateTime(data))
+            //            //{
+            //            //    //limita de 3 zile nu este valida
+            //            //    MessageBox.Show("Intre examene trebuie sa existe minim 3 zile libere!");
+            //            //    return false;
+            //            //}
+            //        }
+            //    }
+            //    string dataVerif = "";
+            //    foreach (DataRow dr in ds.Tables["EXAMEN"].Rows)
+            //    {
+            //        dataVerif = dr.ItemArray.GetValue(7).ToString();
+            //        foreach (DateTime d in listaDateExameneSpecGr)
+            //        {
+            //            if (dr["anUniv"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+            //            dr["idSpec"].ToString() == codSpec && dr["idGr"].ToString() == Grupa.SelectedItem.ToString())
+            //            {
+            //                //    if (dateTimePicker1.Value.AddDays(-3) <= d && dateTimePicker1.Value.AddDays(+3) <= d) =>nu calculeaza bine
+            //                if (dataSelectataUserB <= Convert.ToDateTime(dataVerif) && dataSelectataUserA >= Convert.ToDateTime(dataVerif))
+            //                {
+            //                    //limita de 3 zile nu este valida
+            //                    MessageBox.Show("Intre examene trebuie sa existe minim 3 zile libere!");
+            //                    //listaDateExameneSpecGr.Clear();
+            //                    return false;
+            //                }
+            //            }
+            //        }
+            //    }
+            //    listaDateExameneSpecGr.Clear();
+            //}
+            return true;
+        }
+
+        private void button_ValidareExamen_Click(object sender, EventArgs e)
+        {
+            if (ValidareExamen() == true)
+                MessageBox.Show("Examenul este validat si poate fi programat!");
+        }
+        private void buttonProgrameazaExamen_Click(object sender, EventArgs e)
+        {
+            if (ValidareExamen() == true)
+            {
+                ds.Tables["EXAMEN"].Clear();
+                SqlDataAdapter daExamen = new SqlDataAdapter("SELECT * FROM ProgramareExamen", con);
+                con.Open();
+                daExamen.Fill(ds, "EXAMEN");
+                con.Close();
+                DataTable dt = ds.Tables["EXAMEN"];
+                DataRow dr1 = dt.NewRow();
+
+                //----------Id-uri PK+FK---------------
+                string codSpec = "";
+                foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxExamenSpecializare.SelectedItem.ToString())
+                        codSpec = dr.ItemArray.GetValue(0).ToString();
+                string nrGrupa = "";
+                string anStudiu = "";
+                foreach (DataRow dr in ds.Tables["GRUPA"].Rows)
+                {
+                    if (dr.ItemArray.GetValue(0).ToString() == codSpec && dr.ItemArray.GetValue(3).ToString() == anUniversitarCurent.ToString())
+                    {
+                        if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxExmenGrupa.SelectedItem.ToString())
+                        {
+                            nrGrupa = dr.ItemArray.GetValue(1).ToString();
+                            anStudiu = dr.ItemArray.GetValue(2).ToString();
+                        }
+                    }
+                }
+
+                string idDisciplina = "";
+                foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxExamenDisciplina.SelectedItem.ToString())
+                        idDisciplina = dr.ItemArray.GetValue(0).ToString();
+
+                string codProfTitular = "";
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxExamenProfTitular.SelectedItem.ToString())
+                        codProfTitular = dr.ItemArray.GetValue(0).ToString();
+
+                string codProfSuprav = "";
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxExamenProfSuprav.SelectedItem.ToString())
+                        codProfSuprav = dr.ItemArray.GetValue(0).ToString();
+
+                string idCorp = "";
+                string nrSala = "";
+                string etaj = "";
+                foreach (DataRow drSala in ds.Tables["SALA"].Rows)
+                {
+                    foreach (DataRow drCorp in ds.Tables["CORP"].Rows)
+                        if (drCorp.ItemArray.GetValue(0).ToString() == drSala.ItemArray.GetValue(0).ToString())
+                            if (drCorp.ItemArray.GetValue(1).ToString() + drSala.ItemArray.GetValue(2).ToString() + drSala.ItemArray.GetValue(1).ToString() == comboBoxExamenSala.SelectedItem.ToString()) //corp + etaj + nrSala => I.2.4 , Y.1.01
+                            {
+                                idCorp = drCorp.ItemArray.GetValue(0).ToString();
+                                nrSala = drSala.ItemArray.GetValue(1).ToString();
+                                etaj = drSala.ItemArray.GetValue(2).ToString();
+                            }
+                }
+                //-------------------------------------
+                dr1[0] = idCorp;
+                dr1[1] = nrSala;
+                dr1[2] = etaj;
+                dr1[3] = idSesiuneCurenta;
+                dr1[4] = idDisciplina;
+                dr1[5] = codSpec;
+                dr1[6] = nrGrupa;
+                dr1[7] = anStudiu;
+                dr1[8] = anUniversitarCurent;
+                dr1[9] = dateTimePickerDataExamen.Value.Date;
+                dr1[10] = Convert.ToInt32(numericUpDownExamenOra.Value);
+                dr1[11] = Convert.ToInt32(numericUpDownExamenDurata.Value);
+                dr1[12] = returnRadioButtonName(listRadioButtonModEvaluare);
+                dr1[13] = codProfTitular;
+                dr1[14] = codProfSuprav;
+
+                dt.Rows.Add(dr1);
+                SqlCommandBuilder cb = new SqlCommandBuilder(daExamen);
+                cb.DataAdapter.Update(dt);
+                MessageBox.Show("Examenul a fost programat cu succes!");
+                //completeazaGridExamen();
+                //seteazaProprietatiGridExamen(); //ptr arhiva
+            }
+            else
+                MessageBox.Show("Modificati greselile si incercati din nou!");
         }
 
         #endregion
+
     }
 }

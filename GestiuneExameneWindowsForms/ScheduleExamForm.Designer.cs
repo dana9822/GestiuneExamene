@@ -68,6 +68,8 @@ namespace GestiuneExameneWindowsForms
             this.tabPageArhivaRestante = new System.Windows.Forms.TabPage();
             this.labelScheduleExamServerStatus = new System.Windows.Forms.Label();
             this.labelScheduleExamCurrentAcademicalYear = new System.Windows.Forms.Label();
+            this.button_ValidareExamen = new System.Windows.Forms.Button();
+            this.button_UpdateProfSuprav = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageExamen.SuspendLayout();
             this.groupBoxDiscSemestru.SuspendLayout();
@@ -101,6 +103,8 @@ namespace GestiuneExameneWindowsForms
             // 
             // tabPageExamen
             // 
+            this.tabPageExamen.Controls.Add(this.button_UpdateProfSuprav);
+            this.tabPageExamen.Controls.Add(this.button_ValidareExamen);
             this.tabPageExamen.Controls.Add(this.groupBoxDiscSemestru);
             this.tabPageExamen.Controls.Add(this.buttonProgrameazaExamen);
             this.tabPageExamen.Controls.Add(this.dateTimePickerDataExamen);
@@ -131,7 +135,7 @@ namespace GestiuneExameneWindowsForms
             this.tabPageExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageExamen.Location = new System.Drawing.Point(4, 22);
             this.tabPageExamen.Name = "tabPageExamen";
-            this.tabPageExamen.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageExamen.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageExamen.Size = new System.Drawing.Size(1224, 544);
             this.tabPageExamen.TabIndex = 0;
             this.tabPageExamen.Text = "Programare Examen";
@@ -268,6 +272,7 @@ namespace GestiuneExameneWindowsForms
             this.comboBoxExamenProfTitular.Name = "comboBoxExamenProfTitular";
             this.comboBoxExamenProfTitular.Size = new System.Drawing.Size(427, 39);
             this.comboBoxExamenProfTitular.TabIndex = 19;
+            this.comboBoxExamenProfTitular.SelectedIndexChanged += new System.EventHandler(this.profTitular_selectedIndexChanged);
             // 
             // comboBoxExamenSala
             // 
@@ -492,7 +497,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.tabPageRestanta.Location = new System.Drawing.Point(4, 22);
             this.tabPageRestanta.Name = "tabPageRestanta";
-            this.tabPageRestanta.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageRestanta.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageRestanta.Size = new System.Drawing.Size(1224, 544);
             this.tabPageRestanta.TabIndex = 1;
             this.tabPageRestanta.Text = "Programare Restanta";
@@ -502,7 +507,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.tabPageArhivaExamene.Location = new System.Drawing.Point(4, 22);
             this.tabPageArhivaExamene.Name = "tabPageArhivaExamene";
-            this.tabPageArhivaExamene.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageArhivaExamene.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageArhivaExamene.Size = new System.Drawing.Size(1224, 544);
             this.tabPageArhivaExamene.TabIndex = 2;
             this.tabPageArhivaExamene.Text = "Arhiva Examene";
@@ -512,7 +517,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.tabPageArhivaRestante.Location = new System.Drawing.Point(4, 22);
             this.tabPageArhivaRestante.Name = "tabPageArhivaRestante";
-            this.tabPageArhivaRestante.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageArhivaRestante.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageArhivaRestante.Size = new System.Drawing.Size(1224, 544);
             this.tabPageArhivaRestante.TabIndex = 3;
             this.tabPageArhivaRestante.Text = "Arhiva Restante";
@@ -539,6 +544,27 @@ namespace GestiuneExameneWindowsForms
             this.labelScheduleExamCurrentAcademicalYear.TabIndex = 3;
             this.labelScheduleExamCurrentAcademicalYear.Text = "Academic Year Placeholder";
             this.labelScheduleExamCurrentAcademicalYear.Visible = false;
+            // 
+            // button_ValidareExamen
+            // 
+            this.button_ValidareExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ValidareExamen.Location = new System.Drawing.Point(822, 464);
+            this.button_ValidareExamen.Name = "button_ValidareExamen";
+            this.button_ValidareExamen.Size = new System.Drawing.Size(334, 50);
+            this.button_ValidareExamen.TabIndex = 27;
+            this.button_ValidareExamen.Text = "Validare examen";
+            this.button_ValidareExamen.UseVisualStyleBackColor = true;
+            this.button_ValidareExamen.Click += new System.EventHandler(this.button_ValidareExamen_Click);
+            // 
+            // button_UpdateProfSuprav
+            // 
+            this.button_UpdateProfSuprav.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_UpdateProfSuprav.Location = new System.Drawing.Point(14, 464);
+            this.button_UpdateProfSuprav.Name = "button_UpdateProfSuprav";
+            this.button_UpdateProfSuprav.Size = new System.Drawing.Size(428, 50);
+            this.button_UpdateProfSuprav.TabIndex = 28;
+            this.button_UpdateProfSuprav.Text = "Modifica profesor supraveghetor";
+            this.button_UpdateProfSuprav.UseVisualStyleBackColor = true;
             // 
             // ScheduleExamForm
             // 
@@ -608,5 +634,7 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.GroupBox groupBoxDiscSemestru;
         private System.Windows.Forms.RadioButton radioButtonSem2;
         private System.Windows.Forms.RadioButton radioButtonSem1;
+        private System.Windows.Forms.Button button_UpdateProfSuprav;
+        private System.Windows.Forms.Button button_ValidareExamen;
     }
 }
