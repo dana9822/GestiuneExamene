@@ -29,9 +29,14 @@ namespace GestiuneExameneWindowsForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonScheduleExamBack = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageExamen = new System.Windows.Forms.TabPage();
+            this.button_UpdateProfSuprav = new System.Windows.Forms.Button();
+            this.button_ValidareExamen = new System.Windows.Forms.Button();
             this.groupBoxDiscSemestru = new System.Windows.Forms.GroupBox();
             this.radioButtonSem2 = new System.Windows.Forms.RadioButton();
             this.radioButtonSem1 = new System.Windows.Forms.RadioButton();
@@ -65,17 +70,44 @@ namespace GestiuneExameneWindowsForms
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageRestanta = new System.Windows.Forms.TabPage();
             this.tabPageArhivaExamene = new System.Windows.Forms.TabPage();
+            this.panelAniExamen = new System.Windows.Forms.Panel();
+            this.dataGridViewExamen = new System.Windows.Forms.DataGridView();
             this.tabPageArhivaRestante = new System.Windows.Forms.TabPage();
             this.labelScheduleExamServerStatus = new System.Windows.Forms.Label();
             this.labelScheduleExamCurrentAcademicalYear = new System.Windows.Forms.Label();
-            this.button_ValidareExamen = new System.Windows.Forms.Button();
-            this.button_UpdateProfSuprav = new System.Windows.Forms.Button();
+            this.dateTimePickerRestantaData = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxRestantaSala = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label_RestantaAnUnivCurent = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label_RestantaSesiuneCurenta = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBoxRestantaDisciplina = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBoxRestantaProfesor = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.numericUpDownRestantaDurata = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownRestantaOra = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.groupBoxModEvRestanta = new System.Windows.Forms.GroupBox();
+            this.radioButton_RestOral = new System.Windows.Forms.RadioButton();
+            this.radioButton_RestScris = new System.Windows.Forms.RadioButton();
+            this.label22 = new System.Windows.Forms.Label();
+            this.buttonValidareRestanta = new System.Windows.Forms.Button();
+            this.buttonProgramareRestanta = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageExamen.SuspendLayout();
             this.groupBoxDiscSemestru.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExamenDurata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExamenOra)).BeginInit();
             this.groupBoxModEvaluare.SuspendLayout();
+            this.tabPageRestanta.SuspendLayout();
+            this.tabPageArhivaExamene.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestantaDurata)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestantaOra)).BeginInit();
+            this.groupBoxModEvRestanta.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonScheduleExamBack
@@ -140,6 +172,27 @@ namespace GestiuneExameneWindowsForms
             this.tabPageExamen.TabIndex = 0;
             this.tabPageExamen.Text = "Programare Examen";
             this.tabPageExamen.UseVisualStyleBackColor = true;
+            // 
+            // button_UpdateProfSuprav
+            // 
+            this.button_UpdateProfSuprav.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_UpdateProfSuprav.Location = new System.Drawing.Point(14, 464);
+            this.button_UpdateProfSuprav.Name = "button_UpdateProfSuprav";
+            this.button_UpdateProfSuprav.Size = new System.Drawing.Size(428, 50);
+            this.button_UpdateProfSuprav.TabIndex = 28;
+            this.button_UpdateProfSuprav.Text = "Modifica profesor supraveghetor";
+            this.button_UpdateProfSuprav.UseVisualStyleBackColor = true;
+            // 
+            // button_ValidareExamen
+            // 
+            this.button_ValidareExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ValidareExamen.Location = new System.Drawing.Point(822, 464);
+            this.button_ValidareExamen.Name = "button_ValidareExamen";
+            this.button_ValidareExamen.Size = new System.Drawing.Size(334, 50);
+            this.button_ValidareExamen.TabIndex = 27;
+            this.button_ValidareExamen.Text = "Validare examen";
+            this.button_ValidareExamen.UseVisualStyleBackColor = true;
+            this.button_ValidareExamen.Click += new System.EventHandler(this.button_ValidareExamen_Click);
             // 
             // groupBoxDiscSemestru
             // 
@@ -495,6 +548,25 @@ namespace GestiuneExameneWindowsForms
             // 
             // tabPageRestanta
             // 
+            this.tabPageRestanta.Controls.Add(this.buttonValidareRestanta);
+            this.tabPageRestanta.Controls.Add(this.buttonProgramareRestanta);
+            this.tabPageRestanta.Controls.Add(this.numericUpDownRestantaDurata);
+            this.tabPageRestanta.Controls.Add(this.numericUpDownRestantaOra);
+            this.tabPageRestanta.Controls.Add(this.label21);
+            this.tabPageRestanta.Controls.Add(this.groupBoxModEvRestanta);
+            this.tabPageRestanta.Controls.Add(this.label22);
+            this.tabPageRestanta.Controls.Add(this.comboBoxRestantaProfesor);
+            this.tabPageRestanta.Controls.Add(this.label20);
+            this.tabPageRestanta.Controls.Add(this.comboBoxRestantaDisciplina);
+            this.tabPageRestanta.Controls.Add(this.label19);
+            this.tabPageRestanta.Controls.Add(this.label_RestantaSesiuneCurenta);
+            this.tabPageRestanta.Controls.Add(this.label18);
+            this.tabPageRestanta.Controls.Add(this.dateTimePickerRestantaData);
+            this.tabPageRestanta.Controls.Add(this.comboBoxRestantaSala);
+            this.tabPageRestanta.Controls.Add(this.label13);
+            this.tabPageRestanta.Controls.Add(this.label14);
+            this.tabPageRestanta.Controls.Add(this.label_RestantaAnUnivCurent);
+            this.tabPageRestanta.Controls.Add(this.label16);
             this.tabPageRestanta.Location = new System.Drawing.Point(4, 22);
             this.tabPageRestanta.Name = "tabPageRestanta";
             this.tabPageRestanta.Padding = new System.Windows.Forms.Padding(3);
@@ -505,6 +577,8 @@ namespace GestiuneExameneWindowsForms
             // 
             // tabPageArhivaExamene
             // 
+            this.tabPageArhivaExamene.Controls.Add(this.panelAniExamen);
+            this.tabPageArhivaExamene.Controls.Add(this.dataGridViewExamen);
             this.tabPageArhivaExamene.Location = new System.Drawing.Point(4, 22);
             this.tabPageArhivaExamene.Name = "tabPageArhivaExamene";
             this.tabPageArhivaExamene.Padding = new System.Windows.Forms.Padding(3);
@@ -512,6 +586,45 @@ namespace GestiuneExameneWindowsForms
             this.tabPageArhivaExamene.TabIndex = 2;
             this.tabPageArhivaExamene.Text = "Arhiva Examene";
             this.tabPageArhivaExamene.UseVisualStyleBackColor = true;
+            // 
+            // panelAniExamen
+            // 
+            this.panelAniExamen.Location = new System.Drawing.Point(1024, 6);
+            this.panelAniExamen.Name = "panelAniExamen";
+            this.panelAniExamen.Size = new System.Drawing.Size(194, 532);
+            this.panelAniExamen.TabIndex = 1;
+            // 
+            // dataGridViewExamen
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewExamen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewExamen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewExamen.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewExamen.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewExamen.Name = "dataGridViewExamen";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewExamen.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewExamen.Size = new System.Drawing.Size(1010, 532);
+            this.dataGridViewExamen.TabIndex = 0;
             // 
             // tabPageArhivaRestante
             // 
@@ -545,26 +658,247 @@ namespace GestiuneExameneWindowsForms
             this.labelScheduleExamCurrentAcademicalYear.Text = "Academic Year Placeholder";
             this.labelScheduleExamCurrentAcademicalYear.Visible = false;
             // 
-            // button_ValidareExamen
+            // dateTimePickerRestantaData
             // 
-            this.button_ValidareExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_ValidareExamen.Location = new System.Drawing.Point(822, 464);
-            this.button_ValidareExamen.Name = "button_ValidareExamen";
-            this.button_ValidareExamen.Size = new System.Drawing.Size(334, 50);
-            this.button_ValidareExamen.TabIndex = 27;
-            this.button_ValidareExamen.Text = "Validare examen";
-            this.button_ValidareExamen.UseVisualStyleBackColor = true;
-            this.button_ValidareExamen.Click += new System.EventHandler(this.button_ValidareExamen_Click);
+            this.dateTimePickerRestantaData.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerRestantaData.Location = new System.Drawing.Point(217, 285);
+            this.dateTimePickerRestantaData.Name = "dateTimePickerRestantaData";
+            this.dateTimePickerRestantaData.Size = new System.Drawing.Size(427, 38);
+            this.dateTimePickerRestantaData.TabIndex = 30;
             // 
-            // button_UpdateProfSuprav
+            // comboBoxRestantaSala
             // 
-            this.button_UpdateProfSuprav.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_UpdateProfSuprav.Location = new System.Drawing.Point(14, 464);
-            this.button_UpdateProfSuprav.Name = "button_UpdateProfSuprav";
-            this.button_UpdateProfSuprav.Size = new System.Drawing.Size(428, 50);
-            this.button_UpdateProfSuprav.TabIndex = 28;
-            this.button_UpdateProfSuprav.Text = "Modifica profesor supraveghetor";
-            this.button_UpdateProfSuprav.UseVisualStyleBackColor = true;
+            this.comboBoxRestantaSala.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRestantaSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxRestantaSala.FormattingEnabled = true;
+            this.comboBoxRestantaSala.Location = new System.Drawing.Point(217, 225);
+            this.comboBoxRestantaSala.Name = "comboBoxRestantaSala";
+            this.comboBoxRestantaSala.Size = new System.Drawing.Size(427, 39);
+            this.comboBoxRestantaSala.TabIndex = 29;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(139, 291);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 31);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Data:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(143, 233);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 31);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Sala:";
+            // 
+            // label_RestantaAnUnivCurent
+            // 
+            this.label_RestantaAnUnivCurent.AutoSize = true;
+            this.label_RestantaAnUnivCurent.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_RestantaAnUnivCurent.Location = new System.Drawing.Point(364, 187);
+            this.label_RestantaAnUnivCurent.Name = "label_RestantaAnUnivCurent";
+            this.label_RestantaAnUnivCurent.Size = new System.Drawing.Size(143, 31);
+            this.label_RestantaAnUnivCurent.TabIndex = 26;
+            this.label_RestantaAnUnivCurent.Text = "2000-2001";
+            this.label_RestantaAnUnivCurent.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(31, 187);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(188, 31);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "An universitar:";
+            // 
+            // label_RestantaSesiuneCurenta
+            // 
+            this.label_RestantaSesiuneCurenta.AutoSize = true;
+            this.label_RestantaSesiuneCurenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_RestantaSesiuneCurenta.Location = new System.Drawing.Point(225, 141);
+            this.label_RestantaSesiuneCurenta.Name = "label_RestantaSesiuneCurenta";
+            this.label_RestantaSesiuneCurenta.Size = new System.Drawing.Size(157, 31);
+            this.label_RestantaSesiuneCurenta.TabIndex = 32;
+            this.label_RestantaSesiuneCurenta.Text = "Placeholder";
+            this.label_RestantaSesiuneCurenta.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(99, 141);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(120, 31);
+            this.label18.TabIndex = 31;
+            this.label18.Text = "Sesiune:";
+            // 
+            // comboBoxRestantaDisciplina
+            // 
+            this.comboBoxRestantaDisciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRestantaDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxRestantaDisciplina.FormattingEnabled = true;
+            this.comboBoxRestantaDisciplina.Location = new System.Drawing.Point(217, 90);
+            this.comboBoxRestantaDisciplina.Name = "comboBoxRestantaDisciplina";
+            this.comboBoxRestantaDisciplina.Size = new System.Drawing.Size(427, 39);
+            this.comboBoxRestantaDisciplina.TabIndex = 34;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(80, 93);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(139, 31);
+            this.label19.TabIndex = 33;
+            this.label19.Text = "Disciplina:";
+            // 
+            // comboBoxRestantaProfesor
+            // 
+            this.comboBoxRestantaProfesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRestantaProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxRestantaProfesor.FormattingEnabled = true;
+            this.comboBoxRestantaProfesor.Location = new System.Drawing.Point(217, 39);
+            this.comboBoxRestantaProfesor.Name = "comboBoxRestantaProfesor";
+            this.comboBoxRestantaProfesor.Size = new System.Drawing.Size(427, 39);
+            this.comboBoxRestantaProfesor.TabIndex = 36;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(94, 42);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(125, 31);
+            this.label20.TabIndex = 35;
+            this.label20.Text = "Profesor:";
+            // 
+            // numericUpDownRestantaDurata
+            // 
+            this.numericUpDownRestantaDurata.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownRestantaDurata.Location = new System.Drawing.Point(1066, 141);
+            this.numericUpDownRestantaDurata.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numericUpDownRestantaDurata.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownRestantaDurata.Name = "numericUpDownRestantaDurata";
+            this.numericUpDownRestantaDurata.Size = new System.Drawing.Size(70, 38);
+            this.numericUpDownRestantaDurata.TabIndex = 41;
+            this.numericUpDownRestantaDurata.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownRestantaOra
+            // 
+            this.numericUpDownRestantaOra.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownRestantaOra.Location = new System.Drawing.Point(794, 139);
+            this.numericUpDownRestantaOra.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDownRestantaOra.Minimum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numericUpDownRestantaOra.Name = "numericUpDownRestantaOra";
+            this.numericUpDownRestantaOra.Size = new System.Drawing.Size(81, 38);
+            this.numericUpDownRestantaOra.TabIndex = 40;
+            this.numericUpDownRestantaOra.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(956, 143);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(104, 31);
+            this.label21.TabIndex = 39;
+            this.label21.Text = "Durata:";
+            // 
+            // groupBoxModEvRestanta
+            // 
+            this.groupBoxModEvRestanta.Controls.Add(this.radioButton_RestOral);
+            this.groupBoxModEvRestanta.Controls.Add(this.radioButton_RestScris);
+            this.groupBoxModEvRestanta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxModEvRestanta.Location = new System.Drawing.Point(844, 183);
+            this.groupBoxModEvRestanta.Name = "groupBoxModEvRestanta";
+            this.groupBoxModEvRestanta.Size = new System.Drawing.Size(216, 133);
+            this.groupBoxModEvRestanta.TabIndex = 38;
+            this.groupBoxModEvRestanta.TabStop = false;
+            this.groupBoxModEvRestanta.Text = "Mod evaluare";
+            // 
+            // radioButton_RestOral
+            // 
+            this.radioButton_RestOral.AutoSize = true;
+            this.radioButton_RestOral.Location = new System.Drawing.Point(68, 81);
+            this.radioButton_RestOral.Name = "radioButton_RestOral";
+            this.radioButton_RestOral.Size = new System.Drawing.Size(83, 35);
+            this.radioButton_RestOral.TabIndex = 1;
+            this.radioButton_RestOral.Text = "Oral";
+            this.radioButton_RestOral.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_RestScris
+            // 
+            this.radioButton_RestScris.AutoSize = true;
+            this.radioButton_RestScris.Checked = true;
+            this.radioButton_RestScris.Location = new System.Drawing.Point(68, 40);
+            this.radioButton_RestScris.Name = "radioButton_RestScris";
+            this.radioButton_RestScris.Size = new System.Drawing.Size(93, 35);
+            this.radioButton_RestScris.TabIndex = 0;
+            this.radioButton_RestScris.TabStop = true;
+            this.radioButton_RestScris.Text = "Scris";
+            this.radioButton_RestScris.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(721, 141);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(67, 31);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "Ora:";
+            // 
+            // buttonValidareRestanta
+            // 
+            this.buttonValidareRestanta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonValidareRestanta.Location = new System.Drawing.Point(605, 449);
+            this.buttonValidareRestanta.Name = "buttonValidareRestanta";
+            this.buttonValidareRestanta.Size = new System.Drawing.Size(334, 50);
+            this.buttonValidareRestanta.TabIndex = 43;
+            this.buttonValidareRestanta.Text = "Validare programare";
+            this.buttonValidareRestanta.UseVisualStyleBackColor = true;
+            this.buttonValidareRestanta.Click += new System.EventHandler(this.buttonValidareRestanta_Click);
+            // 
+            // buttonProgramareRestanta
+            // 
+            this.buttonProgramareRestanta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProgramareRestanta.Location = new System.Drawing.Point(231, 449);
+            this.buttonProgramareRestanta.Name = "buttonProgramareRestanta";
+            this.buttonProgramareRestanta.Size = new System.Drawing.Size(368, 50);
+            this.buttonProgramareRestanta.TabIndex = 42;
+            this.buttonProgramareRestanta.Text = "Programeaza Restanta";
+            this.buttonProgramareRestanta.UseVisualStyleBackColor = true;
+            this.buttonProgramareRestanta.Click += new System.EventHandler(this.buttonProgramareRestanta_Click);
             // 
             // ScheduleExamForm
             // 
@@ -588,6 +922,14 @@ namespace GestiuneExameneWindowsForms
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownExamenOra)).EndInit();
             this.groupBoxModEvaluare.ResumeLayout(false);
             this.groupBoxModEvaluare.PerformLayout();
+            this.tabPageRestanta.ResumeLayout(false);
+            this.tabPageRestanta.PerformLayout();
+            this.tabPageArhivaExamene.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestantaDurata)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRestantaOra)).EndInit();
+            this.groupBoxModEvRestanta.ResumeLayout(false);
+            this.groupBoxModEvRestanta.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -636,5 +978,28 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.RadioButton radioButtonSem1;
         private System.Windows.Forms.Button button_UpdateProfSuprav;
         private System.Windows.Forms.Button button_ValidareExamen;
+        private System.Windows.Forms.DataGridView dataGridViewExamen;
+        private System.Windows.Forms.Panel panelAniExamen;
+        private System.Windows.Forms.DateTimePicker dateTimePickerRestantaData;
+        private System.Windows.Forms.ComboBox comboBoxRestantaSala;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label_RestantaAnUnivCurent;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label_RestantaSesiuneCurenta;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox comboBoxRestantaDisciplina;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button buttonValidareRestanta;
+        private System.Windows.Forms.Button buttonProgramareRestanta;
+        private System.Windows.Forms.NumericUpDown numericUpDownRestantaDurata;
+        private System.Windows.Forms.NumericUpDown numericUpDownRestantaOra;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox groupBoxModEvRestanta;
+        private System.Windows.Forms.RadioButton radioButton_RestOral;
+        private System.Windows.Forms.RadioButton radioButton_RestScris;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox comboBoxRestantaProfesor;
+        private System.Windows.Forms.Label label20;
     }
 }
