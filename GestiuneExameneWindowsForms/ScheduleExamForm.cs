@@ -30,6 +30,7 @@ namespace GestiuneExameneWindowsForms
         static string denumireSesiuneCurenta;
         List<RadioButton> listRadioButtonModEvaluare = new List<RadioButton>();
         List<RadioButton> listRadioButtonSemestru = new List<RadioButton>();
+        List<RadioButton> listRadioButtonsModEvaluareRestanta = new List<RadioButton>();
         #endregion
 
         #region backButton
@@ -42,7 +43,6 @@ namespace GestiuneExameneWindowsForms
             home.ShowDialog();
         }
         #endregion
-        // Selectia pe facultati pentru specializari si materii...??? Profesorii au legatura cu facultatea x doar prin specializare din acoperireDisciplina.
         private void ScheduleExamForm_Load(object sender, EventArgs e)
         {
             conectare();
@@ -54,13 +54,20 @@ namespace GestiuneExameneWindowsForms
             showCurrentAcademicYear();
             adaugaSpecializareToDropDownList();
             adaugaSalaToDropDownList();
-            //completeazaGridExamen();
-            //seteazaProprietatiGridExamen();
-            //createRadioButtons();
+            adaugaProfesorRestanta();
+            createRadioButtons();
+            completeazaGridExamen();
+            seteazaProprietatiGridExamen();
+            completeazaGridRestanta();
+            seteazaProprietatiGridRestanta();
             labelExamenAnUniversitarCurent.Visible = true;
             labelExamenAnUniversitarCurent.Text = anUniversitarCurent.ToString();
             labelSesiuneCurentaExamen.Visible = true;
             labelSesiuneCurentaExamen.Text = denumireSesiuneCurenta.ToString() + " - " + dataInceputSesiuneCurenta.ToString();
+            label_RestantaAnUnivCurent.Visible = true;
+            label_RestantaAnUnivCurent.Text = anUniversitarCurent.ToString();
+            label_RestantaSesiuneCurenta.Visible = true;
+            label_RestantaSesiuneCurenta.Text = denumireSesiuneCurenta.ToString() + " - " + dataInceputSesiuneCurenta.ToString();
         }
 
         #region conectare
@@ -236,7 +243,7 @@ namespace GestiuneExameneWindowsForms
             }
 
             con.Close();
-            MessageBox.Show("Sesiune curenta id: " + idSesiuneCurenta + " ,denumire: " + denumireSesiuneCurenta + " ,data inceput: " + dataInceputSesiuneCurenta + " ,data final: " + dataFinalSesiuneCurenta);
+            //MessageBox.Show("Sesiune curenta id: " + idSesiuneCurenta + " ,denumire: " + denumireSesiuneCurenta + " ,data inceput: " + dataInceputSesiuneCurenta + " ,data final: " + dataFinalSesiuneCurenta);
         }
         #endregion
 
@@ -248,6 +255,8 @@ namespace GestiuneExameneWindowsForms
                 listRadioButtonModEvaluare.Add((RadioButton)c);
             foreach (Control c in groupBoxDiscSemestru.Controls)
                 listRadioButtonSemestru.Add((RadioButton)c);
+            foreach (Control c in groupBoxModEvRestanta.Controls)
+                listRadioButtonsModEvaluareRestanta.Add((RadioButton)c);
         }
 
         string returnRadioButtonName(List<RadioButton> listaRadioButtons)
@@ -431,16 +440,22 @@ namespace GestiuneExameneWindowsForms
         void adaugaSalaToDropDownList()
         {
             comboBoxExamenSala.Items.Clear();
+            comboBoxRestantaSala.Items.Clear();
 
             foreach (DataRow drSala in ds.Tables["SALA"].Rows)
             {
                 foreach (DataRow drCorp in ds.Tables["CORP"].Rows)
                     if (drCorp.ItemArray.GetValue(0).ToString() == drSala.ItemArray.GetValue(0).ToString())
+                    {
                         comboBoxExamenSala.Items.Add(drCorp.ItemArray.GetValue(1).ToString() + drSala.ItemArray.GetValue(2).ToString() + drSala.ItemArray.GetValue(1).ToString()); //corp + etaj + nrSala => I.2.4 , Y.1.01
+                        comboBoxRestantaSala.Items.Add(drCorp.ItemArray.GetValue(1).ToString() + drSala.ItemArray.GetValue(2).ToString() + drSala.ItemArray.GetValue(1).ToString());
+                    }
             }
 
             if (comboBoxExamenSala.Items.Count > 0)
                 comboBoxExamenSala.SelectedIndex = 0;
+            if (comboBoxRestantaSala.Items.Count > 0)
+                comboBoxRestantaSala.SelectedIndex = 0;
         }
 
         void adaugaProfesorTitularToDropDownList()
@@ -516,6 +531,77 @@ namespace GestiuneExameneWindowsForms
             if (comboBoxExamenProfSuprav.Items.Count > 0)
                 comboBoxExamenProfSuprav.SelectedIndex = 0;
         }
+
+        void adaugaProfesorRestanta()
+        {
+            comboBoxRestantaProfesor.Items.Clear();
+
+            List<string> profesoriTitulari = new List<string>();
+
+
+            foreach (DataRow drAloc in ds.Tables["DisciplinaAlocataAcoperita"].Rows)
+            {
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                {
+                    if (drAloc.ItemArray.GetValue(7).ToString() == dr.ItemArray.GetValue(0).ToString())
+                    {
+                        profesoriTitulari.Add(dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString());
+                    }
+                }
+            }
+
+            List<string> distinct = profesoriTitulari.Distinct().ToList();
+            foreach (String prof in distinct)
+            {
+                comboBoxRestantaProfesor.Items.Add(prof);
+            }
+
+            if (comboBoxRestantaProfesor.Items.Count > 0)
+                comboBoxRestantaProfesor.SelectedIndex = 0;
+        }
+
+        bool activareEvenimentDropDownListProfesorRestanta = false;
+
+        private void profTitularRestanta_selectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!activareEvenimentDropDownListProfesorRestanta)
+                adaugaDisciplinaRestanta();
+        }
+
+        void adaugaDisciplinaRestanta()
+        {
+            comboBoxRestantaDisciplina.Items.Clear();
+            List<string> discipline = new List<string>();
+            string codProfesor = "";
+
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                    codProfesor = dr.ItemArray.GetValue(0).ToString();
+
+            foreach (DataRow drAloc in ds.Tables["DisciplinaAlocataAcoperita"].Rows)
+            {
+                if (drAloc.ItemArray.GetValue(7).ToString() == codProfesor)
+                {
+                    foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                    {
+                        if (drAloc.ItemArray.GetValue(1).ToString() == dr.ItemArray.GetValue(0).ToString())
+                        {
+                            discipline.Add(dr.ItemArray.GetValue(1).ToString());
+                        }
+                    }
+                }
+            }
+
+            List<string> distinct = discipline.Distinct().ToList();
+            foreach (String disc in distinct)
+            {
+                comboBoxRestantaDisciplina.Items.Add(disc);
+            }
+
+            if (comboBoxRestantaDisciplina.Items.Count > 0)
+                comboBoxRestantaDisciplina.SelectedIndex = 0;
+
+        }
         #endregion
 
         #region ProgramareExamen
@@ -557,6 +643,15 @@ namespace GestiuneExameneWindowsForms
                     }
                 }
             }
+            string codProfTitular = "";
+            string codProfAsistentExamen = "";
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+            {
+                if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxExamenProfTitular.SelectedItem.ToString())
+                    codProfTitular = dr.ItemArray.GetValue(0).ToString();
+                if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxExamenProfSuprav.SelectedItem.ToString())
+                    codProfAsistentExamen = dr.ItemArray.GetValue(0).ToString();
+            }
             int capacitateSala = 0;
             string idCorp = "";
             string nrSala = "";
@@ -586,6 +681,20 @@ namespace GestiuneExameneWindowsForms
                     //grupa are deja examen=> Functioneaza
                     MessageBox.Show("Grupa " + nrGrupa + " de la specializarea " + comboBoxExamenSpecializare.SelectedItem.ToString() +
                         " are deja un examen programat la data :" + dateTimePickerDataExamen.Value.ToShortDateString());
+                    return false;
+                }
+                if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+                  Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerDataExamen.Value.ToShortDateString()) && Convert.ToInt32(dr["ora"].ToString()) == numericUpDownExamenOra.Value
+                   && dr["profTitular"].ToString() == codProfTitular)
+                {
+                    MessageBox.Show("Profesorul "+ comboBoxExamenProfTitular.SelectedItem.ToString()+" are deja programat un examen la data de "+ dateTimePickerDataExamen.Value.ToShortDateString()+" si ora "+ numericUpDownExamenOra.Value+" !");
+                    return false;
+                }
+                if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+                 Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerDataExamen.Value.ToShortDateString()) && Convert.ToInt32(dr["ora"].ToString()) == numericUpDownExamenOra.Value
+                  && dr["profSupraveghetor"].ToString() == codProfAsistentExamen)
+                {
+                    MessageBox.Show("Asistentul examinator " + comboBoxExamenProfTitular.SelectedItem.ToString() + " are deja programat un examen la data de " + dateTimePickerDataExamen.Value.ToShortDateString() + " si ora " + numericUpDownExamenOra.Value + " !");
                     return false;
                 }
                 if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
@@ -727,8 +836,8 @@ namespace GestiuneExameneWindowsForms
                 SqlCommandBuilder cb = new SqlCommandBuilder(daExamen);
                 cb.DataAdapter.Update(dt);
                 MessageBox.Show("Examenul a fost programat cu succes!");
-                //completeazaGridExamen();
-                //seteazaProprietatiGridExamen(); //ptr arhiva
+                completeazaGridExamen();
+                seteazaProprietatiGridExamen();
             }
             else
                 MessageBox.Show("Modificati greselile si incercati din nou!");
@@ -737,112 +846,383 @@ namespace GestiuneExameneWindowsForms
         #endregion
 
         #region DataGrid Examen
-        //void completeazaGridExamen()
-        //{
-        //    adaugaExamenJoinToDataSet();
-        //    dataGridViewExamen.DataSource = ds.Tables["ExamenJoin"];
-        //}
-        //void adaugaExamenJoinToDataSet()
-        //{
-        //    foreach (DataTable dt in ds.Tables)
-        //        if (dt.TableName == "ExamenJoin")
-        //            ds.Tables["ExamenJoin"].Clear();
+        void completeazaGridExamen()
+        {
+            adaugaExamenJoinToDataSet();
+            dataGridViewExamen.DataSource = ds.Tables["ExamenJoin"];
+        }
+        void adaugaExamenJoinToDataSet()
+        {
+            foreach (DataTable dt in ds.Tables)
+                if (dt.TableName == "ExamenJoin")
+                    ds.Tables["ExamenJoin"].Clear();
 
-        //    con.Open();
-        //    string selectExamenJoin = "Select p.nume,p.prenume,m.denumireMaterie,s.denumireSpec,gr.idGr,e.data,e.ora,e.anUniv,ses.denumireSesiune,sl.codSala,ps.nume,ps.prenume from examen e join profesor p on e.codProf=p.codProf join materie m on e.idMat=m.idMat join specializare s on e.idSpec=s.idSpec join grupa gr on e.idGr=gr.idGr join sesiune ses on e.idSesiune=ses.idSesiune join sala sl on e.codSala=sl.codSala join profesor ps on e.codProfSuprav=ps.codProf group by p.nume,p.prenume,m.denumireMaterie,s.denumireSpec,gr.idGr,e.data,e.ora,e.anUniv,ses.denumireSesiune,sl.codSala,ps.nume,ps.prenume";
-        //    da = new SqlDataAdapter(selectExamenJoin, con);
-        //    da.Fill(ds, "ExamenJoin");
-        //    con.Close();
-        //}
-        //void seteazaProprietatiGridExamen()
-        //{
-        //    dataGridViewExamen.Columns[0].Visible = true;
-        //    dataGridViewExamen.AllowUserToAddRows = false;
-        //    dataGridViewExamen.Columns[0].HeaderText = "Nume profesor";
-        //    dataGridViewExamen.Columns[1].HeaderText = "Prenume profesor";
-        //    dataGridViewExamen.Columns[2].HeaderText = "Materie";
-        //    dataGridViewExamen.Columns[3].HeaderText = "Specializare";
-        //    dataGridViewExamen.Columns[4].HeaderText = "Grupa";
-        //    dataGridViewExamen.Columns[5].HeaderText = "Data";
-        //    dataGridViewExamen.Columns[6].HeaderText = "Ora";
-        //    dataGridViewExamen.Columns[7].HeaderText = "An Universitar";
-        //    dataGridViewExamen.Columns[8].HeaderText = "Sesiunea";
-        //    dataGridViewExamen.Columns[9].HeaderText = "Sala";
-        //    dataGridViewExamen.Columns[10].HeaderText = "Nume supraveghetor";
-        //    dataGridViewExamen.Columns[11].HeaderText = "Prenume supraveghetor";
+            con.Open();
+            string selectExamenJoin = "SELECT spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare FROM ProgramareExamen exm JOIN Specializare spec ON exm.idSpecializare=spec.idSpecializare JOIN Grupa gr ON gr.idSpecializare = exm.idSpecializare AND gr.nrGrupa = exm.nrGrupa AND gr.anStudiu = exm.anStudiu AND gr.anUniversitar = exm.anUniversitar JOIN Disciplina disc ON disc.idDisciplina = exm.idDisciplina JOIN Corp crp ON crp.idCorp = exm.idCorp JOIN Sala sl ON sl.idCorp = exm.idCorp AND sl.nrSala=exm.nrSala AND sl.etaj=exm.etaj JOIN Profesor profTit ON profTit.marcaProfesor=exm.profTitular JOIN Profesor profAsist ON profAsist.marcaProfesor=exm.profSupraveghetor JOIN Sesiune ses ON ses.idSesiune=exm.idSesiune GROUP BY spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare";
+            /*
+                SELECT spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare
+                FROM ProgramareExamen exm
+                JOIN Specializare spec
+                ON exm.idSpecializare=spec.idSpecializare
+                JOIN Grupa gr
+                ON gr.idSpecializare = exm.idSpecializare AND gr.nrGrupa = exm.nrGrupa AND gr.anStudiu = exm.anStudiu AND gr.anUniversitar = exm.anUniversitar
+                JOIN Disciplina disc
+                ON disc.idDisciplina = exm.idDisciplina
+                JOIN Corp crp
+                ON crp.idCorp = exm.idCorp
+                JOIN Sala sl
+                ON sl.idCorp = exm.idCorp AND sl.nrSala=exm.nrSala AND sl.etaj=exm.etaj
+                JOIN Profesor profTit
+                ON profTit.marcaProfesor=exm.profTitular
+                JOIN Profesor profAsist
+                ON profAsist.marcaProfesor=exm.profSupraveghetor
+                JOIN Sesiune ses
+                ON ses.idSesiune=exm.idSesiune
+                GROUP BY spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare
+             */
+            da = new SqlDataAdapter(selectExamenJoin, con);
+            da.Fill(ds, "ExamenJoin");
+            con.Close();
+        }
+        void seteazaProprietatiGridExamen()
+        {
+            dataGridViewExamen.Columns[0].Visible = true;
+            dataGridViewExamen.AllowUserToAddRows = false;
+            dataGridViewExamen.Columns[0].HeaderText = "SPECIALIZARE";
+            dataGridViewExamen.Columns[1].HeaderText = "GRUPA";
+            dataGridViewExamen.Columns[2].HeaderText = "AN STUDIU";
+            dataGridViewExamen.Columns[3].HeaderText = "DISCIPLINA";
+            dataGridViewExamen.Columns[4].HeaderText = "DATA";
+            dataGridViewExamen.Columns[5].HeaderText = "ORA";
+            dataGridViewExamen.Columns[6].HeaderText = "SALA";
+            dataGridViewExamen.Columns[7].HeaderText = "NUME PROFESOR TITULAR";
+            dataGridViewExamen.Columns[8].HeaderText = "PRENUME PROFESOR TITULAR";
+            dataGridViewExamen.Columns[9].HeaderText = "NUME ASISTENT EXAMINATOR";
+            dataGridViewExamen.Columns[10].HeaderText = "PRENUME ASISTENT EXAMINATOR";
+            dataGridViewExamen.Columns[11].HeaderText = "AN UNIVERSITAR";
+            dataGridViewExamen.Columns[12].HeaderText = "SESIUNE";
+            dataGridViewExamen.Columns[13].HeaderText = "MOD EVALUARE";
 
-        //    dataGridViewExamen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-        //    dataGridViewExamen.ColumnHeadersDefaultCellStyle.Font = new Font("Comic Sans MS", 11, FontStyle.Regular);
-        //    dataGridViewExamen.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewExamen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridViewExamen.ColumnHeadersDefaultCellStyle.Font = new Font("Comic Sans MS", 15, FontStyle.Regular);
+            dataGridViewExamen.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-        //    for (int i = 0; i < dataGridViewExamen.Columns.Count; i++)
-        //    {
-        //        dataGridViewExamen.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //        dataGridViewExamen.Columns[i].DefaultCellStyle.Font = new Font("Tahoma", 11, FontStyle.Regular);
-        //        dataGridViewExamen.Columns[i].DefaultCellStyle.ForeColor = Color.Blue;
-        //    }
-        //}
+            for (int i = 0; i < dataGridViewExamen.Columns.Count; i++)
+            {
+                dataGridViewExamen.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridViewExamen.Columns[i].DefaultCellStyle.Font = new Font("Tahoma", 15, FontStyle.Regular);
+                dataGridViewExamen.Columns[i].DefaultCellStyle.ForeColor = Color.Blue;
+            }
+        }
 
-        //List<RadioButton> rbAnUnivListExamen = new List<RadioButton>();
-        ////List<RadioButton> rbAnUnivListRestanta = new List<RadioButton>();
+        List<RadioButton> rbAnUnivListExamen = new List<RadioButton>();
+        List<RadioButton> rbAnUnivListRestanta = new List<RadioButton>();
 
-        //void createRadioButtons()
-        //{
-        //    int pozitieUp = 10;
-        //    con.Open();
-        //    SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT anUniversitar FROM AnUniversitar Order By anUniversitar DESC", con);
-        //    da.Fill(ds, "AnUniv");
-        //    con.Close();
+        void createRadioButtons()
+        {
+            int pozitieUp = 10;
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT anUniversitar FROM AnUniversitar ORDER BY anUniversitar DESC", con);
+            da.Fill(ds, "AnUniv");
+            con.Close();
 
-        //    foreach (DataRow dr in ds.Tables["AnUniv"].Rows)
-        //    {
-        //        rbAnUnivListExamen.Add(CreateNewControls.createRadioButton(dr.ItemArray.GetValue(0).ToString(), 10, pozitieUp));
-        //        //rbAnUnivListRestanta.Add(CreateNewControls.createRadioButton(dr.ItemArray.GetValue(0).ToString(), 10, pozitieUp));
-        //        pozitieUp = pozitieUp + 30;
-        //    }
+            foreach (DataRow dr in ds.Tables["AnUniv"].Rows)
+            {
+                rbAnUnivListExamen.Add(CreateNewControls.createRadioButton(dr.ItemArray.GetValue(0).ToString(), 10, pozitieUp));
+                rbAnUnivListRestanta.Add(CreateNewControls.createRadioButton(dr.ItemArray.GetValue(0).ToString(), 10, pozitieUp));
+                pozitieUp = pozitieUp + 30;
+            }
 
-        //    foreach (RadioButton rb in rbAnUnivListExamen)
-        //    {
-        //        panelAniExamen.Controls.Add(rb);
-        //        rb.CheckedChanged += rb_CheckedChanged;
-        //    }
-        //    rbAnUnivListExamen[0].Checked = true;
-        //    //foreach (RadioButton rb in rbAnUnivListRestanta)
-        //    //{
-        //    //    panel2.Controls.Add(rb);
-        //    //    rb.CheckedChanged += rb_CheckedChanged;
-        //    //}
-        //    //rbAnUnivListRestanta[0].Checked = true;
-        //}
+            foreach (RadioButton rb in rbAnUnivListExamen)
+            {
+                panelAniExamen.Controls.Add(rb);
+                rb.CheckedChanged += rb_arhiva_CheckedChanged;
+            }
+            rbAnUnivListExamen[0].Checked = true;
+            foreach (RadioButton rb in rbAnUnivListRestanta)
+            {
+                panelAniRestanta.Controls.Add(rb);
+                rb.CheckedChanged += rb_CheckedChanged;
+            }
+            rbAnUnivListRestanta[0].Checked = true;
+        }
 
-        //static string anUniv = "";
-        //void rb_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    RadioButton rb = (RadioButton)sender;
-        //    if (rb.Checked)
-        //    {
-        //        anUniv = rb.Text;
-        //        adaugaExamenJoinToDataSet();
-        //        //addRestantaJoinToDataSet();
-        //    }
-        //}
-        ////void completeazaGridExamen()
-        ////{
-        ////    adaugaExamenJoinToDataSet();
-        ////    dataGridViewExamen.DataSource = ds.Tables["ExamenJoin"];
-        ////    seteazaProprietatiGridExamen();
-        ////}
+        static string anUniv = "";
+        void rb_arhiva_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            if (rb.Checked)
+            {
+                anUniv = rb.Text;
+                adaugaExamenJoinToDataSet();
+                addRestantaJoinToDataSet();
+            }
+        }
         #endregion
 
         #region ProgrameazaRestanta
+
+        void golestePanel()
+        {
+            foreach (Control c in panelAlegeMarcaProf.Controls)
+                panelAlegeMarcaProf.Controls.Remove(c);
+        }
+
+        string codProfSelectat = "";
+        List<string> listaCodProf = new List<string>();
+        List<RadioButton> listaRadioButtonsCodProf = new List<RadioButton>();
+
+        void gasesteCodProfSelectat()
+        {
+            int pozTop = 10;
+            golestePanel();
+            listaCodProf.Clear();
+            listaRadioButtonsCodProf.Clear();
+
+            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                    listaCodProf.Add(dr.ItemArray.GetValue(0).ToString());
+
+            if (listaCodProf.Count > 1) //daca sunt mai multi profesori cu acelasi nume, trebuie sa alegem codul aceceluia pentru care se programeaza restanta.
+            {
+                panelAlegeMarcaProf.Visible = true;
+                foreach (string matr in listaCodProf)
+                {
+                    listaRadioButtonsCodProf.Add(CreateNewControls.createRadioButton(matr, 10, pozTop));
+                    pozTop += 20;
+                }
+
+                foreach (RadioButton rb in listaRadioButtonsCodProf)
+                {
+                    panelAlegeMarcaProf.Controls.Add(rb);
+                    rb.CheckedChanged += rb_CheckedChanged;
+                }
+            }
+            else
+            {
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                        codProfSelectat = dr.ItemArray.GetValue(0).ToString();
+            }
+        }
+
+        void rb_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton button = (RadioButton)sender;
+            if (button.Checked == true)
+            {
+                codProfSelectat = button.Text;
+            }
+        }
+
         private void buttonProgramareRestanta_Click(object sender, EventArgs e)
         {
+            if (validareRestanta() == true)
+            {
+                if (comboBoxRestantaProfesor.Items.Count > 0)
+                {
+                    gasesteCodProfSelectat();
 
+                    if (string.IsNullOrEmpty(codProfSelectat) && listaCodProf.Count > 1)
+                        MessageBox.Show("Alege codul profesorului care programeaza restanta!");
+                    else
+                    {
+                        ds.Tables["RESTANTA"].Clear();
+                        SqlDataAdapter daRestanta = new SqlDataAdapter("SELECT * FROM ProgramareRestanta", con);
+                        con.Open();
+                        daRestanta.Fill(ds, "RESTANTA");
+                        con.Close();
+                        DataTable dt = ds.Tables["RESTANTA"];
+                        DataRow dr1 = dt.NewRow();
+
+                        //----------Id-uri PK+FK---------------
+                        string codProf = "";
+                        foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                            if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                                codProf = dr.ItemArray.GetValue(0).ToString();
+
+                        string idDisciplina = "";
+                        foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                            if (dr.ItemArray.GetValue(1).ToString() == comboBoxRestantaDisciplina.SelectedItem.ToString())
+                                idDisciplina = dr.ItemArray.GetValue(0).ToString();
+
+                        string idCorp = "";
+                        string nrSala = "";
+                        string etaj = "";
+                        foreach (DataRow drSala in ds.Tables["SALA"].Rows)
+                        {
+                            foreach (DataRow drCorp in ds.Tables["CORP"].Rows)
+                                if (drCorp.ItemArray.GetValue(0).ToString() == drSala.ItemArray.GetValue(0).ToString())
+                                    if (drCorp.ItemArray.GetValue(1).ToString() + drSala.ItemArray.GetValue(2).ToString() + drSala.ItemArray.GetValue(1).ToString() == comboBoxRestantaSala.SelectedItem.ToString()) //corp + etaj + nrSala => I.2.4 , Y.1.01
+                                    {
+                                        idCorp = drCorp.ItemArray.GetValue(0).ToString();
+                                        nrSala = drSala.ItemArray.GetValue(1).ToString();
+                                        etaj = drSala.ItemArray.GetValue(2).ToString();
+                                    }
+                        }
+                        //-------------------------------------
+                        dr1[0] = idCorp;
+                        dr1[1] = nrSala;
+                        dr1[2] = etaj;
+                        dr1[3] = codProfSelectat;
+                        dr1[4] = idDisciplina;
+                        dr1[5] = idSesiuneCurenta;
+                        dr1[6] = anUniversitarCurent;
+                        dr1[7] = dateTimePickerRestantaData.Value.ToShortDateString();
+                        dr1[8] = Convert.ToInt32(numericUpDownRestantaOra.Value);
+                        dr1[9] = Convert.ToInt32(numericUpDownRestantaDurata.Value);
+                        dr1[10] = returnRadioButtonName(listRadioButtonsModEvaluareRestanta);
+
+                        dt.Rows.Add(dr1);
+                        SqlCommandBuilder cb = new SqlCommandBuilder(daRestanta);
+                        cb.DataAdapter.Update(dt);
+                        MessageBox.Show("Restanta este programata!");
+                        completeazaGridRestanta();
+                        seteazaProprietatiGridRestanta();
+                        panelAlegeMarcaProf.Visible = false;
+                    }
+
+                    codProfSelectat = "";
+                }
+                else
+                    MessageBox.Show("Nu exista profesor selectat!!!");
+            }
+            else
+                MessageBox.Show("Modificati greselile si incercati din nou!");
         }
 
         private void buttonValidareRestanta_Click(object sender, EventArgs e)
         {
+            if (validareRestanta() == true)
+                MessageBox.Show("Restanta este validata si se poate programa!");
+        }
 
+        bool validareRestanta()
+        {
+            if (dateTimePickerRestantaData.Value > Convert.ToDateTime(dataFinalSesiuneCurenta))
+            {
+                //functioneaza
+                MessageBox.Show("Nu puteti programa examene in afara sesiunii!Data este prea tarzie!");
+                return false;
+            }
+            else
+                if (dateTimePickerRestantaData.Value < Convert.ToDateTime(dataInceputSesiuneCurenta))
+            {
+                //functioneaza
+                MessageBox.Show("Restantele nu pot avea loc la date care sunt inaintea inceperii sesiunii!");
+                return false;
+            }
+            else
+            {
+                ds.Tables["RESTANTA"].Clear();
+                adaugaRestantaToDataSet();
+                string codProf = "";
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                        codProf = dr.ItemArray.GetValue(0).ToString();
+
+                string idCorp = "";
+                string nrSala = "";
+                string etaj = "";
+                string corpDenumire = "";
+                foreach (DataRow drSala in ds.Tables["SALA"].Rows)
+                {
+                    foreach (DataRow drCorp in ds.Tables["CORP"].Rows)
+                        if (drCorp.ItemArray.GetValue(0).ToString() == drSala.ItemArray.GetValue(0).ToString())
+                            if (drCorp.ItemArray.GetValue(1).ToString() + drSala.ItemArray.GetValue(2).ToString() + drSala.ItemArray.GetValue(1).ToString() == comboBoxRestantaSala.SelectedItem.ToString()) //corp + etaj + nrSala => I.2.4 , Y.1.01
+                            {
+                                idCorp = drCorp.ItemArray.GetValue(0).ToString();
+                                nrSala = drSala.ItemArray.GetValue(1).ToString();
+                                etaj = drSala.ItemArray.GetValue(2).ToString();
+                                corpDenumire = drCorp.ItemArray.GetValue(1).ToString();
+                            }
+                }
+                string codSala = corpDenumire + etaj + nrSala;
+                string data;
+                DateTime dataSelectata = Convert.ToDateTime(dateTimePickerRestantaData.Value.ToShortDateString());
+                foreach (DataRow dr in ds.Tables["RESTANTA"].Rows)
+                {
+                    data = dr.ItemArray.GetValue(7).ToString();
+                    if (dr.ItemArray.GetValue(6).ToString() == anUniversitarCurent && dr.ItemArray.GetValue(5).ToString() == idSesiuneCurenta &&
+                        dr.ItemArray.GetValue(3).ToString() == codProfSelectat && dr.ItemArray.GetValue(8).ToString() == numericUpDownRestantaOra.Value.ToString() &&
+                        Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerRestantaData.Value.ToShortDateString()))
+                    {
+                        //profesorul deja are restanta la ora+data selectate
+                        MessageBox.Show("Profesorul " + comboBoxRestantaProfesor.SelectedItem.ToString() + " are deja programata restanta la data " + dateTimePickerRestantaData.Value.ToShortDateString() +
+                            " ora :" + numericUpDownRestantaOra.Value.ToString());
+                        return false;
+                    }
+                    if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+                       Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerRestantaData.Value.ToShortDateString()) && dr["ora"].ToString() == numericUpDownRestantaOra.Value.ToString()
+                        && dr["idCorp"].ToString() == idCorp && dr["nrSala"].ToString() == nrSala && dr["etaj"].ToString() == etaj)
+                    {
+                        //sala e deja ocupata
+                        MessageBox.Show("Sala " + codSala + " este ocupata la data " + dateTimePickerRestantaData.Value.ToShortDateString() +
+                            " ora: " + numericUpDownRestantaOra.Value.ToString());
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region DataGridRestanta
+        void completeazaGridRestanta()
+        {
+            addRestantaJoinToDataSet();
+            dataGridViewRestanta.DataSource = ds.Tables["RestantaJoin"];
+        }
+        void addRestantaJoinToDataSet()
+        {
+            foreach (DataTable dt in ds.Tables)
+                if (dt.TableName == "RestantaJoin")
+                    ds.Tables["RestantaJoin"].Clear();
+
+            con.Open();
+            string selectRestantaJoin = "SELECT disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,rest.anUniversitar,rest.modEvaluare FROM ProgramareRestanta rest JOIN Disciplina disc ON disc.idDisciplina = rest.idDisciplina JOIN Corp crp ON crp.idCorp = rest.idCorp JOIN Sala sl ON sl.idCorp = rest.idCorp AND sl.nrSala=rest.nrSala AND sl.etaj=rest.etaj JOIN Profesor prof ON prof.marcaProfesor=rest.marcaProfesor GROUP BY disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala,rest.anUniversitar,rest.modEvaluare";
+            /*
+             SELECT disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,rest.anUniversitar,rest.modEvaluare
+                FROM ProgramareRestanta rest
+                JOIN Disciplina disc
+                ON disc.idDisciplina = rest.idDisciplina
+                JOIN Corp crp
+                ON crp.idCorp = rest.idCorp
+                JOIN Sala sl
+                ON sl.idCorp = rest.idCorp AND sl.nrSala=rest.nrSala AND sl.etaj=rest.etaj
+                JOIN Profesor prof
+                ON prof.marcaProfesor=rest.marcaProfesor
+              GROUP BY disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala,rest.anUniversitar,rest.modEvaluare
+             */
+            da = new SqlDataAdapter(selectRestantaJoin, con);
+            da.Fill(ds, "RestantaJoin");
+            con.Close();
+        }
+        void seteazaProprietatiGridRestanta()
+        {
+            dataGridViewRestanta.Columns[0].Visible = true;
+            dataGridViewRestanta.AllowUserToAddRows = false;
+            dataGridViewRestanta.Columns[0].HeaderText = "DISCIPLINA";
+            dataGridViewRestanta.Columns[1].HeaderText = "NUME PROFESOR";
+            dataGridViewRestanta.Columns[2].HeaderText = "PRENUME PROFESOR";
+            dataGridViewRestanta.Columns[3].HeaderText = "DATA";
+            dataGridViewRestanta.Columns[4].HeaderText = "ORA";
+            dataGridViewRestanta.Columns[5].HeaderText = "SALA";
+            dataGridViewRestanta.Columns[6].HeaderText = "MOD EVALUARE";
+            dataGridViewRestanta.Columns[7].HeaderText = "AN UNIVERSITAR";
+
+
+            dataGridViewRestanta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridViewRestanta.ColumnHeadersDefaultCellStyle.Font = new Font("Comic Sans MS", 15, FontStyle.Regular);
+            dataGridViewRestanta.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            for (int i = 0; i < dataGridViewRestanta.Columns.Count; i++)
+            {
+                dataGridViewRestanta.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridViewRestanta.Columns[i].DefaultCellStyle.Font = new Font("Tahoma", 15, FontStyle.Regular);
+                dataGridViewRestanta.Columns[i].DefaultCellStyle.ForeColor = Color.Blue;
+            }
         }
         #endregion
     }

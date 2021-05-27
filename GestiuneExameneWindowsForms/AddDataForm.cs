@@ -72,6 +72,7 @@ namespace GestiuneExameneWindowsForms
             showGUIServerStatus();
             completareDataSet();
             adaugaRadioButtonInList();
+            addAnUnivAutomat();
             getAnUniversitarCurent();
             getSesiuneCurenta();
             showCurrentAcademicYear();
@@ -280,6 +281,48 @@ namespace GestiuneExameneWindowsForms
         }
         #endregion
 
+        #region insertAutomatAnUniversitar
+        private void addAnUnivAutomat()
+        {
+            if (DateTime.Now.Month != 10 && DateTime.Now.Day != 1)
+                MessageBox.Show("Anul universitar incepe la data de 1 Octombrie a fiecarui an!\nNu a fost adaugat niciun an universitar nou in baza de date!");
+            else
+            {
+                StringBuilder idAnUniv = new StringBuilder();
+                idAnUniv.Append(DateTime.Now.Year + " - " + DateTime.Now.AddYears(+1).Year); //generare id automat
+                bool exista = false;
+                foreach (DataRow dr in ds.Tables["ANUNIVERSITAR"].Rows)
+                    if (dr.ItemArray.GetValue(0).ToString() == idAnUniv.ToString())
+                    {
+                        exista = true; //anul deja exista                        
+                        break;
+                    }
+                if (exista == false)
+                {
+                    string insertNewYear = "INSERT INTO AnUniversitar VALUES ('" + idAnUniv.ToString() + "')";
+                    con.Open();
+                    SqlCommand cmdInsert = new SqlCommand(insertNewYear, con);
+                    cmdInsert.ExecuteNonQuery();
+
+                    ds.Tables["ANUNIVERSITAR"].Clear();
+                    SqlDataAdapter daNewYear = new SqlDataAdapter("SELECT * FROM AnUniversitar", con);
+                    daNewYear.Fill(ds, "ANUNIVERSITAR");
+                    con.Close();
+                    getAnUniversitarCurent();
+                    labelAnUniversitarGrupa.Visible = true;
+                    labelAnUniversitarGrupa.Text = anUniversitarCurent.ToString();
+                    labelAnUniversitarCurentSesiune.Visible = true;
+                    labelAnUniversitarCurentSesiune.Text = anUniversitarCurent.ToString();
+                    MessageBox.Show("Anul a fost adaugat cu succes!");
+                }
+                //else
+                //    MessageBox.Show("Anul universitar este deja existent in baza de date!");
+            }
+
+
+        }
+        #endregion
+
         #region An Universitar Curent
         public static string anUniversitarCurent;
 
@@ -331,7 +374,7 @@ namespace GestiuneExameneWindowsForms
             }
 
             con.Close();
-            MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta +" ,denumire: "+denumireSesiuneCurenta+ " ,data inceput: "+ dataInceputSesiuneCurenta+ " ,data final: "+ dataFinalSesiuneCurenta);
+            //MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta +" ,denumire: "+denumireSesiuneCurenta+ " ,data inceput: "+ dataInceputSesiuneCurenta+ " ,data final: "+ dataFinalSesiuneCurenta);
         }
         #endregion
 
@@ -369,82 +412,82 @@ namespace GestiuneExameneWindowsForms
 
         #region Insert Buttons
 
-        private void buttonAdaugaFacultate_Click(object sender, EventArgs e)
-        {
-            bool verificaId = false;
-            int nrCaractereExtrase = 0;
-            int pozCaracterExtras = 0;
-            StringBuilder idFacultateDB = new StringBuilder();
-            string[] idFacultate;
+        //private void buttonAdaugaFacultate_Click(object sender, EventArgs e)
+        //{
+        //    bool verificaId = false;
+        //    int nrCaractereExtrase = 0;
+        //    int pozCaracterExtras = 0;
+        //    StringBuilder idFacultateDB = new StringBuilder();
+        //    string[] idFacultate;
 
-            if (string.IsNullOrEmpty(textBoxDenumireFacultate.Text))
-                MessageBox.Show("Introduceti denumirea facultatii!");
-            else
-            {
-                idFacultate = textBoxDenumireFacultate.Text.ToString().Split(' ');
+        //    if (string.IsNullOrEmpty(textBoxDenumireFacultate.Text))
+        //        MessageBox.Show("Introduceti denumirea facultatii!");
+        //    else
+        //    {
+        //        idFacultate = textBoxDenumireFacultate.Text.ToString().Split(' ');
 
-                if (idFacultate.Length > 1)
-                {
+        //        if (idFacultate.Length > 1)
+        //        {
 
-                    foreach (string s in idFacultate)
-                        if (s.Length >= 4)
-                            idFacultateDB.Append(s.Substring(0, 1));
+        //            foreach (string s in idFacultate)
+        //                if (s.Length >= 4)
+        //                    idFacultateDB.Append(s.Substring(0, 1));
 
-                    pozCaracterExtras = 0;
-                    do
-                    {
-                        verificaId = false;
-                        foreach (DataRow dr in ds.Tables["FACULTATE"].Rows)
-                        {
-                            if (dr.ItemArray.GetValue(0).ToString() == idFacultateDB.ToString())
-                            {
-                                verificaId = true;
-                                pozCaracterExtras++;
+        //            pozCaracterExtras = 0;
+        //            do
+        //            {
+        //                verificaId = false;
+        //                foreach (DataRow dr in ds.Tables["FACULTATE"].Rows)
+        //                {
+        //                    if (dr.ItemArray.GetValue(0).ToString() == idFacultateDB.ToString())
+        //                    {
+        //                        verificaId = true;
+        //                        pozCaracterExtras++;
 
-                                idFacultateDB.Append((idFacultate[idFacultate.Length - 1]).ToString().Substring(pozCaracterExtras, 1));
-                            }
-                        }
-                    } while (verificaId);
-                }
-                else
-                {
-                    nrCaractereExtrase = 3;
-                    do
-                    {
-                        verificaId = false;
-                        idFacultateDB.Clear();
-                        idFacultateDB.Append(textBoxDenumireFacultate.Text.Substring(0, nrCaractereExtrase));
-                        foreach (DataRow dr in ds.Tables["FACULTATE"].Rows)
-                        {
-                            if (dr.ItemArray.GetValue(0).ToString() == idFacultateDB.ToString())
-                            {
-                                verificaId = true;
-                                nrCaractereExtrase++;
-                            }
-                        }
-                    } while (verificaId);
-                }
+        //                        idFacultateDB.Append((idFacultate[idFacultate.Length - 1]).ToString().Substring(pozCaracterExtras, 1));
+        //                    }
+        //                }
+        //            } while (verificaId);
+        //        }
+        //        else
+        //        {
+        //            nrCaractereExtrase = 3;
+        //            do
+        //            {
+        //                verificaId = false;
+        //                idFacultateDB.Clear();
+        //                idFacultateDB.Append(textBoxDenumireFacultate.Text.Substring(0, nrCaractereExtrase));
+        //                foreach (DataRow dr in ds.Tables["FACULTATE"].Rows)
+        //                {
+        //                    if (dr.ItemArray.GetValue(0).ToString() == idFacultateDB.ToString())
+        //                    {
+        //                        verificaId = true;
+        //                        nrCaractereExtrase++;
+        //                    }
+        //                }
+        //            } while (verificaId);
+        //        }
 
-            }
+        //    }
 
-            ds.Tables["FACULTATE"].Clear();
+        //    ds.Tables["FACULTATE"].Clear();
 
-            string insertFacultate = "INSERT INTO Facultate VALUES ('" + idFacultateDB.ToString() + "', '" + textBoxDenumireFacultate.Text + "', '" + textBoxAdresaFacultate.Text + "')";
+        //    string insertFacultate = "INSERT INTO Facultate VALUES ('" + idFacultateDB.ToString() + "', '" + textBoxDenumireFacultate.Text + "', '" + textBoxAdresaFacultate.Text + "')";
 
-            con.Open();
-            SqlCommand cmdInsertFacultate = new SqlCommand(insertFacultate, con);
-            cmdInsertFacultate.ExecuteNonQuery();
+        //    con.Open();
+        //    SqlCommand cmdInsertFacultate = new SqlCommand(insertFacultate, con);
+        //    cmdInsertFacultate.ExecuteNonQuery();
 
-            da = new SqlDataAdapter("SELECT * FROM Facultate", con);
-            da.Fill(ds, "FACULTATE");
+        //    da = new SqlDataAdapter("SELECT * FROM Facultate", con);
+        //    da.Fill(ds, "FACULTATE");
 
-            con.Close();
+        //    con.Close();
 
-            MessageBox.Show(textBoxDenumireFacultate.Text.ToString()+" a fost adaugata!");
+        //    MessageBox.Show(textBoxDenumireFacultate.Text.ToString()+" a fost adaugata!");
 
-            textBoxDenumireFacultate.Clear();
-            textBoxAdresaFacultate.Clear();
-        }
+        //    textBoxDenumireFacultate.Clear();
+        //    textBoxAdresaFacultate.Clear();
+        //}
 
         private void buttonAdaugaSpecializare_Click(object sender, EventArgs e)
         {
