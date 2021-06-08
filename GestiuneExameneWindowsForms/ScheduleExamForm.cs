@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace GestiuneExameneWindowsForms
 {
@@ -31,6 +34,7 @@ namespace GestiuneExameneWindowsForms
         List<RadioButton> listRadioButtonModEvaluare = new List<RadioButton>();
         List<RadioButton> listRadioButtonSemestru = new List<RadioButton>();
         List<RadioButton> listRadioButtonsModEvaluareRestanta = new List<RadioButton>();
+        static bool statusServerOk;
         #endregion
 
         #region backButton
@@ -168,6 +172,7 @@ namespace GestiuneExameneWindowsForms
                 labelScheduleExamServerStatus.Visible = true;
                 labelScheduleExamServerStatus.ForeColor = Color.Green;
                 labelScheduleExamServerStatus.Text = String.Format("Connected to database.");
+                statusServerOk = true;
             }
             catch (Exception e)
             {
@@ -175,6 +180,7 @@ namespace GestiuneExameneWindowsForms
                 labelScheduleExamServerStatus.ForeColor = Color.Red;
                 labelScheduleExamServerStatus.Text = String.Format("Not connected to database.");
                 MessageBox.Show(e.Message.ToString());
+                statusServerOk = false;
             }
             finally
             {
@@ -464,6 +470,21 @@ namespace GestiuneExameneWindowsForms
 
             List<string> profesoriTitulari = new List<string>();
             string idDisciplinaSelectata = "";
+            string idSpecializareSelectata = "";
+            string anStudiuGrupa = "";
+
+            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                if (dr.ItemArray.GetValue(1).ToString() == comboBoxExamenSpecializare.SelectedItem.ToString())
+                    idSpecializareSelectata = dr.ItemArray.GetValue(0).ToString();
+
+            foreach (DataRow dr in ds.Tables["GRUPA"].Rows)
+            {
+                if (dr.ItemArray.GetValue(0).ToString() == idSpecializareSelectata && dr.ItemArray.GetValue(3).ToString() == anUniversitarCurent.ToString())
+                {
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxExmenGrupa.SelectedItem.ToString())
+                        anStudiuGrupa = dr.ItemArray.GetValue(2).ToString();
+                }
+            }
 
             foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
                 if (dr.ItemArray.GetValue(1).ToString() == comboBoxExamenDisciplina.SelectedItem.ToString())
@@ -471,17 +492,26 @@ namespace GestiuneExameneWindowsForms
 
             foreach (DataRow drAloc in ds.Tables["DisciplinaAlocataAcoperita"].Rows)
             {
-                if (drAloc.ItemArray.GetValue(1).ToString() == idDisciplinaSelectata)
-                {
-                    if (drAloc.ItemArray.GetValue(5).ToString() == "Activ")
+                if (drAloc.ItemArray.GetValue(0).ToString() == idSpecializareSelectata) //daca profesorul preda la specializarea selectata
+                { 
+                    if (drAloc.ItemArray.GetValue(1).ToString() == idDisciplinaSelectata)  //disciplina selectata
                     {
-                        if (drAloc.ItemArray.GetValue(6).ToString() == anUniversitarCurent)
+                        if (drAloc.ItemArray.GetValue(5).ToString() == "Activ") //daca este inca activ statusul pe anul univ curent
                         {
-                            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                            if (drAloc.ItemArray.GetValue(6).ToString() == anUniversitarCurent) //daca anul univ corespunde cu cel curent
                             {
-                                if (drAloc.ItemArray.GetValue(7).ToString() == dr.ItemArray.GetValue(0).ToString())
+                                if (drAloc.ItemArray.GetValue(2).ToString() == anStudiuGrupa) //daca anul de studiu al spec+gr este cel selectat
                                 {
-                                    profesoriTitulari.Add(dr.ItemArray.GetValue(1).ToString()+" "+ dr.ItemArray.GetValue(2).ToString());
+                                    if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
+                                    {
+                                        foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                                        {
+                                            if (drAloc.ItemArray.GetValue(7).ToString() == dr.ItemArray.GetValue(0).ToString())
+                                            {
+                                                profesoriTitulari.Add(dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString());
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -608,7 +638,41 @@ namespace GestiuneExameneWindowsForms
 
         private bool ValidareExamen()
         {
-
+            if (statusServerOk == false)
+            {
+                MessageBox.Show("Aplicatia nu s-a putut conecta la serverul bazei de date!","Conexiune pierduta");
+                return false;
+            }
+            if (comboBoxExamenSpecializare.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista specializarilor este goala.\nProgramarea examenului nu se poate realiza!");
+                return false;
+            }
+            if (comboBoxExmenGrupa.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista grupelor este goala.\nProgramarea examenului nu se poate realiza!");
+                return false;
+            }
+            if (comboBoxExamenDisciplina.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista disciplinelor este goala.\nProgramarea examenului nu se poate realiza!");
+                return false;
+            }
+            if (comboBoxExamenSala.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista salilor este goala.\nProgramarea examenului nu se poate realiza!");
+                return false;
+            }
+            if (comboBoxExamenProfTitular.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista profesorilor titulari este goala.\nProgramarea examenului nu se poate realiza!");
+                return false;
+            }
+            if (comboBoxExamenProfSuprav.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista profesorilor supraveghetori este goala.\nProgramarea examenului nu se poate realiza!");
+                return false;
+            }
             if (dateTimePickerDataExamen.Value.Date > Convert.ToDateTime(dataFinalSesiuneCurenta))
             {
                 //functioneaza
@@ -858,7 +922,7 @@ namespace GestiuneExameneWindowsForms
                     ds.Tables["ExamenJoin"].Clear();
 
             con.Open();
-            string selectExamenJoin = "SELECT spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare FROM ProgramareExamen exm JOIN Specializare spec ON exm.idSpecializare=spec.idSpecializare JOIN Grupa gr ON gr.idSpecializare = exm.idSpecializare AND gr.nrGrupa = exm.nrGrupa AND gr.anStudiu = exm.anStudiu AND gr.anUniversitar = exm.anUniversitar JOIN Disciplina disc ON disc.idDisciplina = exm.idDisciplina JOIN Corp crp ON crp.idCorp = exm.idCorp JOIN Sala sl ON sl.idCorp = exm.idCorp AND sl.nrSala=exm.nrSala AND sl.etaj=exm.etaj JOIN Profesor profTit ON profTit.marcaProfesor=exm.profTitular JOIN Profesor profAsist ON profAsist.marcaProfesor=exm.profSupraveghetor JOIN Sesiune ses ON ses.idSesiune=exm.idSesiune GROUP BY spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare";
+            string selectExamenJoin = "SELECT spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare FROM ProgramareExamen exm JOIN Specializare spec ON exm.idSpecializare=spec.idSpecializare JOIN Grupa gr ON gr.idSpecializare = exm.idSpecializare AND gr.nrGrupa = exm.nrGrupa AND gr.anStudiu = exm.anStudiu AND gr.anUniversitar = exm.anUniversitar JOIN Disciplina disc ON disc.idDisciplina = exm.idDisciplina JOIN Corp crp ON crp.idCorp = exm.idCorp JOIN Sala sl ON sl.idCorp = exm.idCorp AND sl.nrSala=exm.nrSala AND sl.etaj=exm.etaj JOIN Profesor profTit ON profTit.marcaProfesor=exm.profTitular JOIN Profesor profAsist ON profAsist.marcaProfesor=exm.profSupraveghetor JOIN Sesiune ses ON ses.idSesiune=exm.idSesiune WHERE exm.anUniversitar = '" + anUniv + "' GROUP BY spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare";
             /*
                 SELECT spec.denumireSpecializare,gr.nrGrupa,gr.anStudiu,disc.denumireDisciplina,exm.data,exm.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,profTit.numeProfesor,profTit.prenumeProfesor,profAsist.numeProfesor,profAsist.prenumeProfesor,gr.anUniversitar,ses.denumireSesiune,exm.modEvaluare
                 FROM ProgramareExamen exm
@@ -904,13 +968,13 @@ namespace GestiuneExameneWindowsForms
             dataGridViewExamen.Columns[13].HeaderText = "MOD EVALUARE";
 
             dataGridViewExamen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridViewExamen.ColumnHeadersDefaultCellStyle.Font = new Font("Comic Sans MS", 15, FontStyle.Regular);
+            dataGridViewExamen.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Comic Sans MS", 15, FontStyle.Regular);
             dataGridViewExamen.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             for (int i = 0; i < dataGridViewExamen.Columns.Count; i++)
             {
                 dataGridViewExamen.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridViewExamen.Columns[i].DefaultCellStyle.Font = new Font("Tahoma", 15, FontStyle.Regular);
+                dataGridViewExamen.Columns[i].DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 15, FontStyle.Regular);
                 dataGridViewExamen.Columns[i].DefaultCellStyle.ForeColor = Color.Blue;
             }
         }
@@ -942,7 +1006,7 @@ namespace GestiuneExameneWindowsForms
             foreach (RadioButton rb in rbAnUnivListRestanta)
             {
                 panelAniRestanta.Controls.Add(rb);
-                rb.CheckedChanged += rb_CheckedChanged;
+                rb.CheckedChanged += rb_arhiva_CheckedChanged;
             }
             rbAnUnivListRestanta[0].Checked = true;
         }
@@ -1099,6 +1163,30 @@ namespace GestiuneExameneWindowsForms
 
         bool validareRestanta()
         {
+            if (statusServerOk == false)
+            {
+                MessageBox.Show("Aplicatia nu s-a putut conecta la serverul bazei de date!", "Conexiune pierduta");
+                return false;
+            }
+            else
+            if (comboBoxRestantaProfesor.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista profesorilor este goala.\nProgramarea restantei nu se poate realiza!");
+                return false;
+            }
+            else
+            if (comboBoxRestantaDisciplina.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista disciplinelor este goala.\nProgramarea restantei nu se poate realiza!");
+                return false;
+            }
+            else
+            if (comboBoxRestantaSala.Items.Count <= 0)
+            {
+                MessageBox.Show("Lista salilor este goala.\nProgramarea restantei nu se poate realiza!");
+                return false;
+            }
+            else
             if (dateTimePickerRestantaData.Value > Convert.ToDateTime(dataFinalSesiuneCurenta))
             {
                 //functioneaza
@@ -1106,7 +1194,7 @@ namespace GestiuneExameneWindowsForms
                 return false;
             }
             else
-                if (dateTimePickerRestantaData.Value < Convert.ToDateTime(dataInceputSesiuneCurenta))
+            if (dateTimePickerRestantaData.Value < Convert.ToDateTime(dataInceputSesiuneCurenta))
             {
                 //functioneaza
                 MessageBox.Show("Restantele nu pot avea loc la date care sunt inaintea inceperii sesiunii!");
@@ -1181,7 +1269,7 @@ namespace GestiuneExameneWindowsForms
                     ds.Tables["RestantaJoin"].Clear();
 
             con.Open();
-            string selectRestantaJoin = "SELECT disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,rest.anUniversitar,rest.modEvaluare FROM ProgramareRestanta rest JOIN Disciplina disc ON disc.idDisciplina = rest.idDisciplina JOIN Corp crp ON crp.idCorp = rest.idCorp JOIN Sala sl ON sl.idCorp = rest.idCorp AND sl.nrSala=rest.nrSala AND sl.etaj=rest.etaj JOIN Profesor prof ON prof.marcaProfesor=rest.marcaProfesor GROUP BY disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala,rest.anUniversitar,rest.modEvaluare";
+            string selectRestantaJoin = "SELECT disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,rest.anUniversitar,rest.modEvaluare FROM ProgramareRestanta rest JOIN Disciplina disc ON disc.idDisciplina = rest.idDisciplina JOIN Corp crp ON crp.idCorp = rest.idCorp JOIN Sala sl ON sl.idCorp = rest.idCorp AND sl.nrSala=rest.nrSala AND sl.etaj=rest.etaj JOIN Profesor prof ON prof.marcaProfesor=rest.marcaProfesor WHERE rest.anUniversitar='" + anUniv + "' GROUP BY disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala,rest.anUniversitar,rest.modEvaluare ORDER BY prof.numeProfesor,prof.prenumeProfesor";
             /*
              SELECT disc.denumireDisciplina,prof.numeProfesor,prof.prenumeProfesor,rest.data,rest.ora,crp.denumireCorp+sl.etaj+sl.nrSala AS denumireSala,rest.anUniversitar,rest.modEvaluare
                 FROM ProgramareRestanta rest
@@ -1209,19 +1297,161 @@ namespace GestiuneExameneWindowsForms
             dataGridViewRestanta.Columns[3].HeaderText = "DATA";
             dataGridViewRestanta.Columns[4].HeaderText = "ORA";
             dataGridViewRestanta.Columns[5].HeaderText = "SALA";
-            dataGridViewRestanta.Columns[6].HeaderText = "MOD EVALUARE";
-            dataGridViewRestanta.Columns[7].HeaderText = "AN UNIVERSITAR";
+            dataGridViewRestanta.Columns[6].HeaderText = "AN UNIVERSITAR";
+            dataGridViewRestanta.Columns[7].HeaderText = "MOD EVALUARE";
 
 
             dataGridViewRestanta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridViewRestanta.ColumnHeadersDefaultCellStyle.Font = new Font("Comic Sans MS", 15, FontStyle.Regular);
+            dataGridViewRestanta.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Comic Sans MS", 15, FontStyle.Regular);
             dataGridViewRestanta.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             for (int i = 0; i < dataGridViewRestanta.Columns.Count; i++)
             {
                 dataGridViewRestanta.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridViewRestanta.Columns[i].DefaultCellStyle.Font = new Font("Tahoma", 15, FontStyle.Regular);
+                dataGridViewRestanta.Columns[i].DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 15, FontStyle.Regular);
                 dataGridViewRestanta.Columns[i].DefaultCellStyle.ForeColor = Color.Blue;
+            }
+        }
+        #endregion
+
+        #region Export date sub forma de tabel in format pdf
+        private void button_descarcaTabelExamen_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewExamen.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Examene - " + anUniv + ".pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("Datele nu s-au putut scrie pe disc!.\n" + ex.Message, "Eroare");
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dataGridViewExamen.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach (DataGridViewColumn column in dataGridViewExamen.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in dataGridViewExamen.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(cell.Value.ToString());
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Tabelul cu examene a fost exportat cu succes!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Eroare: " + ex.Message, "Eroare");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nu exista date pentru a fi exportate!", "Info");
+            }
+        }
+
+        private void button_descarcaTabelRestanta_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewRestanta.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Restante - " + anUniv + ".pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("Datele nu s-au putut scrie pe disc!.\n" + ex.Message, "Eroare");
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dataGridViewRestanta.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach (DataGridViewColumn column in dataGridViewRestanta.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in dataGridViewRestanta.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(cell.Value.ToString());
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Tabelul cu restante a fost exportat cu succes!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Eroare: " + ex.Message, "Eroare");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nu exista date pentru a fi exportate!", "Info");
             }
         }
         #endregion

@@ -51,9 +51,9 @@ namespace GestiuneExameneWindowsForms
             // buttonAcoperireDisciplina
             // 
             this.buttonAcoperireDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAcoperireDisciplina.Location = new System.Drawing.Point(366, 341);
+            this.buttonAcoperireDisciplina.Location = new System.Drawing.Point(315, 341);
             this.buttonAcoperireDisciplina.Name = "buttonAcoperireDisciplina";
-            this.buttonAcoperireDisciplina.Size = new System.Drawing.Size(204, 43);
+            this.buttonAcoperireDisciplina.Size = new System.Drawing.Size(295, 43);
             this.buttonAcoperireDisciplina.TabIndex = 23;
             this.buttonAcoperireDisciplina.Text = "Acoperire Disciplina";
             this.buttonAcoperireDisciplina.UseVisualStyleBackColor = true;

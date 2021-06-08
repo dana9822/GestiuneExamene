@@ -268,45 +268,59 @@ namespace GestiuneExameneWindowsForms
         #endregion
         private void buttonAcoperireDisciplina_Click(object sender, EventArgs e)
         {
-            string codSpec = "";
-            string idDisc = "";
-            string marcaProf = "";
-            string anStudiuId = "";
-            bool exista = false;
-            foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
-                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString())
-                    codSpec = dr.ItemArray.GetValue(0).ToString();
-            foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
-                if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDowListAcoperireDiscDisc.SelectedItem.ToString())
-                    idDisc = dr.ItemArray.GetValue(0).ToString();
-            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-                if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString())
-                    marcaProf = dr.ItemArray.GetValue(0).ToString();
-            foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
-                if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAcoperireDiscAnStudiu.SelectedItem.ToString())
-                    anStudiuId = dr.ItemArray.GetValue(0).ToString();
-
-            foreach (DataRow dr in ds.Tables["ACOPERIREDISCIPLINA"].Rows)
-                if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == idDisc.ToString() && dr.ItemArray.GetValue(2).ToString() == marcaProf.ToString() && dr.ItemArray.GetValue(3).ToString() == anStudiuId.ToString() && dr.ItemArray.GetValue(4).ToString() == AddDataForm.anUniversitarCurent.ToString())
-                {
-                    exista = true; // acoperirea exista deja                 
-                    break;
-                }
-            if (exista == false)
-            {
-                string insertAcoperire = "INSERT INTO AcoperireDisciplina VALUES ('" + codSpec.ToString() + "', '" + idDisc.ToString() + "','" + marcaProf.ToString() + "','" + anStudiuId.ToString() + "','" + AddDataForm.anUniversitarCurent.ToString() + "')";
-                con.Open();
-                SqlCommand cmdInsertAcoperire = new SqlCommand(insertAcoperire, con);
-                cmdInsertAcoperire.ExecuteNonQuery();
-                ds.Tables["ACOPERIREDISCIPLINA"].Clear();
-                SqlDataAdapter daAcoperire = new SqlDataAdapter("SELECT * FROM AcoperireDisciplina", con);
-                daAcoperire.Fill(ds, "ACOPERIREDISCIPLINA");
-                con.Close();
-                MessageBox.Show("Disciplina " + comboBoxDropDowListAcoperireDiscDisc.SelectedItem.ToString() + " a fost acoperita cu succes, avand urmatoarele specificatii:" + "\nSpecializarea: " + comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString() + "\nPredata de: " + comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString() + " \nAnul de studiu: " + comboBoxDropDownListAcoperireDiscAnStudiu.SelectedItem.ToString() + "\nAnul universitar: " + AddDataForm.anUniversitarCurent.ToString());
-                // reset drop down numeric fields to their default values?
-            }
+            if (comboBoxDropDownListAcoperireDiscSpec.Items.Count <= 0)
+                MessageBox.Show("Lista specializarilor este goala.\nAcoperirea nu se poate realiza!");
             else
-                MessageBox.Show("Acoperirea exista deja in baza de date!");
+                if (comboBoxDropDowListAcoperireDiscDisc.Items.Count <= 0)
+                MessageBox.Show("Lista disciplinelor este goala.\nAcoperirea nu se poate realiza!\nAlocati discipline specializarii, apoi reveniti pentru a asocia un profesor titular!");
+            else
+                if (comboBoxDropDownListAcoperireDiscProf.Items.Count <= 0)
+                MessageBox.Show("Lista profesorilor este goala.\nAcoperirea nu se poate realiza!\nVerificati daca in baza de date existe profesori inregistrati!");
+            else
+                if (comboBoxDropDownListAcoperireDiscAnStudiu.Items.Count <= 0)
+                MessageBox.Show("Lista anilor de studiu este goala.\nAcoperirea nu se poate realiza!");
+            else
+            {
+                string codSpec = "";
+                string idDisc = "";
+                string marcaProf = "";
+                string anStudiuId = "";
+                bool exista = false;
+                foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString())
+                        codSpec = dr.ItemArray.GetValue(0).ToString();
+                foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxDropDowListAcoperireDiscDisc.SelectedItem.ToString())
+                        idDisc = dr.ItemArray.GetValue(0).ToString();
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString())
+                        marcaProf = dr.ItemArray.GetValue(0).ToString();
+                foreach (DataRow dr in ds.Tables["ANSTUDIU"].Rows)
+                    if (dr.ItemArray.GetValue(0).ToString() == comboBoxDropDownListAcoperireDiscAnStudiu.SelectedItem.ToString())
+                        anStudiuId = dr.ItemArray.GetValue(0).ToString();
+
+                foreach (DataRow dr in ds.Tables["ACOPERIREDISCIPLINA"].Rows)
+                    if (dr.ItemArray.GetValue(0).ToString() == codSpec.ToString() && dr.ItemArray.GetValue(1).ToString() == idDisc.ToString() && dr.ItemArray.GetValue(2).ToString() == marcaProf.ToString() && dr.ItemArray.GetValue(3).ToString() == anStudiuId.ToString() && dr.ItemArray.GetValue(4).ToString() == AddDataForm.anUniversitarCurent.ToString())
+                    {
+                        exista = true; // acoperirea exista deja                 
+                        break;
+                    }
+                if (exista == false)
+                {
+                    string insertAcoperire = "INSERT INTO AcoperireDisciplina VALUES ('" + codSpec.ToString() + "', '" + idDisc.ToString() + "','" + marcaProf.ToString() + "','" + anStudiuId.ToString() + "','" + AddDataForm.anUniversitarCurent.ToString() + "')";
+                    con.Open();
+                    SqlCommand cmdInsertAcoperire = new SqlCommand(insertAcoperire, con);
+                    cmdInsertAcoperire.ExecuteNonQuery();
+                    ds.Tables["ACOPERIREDISCIPLINA"].Clear();
+                    SqlDataAdapter daAcoperire = new SqlDataAdapter("SELECT * FROM AcoperireDisciplina", con);
+                    daAcoperire.Fill(ds, "ACOPERIREDISCIPLINA");
+                    con.Close();
+                    MessageBox.Show("Disciplina " + comboBoxDropDowListAcoperireDiscDisc.SelectedItem.ToString() + " a fost acoperita cu succes, avand urmatoarele specificatii:" + "\nSpecializarea: " + comboBoxDropDownListAcoperireDiscSpec.SelectedItem.ToString() + "\nPredata de: " + comboBoxDropDownListAcoperireDiscProf.SelectedItem.ToString() + " \nAnul de studiu: " + comboBoxDropDownListAcoperireDiscAnStudiu.SelectedItem.ToString() + "\nAnul universitar: " + AddDataForm.anUniversitarCurent.ToString());
+                    // reset drop down numeric fields to their default values?
+                }
+                else
+                    MessageBox.Show("Acoperirea exista deja in baza de date!");
+            }
         }
 
         private void button_Exit_Click(object sender, EventArgs e)

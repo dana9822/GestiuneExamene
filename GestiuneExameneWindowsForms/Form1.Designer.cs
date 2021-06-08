@@ -68,7 +68,7 @@ namespace GestiuneExameneWindowsForms
             this.buttonStatistici.Name = "buttonStatistici";
             this.buttonStatistici.Size = new System.Drawing.Size(206, 45);
             this.buttonStatistici.TabIndex = 2;
-            this.buttonStatistici.Text = "Statistici si rapoarte";
+            this.buttonStatistici.Text = "Rapoarte";
             this.buttonStatistici.UseVisualStyleBackColor = true;
             this.buttonStatistici.Click += new System.EventHandler(this.buttonStatistici_Click);
             // 

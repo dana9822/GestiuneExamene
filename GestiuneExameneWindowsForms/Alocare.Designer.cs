@@ -30,9 +30,6 @@ namespace GestiuneExameneWindowsForms
         private void InitializeComponent()
         {
             this.buttonAlocaDisciplina = new System.Windows.Forms.Button();
-            this.groupBoxAlocareDiscStatus = new System.Windows.Forms.GroupBox();
-            this.radioButtonInactiv = new System.Windows.Forms.RadioButton();
-            this.radioButtonActiv = new System.Windows.Forms.RadioButton();
             this.groupBoxAlocDiscTipEvaluare = new System.Windows.Forms.GroupBox();
             this.radioButtonExamen = new System.Windows.Forms.RadioButton();
             this.radioButtonVerificare = new System.Windows.Forms.RadioButton();
@@ -49,7 +46,6 @@ namespace GestiuneExameneWindowsForms
             this.buttonIesire = new System.Windows.Forms.Button();
             this.button_back_AddDataForm = new System.Windows.Forms.Button();
             this.button_toAcoperireForm = new System.Windows.Forms.Button();
-            this.groupBoxAlocareDiscStatus.SuspendLayout();
             this.groupBoxAlocDiscTipEvaluare.SuspendLayout();
             this.groupBoxAlocDiscSemestru.SuspendLayout();
             this.SuspendLayout();
@@ -65,46 +61,12 @@ namespace GestiuneExameneWindowsForms
             this.buttonAlocaDisciplina.UseVisualStyleBackColor = true;
             this.buttonAlocaDisciplina.Click += new System.EventHandler(this.buttonAlocaDisciplina_Click);
             // 
-            // groupBoxAlocareDiscStatus
-            // 
-            this.groupBoxAlocareDiscStatus.Controls.Add(this.radioButtonInactiv);
-            this.groupBoxAlocareDiscStatus.Controls.Add(this.radioButtonActiv);
-            this.groupBoxAlocareDiscStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAlocareDiscStatus.Location = new System.Drawing.Point(145, 265);
-            this.groupBoxAlocareDiscStatus.Name = "groupBoxAlocareDiscStatus";
-            this.groupBoxAlocareDiscStatus.Size = new System.Drawing.Size(265, 50);
-            this.groupBoxAlocareDiscStatus.TabIndex = 19;
-            this.groupBoxAlocareDiscStatus.TabStop = false;
-            this.groupBoxAlocareDiscStatus.Text = "Status";
-            // 
-            // radioButtonInactiv
-            // 
-            this.radioButtonInactiv.AutoSize = true;
-            this.radioButtonInactiv.Location = new System.Drawing.Point(134, 18);
-            this.radioButtonInactiv.Name = "radioButtonInactiv";
-            this.radioButtonInactiv.Size = new System.Drawing.Size(80, 28);
-            this.radioButtonInactiv.TabIndex = 1;
-            this.radioButtonInactiv.Text = "Inactiv";
-            this.radioButtonInactiv.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonActiv
-            // 
-            this.radioButtonActiv.AutoSize = true;
-            this.radioButtonActiv.Checked = true;
-            this.radioButtonActiv.Location = new System.Drawing.Point(7, 18);
-            this.radioButtonActiv.Name = "radioButtonActiv";
-            this.radioButtonActiv.Size = new System.Drawing.Size(68, 28);
-            this.radioButtonActiv.TabIndex = 0;
-            this.radioButtonActiv.TabStop = true;
-            this.radioButtonActiv.Text = "Activ";
-            this.radioButtonActiv.UseVisualStyleBackColor = true;
-            // 
             // groupBoxAlocDiscTipEvaluare
             // 
             this.groupBoxAlocDiscTipEvaluare.Controls.Add(this.radioButtonExamen);
             this.groupBoxAlocDiscTipEvaluare.Controls.Add(this.radioButtonVerificare);
             this.groupBoxAlocDiscTipEvaluare.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAlocDiscTipEvaluare.Location = new System.Drawing.Point(145, 203);
+            this.groupBoxAlocDiscTipEvaluare.Location = new System.Drawing.Point(147, 230);
             this.groupBoxAlocDiscTipEvaluare.Name = "groupBoxAlocDiscTipEvaluare";
             this.groupBoxAlocDiscTipEvaluare.Size = new System.Drawing.Size(265, 58);
             this.groupBoxAlocDiscTipEvaluare.TabIndex = 18;
@@ -138,7 +100,7 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxAlocDiscSemestru.Controls.Add(this.radioButtonSem2);
             this.groupBoxAlocDiscSemestru.Controls.Add(this.radioButtonSem1);
             this.groupBoxAlocDiscSemestru.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAlocDiscSemestru.Location = new System.Drawing.Point(145, 139);
+            this.groupBoxAlocDiscSemestru.Location = new System.Drawing.Point(147, 166);
             this.groupBoxAlocDiscSemestru.Name = "groupBoxAlocDiscSemestru";
             this.groupBoxAlocDiscSemestru.Size = new System.Drawing.Size(265, 58);
             this.groupBoxAlocDiscSemestru.TabIndex = 17;
@@ -172,7 +134,7 @@ namespace GestiuneExameneWindowsForms
             this.comboBoxDropDownListAlocareDiscAnStudiuList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDropDownListAlocareDiscAnStudiuList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDropDownListAlocareDiscAnStudiuList.FormattingEnabled = true;
-            this.comboBoxDropDownListAlocareDiscAnStudiuList.Location = new System.Drawing.Point(145, 101);
+            this.comboBoxDropDownListAlocareDiscAnStudiuList.Location = new System.Drawing.Point(147, 128);
             this.comboBoxDropDownListAlocareDiscAnStudiuList.Name = "comboBoxDropDownListAlocareDiscAnStudiuList";
             this.comboBoxDropDownListAlocareDiscAnStudiuList.Size = new System.Drawing.Size(265, 32);
             this.comboBoxDropDownListAlocareDiscAnStudiuList.TabIndex = 16;
@@ -181,7 +143,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(45, 101);
+            this.label21.Location = new System.Drawing.Point(47, 128);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(94, 24);
             this.label21.TabIndex = 15;
@@ -191,7 +153,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(44, 63);
+            this.label20.Location = new System.Drawing.Point(46, 90);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(95, 24);
             this.label20.TabIndex = 13;
@@ -211,7 +173,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.label_DisciplinaAdaugata.AutoSize = true;
             this.label_DisciplinaAdaugata.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_DisciplinaAdaugata.Location = new System.Drawing.Point(225, 63);
+            this.label_DisciplinaAdaugata.Location = new System.Drawing.Point(227, 90);
             this.label_DisciplinaAdaugata.Name = "label_DisciplinaAdaugata";
             this.label_DisciplinaAdaugata.Size = new System.Drawing.Size(111, 24);
             this.label_DisciplinaAdaugata.TabIndex = 21;
@@ -279,7 +241,6 @@ namespace GestiuneExameneWindowsForms
             this.Controls.Add(this.panel_CheckList_Alocare_Disciplina_Spec);
             this.Controls.Add(this.label_DisciplinaAdaugata);
             this.Controls.Add(this.buttonAlocaDisciplina);
-            this.Controls.Add(this.groupBoxAlocareDiscStatus);
             this.Controls.Add(this.groupBoxAlocDiscTipEvaluare);
             this.Controls.Add(this.groupBoxAlocDiscSemestru);
             this.Controls.Add(this.comboBoxDropDownListAlocareDiscAnStudiuList);
@@ -289,8 +250,6 @@ namespace GestiuneExameneWindowsForms
             this.Name = "Alocare";
             this.Text = "Alocare";
             this.Load += new System.EventHandler(this.Alocare_Load);
-            this.groupBoxAlocareDiscStatus.ResumeLayout(false);
-            this.groupBoxAlocareDiscStatus.PerformLayout();
             this.groupBoxAlocDiscTipEvaluare.ResumeLayout(false);
             this.groupBoxAlocDiscTipEvaluare.PerformLayout();
             this.groupBoxAlocDiscSemestru.ResumeLayout(false);
@@ -303,9 +262,6 @@ namespace GestiuneExameneWindowsForms
         #endregion
 
         private System.Windows.Forms.Button buttonAlocaDisciplina;
-        private System.Windows.Forms.GroupBox groupBoxAlocareDiscStatus;
-        private System.Windows.Forms.RadioButton radioButtonInactiv;
-        private System.Windows.Forms.RadioButton radioButtonActiv;
         private System.Windows.Forms.GroupBox groupBoxAlocDiscTipEvaluare;
         private System.Windows.Forms.RadioButton radioButtonExamen;
         private System.Windows.Forms.RadioButton radioButtonVerificare;

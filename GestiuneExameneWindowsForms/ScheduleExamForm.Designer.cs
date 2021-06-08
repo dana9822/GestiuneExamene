@@ -98,10 +98,12 @@ namespace GestiuneExameneWindowsForms
             this.panelAniExamen = new System.Windows.Forms.Panel();
             this.dataGridViewExamen = new System.Windows.Forms.DataGridView();
             this.tabPageArhivaRestante = new System.Windows.Forms.TabPage();
+            this.panelAniRestanta = new System.Windows.Forms.Panel();
+            this.dataGridViewRestanta = new System.Windows.Forms.DataGridView();
             this.labelScheduleExamServerStatus = new System.Windows.Forms.Label();
             this.labelScheduleExamCurrentAcademicalYear = new System.Windows.Forms.Label();
-            this.dataGridViewRestanta = new System.Windows.Forms.DataGridView();
-            this.panelAniRestanta = new System.Windows.Forms.Panel();
+            this.button_descarcaTabelExamen = new System.Windows.Forms.Button();
+            this.button_descarcaTabelRestanta = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageExamen.SuspendLayout();
             this.groupBoxDiscSemestru.SuspendLayout();
@@ -845,6 +847,7 @@ namespace GestiuneExameneWindowsForms
             // 
             // tabPageArhivaExamene
             // 
+            this.tabPageArhivaExamene.Controls.Add(this.button_descarcaTabelExamen);
             this.tabPageArhivaExamene.Controls.Add(this.panelAniExamen);
             this.tabPageArhivaExamene.Controls.Add(this.dataGridViewExamen);
             this.tabPageArhivaExamene.Location = new System.Drawing.Point(4, 22);
@@ -859,7 +862,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.panelAniExamen.Location = new System.Drawing.Point(1024, 6);
             this.panelAniExamen.Name = "panelAniExamen";
-            this.panelAniExamen.Size = new System.Drawing.Size(194, 532);
+            this.panelAniExamen.Size = new System.Drawing.Size(194, 431);
             this.panelAniExamen.TabIndex = 1;
             // 
             // dataGridViewExamen
@@ -896,6 +899,7 @@ namespace GestiuneExameneWindowsForms
             // 
             // tabPageArhivaRestante
             // 
+            this.tabPageArhivaRestante.Controls.Add(this.button_descarcaTabelRestanta);
             this.tabPageArhivaRestante.Controls.Add(this.panelAniRestanta);
             this.tabPageArhivaRestante.Controls.Add(this.dataGridViewRestanta);
             this.tabPageArhivaRestante.Location = new System.Drawing.Point(4, 22);
@@ -906,27 +910,12 @@ namespace GestiuneExameneWindowsForms
             this.tabPageArhivaRestante.Text = "Arhiva Restante";
             this.tabPageArhivaRestante.UseVisualStyleBackColor = true;
             // 
-            // labelScheduleExamServerStatus
+            // panelAniRestanta
             // 
-            this.labelScheduleExamServerStatus.AutoSize = true;
-            this.labelScheduleExamServerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelScheduleExamServerStatus.Location = new System.Drawing.Point(24, 615);
-            this.labelScheduleExamServerStatus.Name = "labelScheduleExamServerStatus";
-            this.labelScheduleExamServerStatus.Size = new System.Drawing.Size(322, 31);
-            this.labelScheduleExamServerStatus.TabIndex = 2;
-            this.labelScheduleExamServerStatus.Text = "Server StatusPlaceholder";
-            this.labelScheduleExamServerStatus.Visible = false;
-            // 
-            // labelScheduleExamCurrentAcademicalYear
-            // 
-            this.labelScheduleExamCurrentAcademicalYear.AutoSize = true;
-            this.labelScheduleExamCurrentAcademicalYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelScheduleExamCurrentAcademicalYear.Location = new System.Drawing.Point(24, 581);
-            this.labelScheduleExamCurrentAcademicalYear.Name = "labelScheduleExamCurrentAcademicalYear";
-            this.labelScheduleExamCurrentAcademicalYear.Size = new System.Drawing.Size(347, 31);
-            this.labelScheduleExamCurrentAcademicalYear.TabIndex = 3;
-            this.labelScheduleExamCurrentAcademicalYear.Text = "Academic Year Placeholder";
-            this.labelScheduleExamCurrentAcademicalYear.Visible = false;
+            this.panelAniRestanta.Location = new System.Drawing.Point(1024, 6);
+            this.panelAniRestanta.Name = "panelAniRestanta";
+            this.panelAniRestanta.Size = new System.Drawing.Size(194, 429);
+            this.panelAniRestanta.TabIndex = 2;
             // 
             // dataGridViewRestanta
             // 
@@ -960,12 +949,49 @@ namespace GestiuneExameneWindowsForms
             this.dataGridViewRestanta.Size = new System.Drawing.Size(1010, 532);
             this.dataGridViewRestanta.TabIndex = 1;
             // 
-            // panelAniRestanta
+            // labelScheduleExamServerStatus
             // 
-            this.panelAniRestanta.Location = new System.Drawing.Point(1024, 6);
-            this.panelAniRestanta.Name = "panelAniRestanta";
-            this.panelAniRestanta.Size = new System.Drawing.Size(194, 532);
-            this.panelAniRestanta.TabIndex = 2;
+            this.labelScheduleExamServerStatus.AutoSize = true;
+            this.labelScheduleExamServerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScheduleExamServerStatus.Location = new System.Drawing.Point(24, 615);
+            this.labelScheduleExamServerStatus.Name = "labelScheduleExamServerStatus";
+            this.labelScheduleExamServerStatus.Size = new System.Drawing.Size(322, 31);
+            this.labelScheduleExamServerStatus.TabIndex = 2;
+            this.labelScheduleExamServerStatus.Text = "Server StatusPlaceholder";
+            this.labelScheduleExamServerStatus.Visible = false;
+            // 
+            // labelScheduleExamCurrentAcademicalYear
+            // 
+            this.labelScheduleExamCurrentAcademicalYear.AutoSize = true;
+            this.labelScheduleExamCurrentAcademicalYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScheduleExamCurrentAcademicalYear.Location = new System.Drawing.Point(24, 581);
+            this.labelScheduleExamCurrentAcademicalYear.Name = "labelScheduleExamCurrentAcademicalYear";
+            this.labelScheduleExamCurrentAcademicalYear.Size = new System.Drawing.Size(347, 31);
+            this.labelScheduleExamCurrentAcademicalYear.TabIndex = 3;
+            this.labelScheduleExamCurrentAcademicalYear.Text = "Academic Year Placeholder";
+            this.labelScheduleExamCurrentAcademicalYear.Visible = false;
+            // 
+            // button_descarcaTabelExamen
+            // 
+            this.button_descarcaTabelExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_descarcaTabelExamen.Location = new System.Drawing.Point(1022, 443);
+            this.button_descarcaTabelExamen.Name = "button_descarcaTabelExamen";
+            this.button_descarcaTabelExamen.Size = new System.Drawing.Size(196, 95);
+            this.button_descarcaTabelExamen.TabIndex = 4;
+            this.button_descarcaTabelExamen.Text = "Descarca tabel examen";
+            this.button_descarcaTabelExamen.UseVisualStyleBackColor = true;
+            this.button_descarcaTabelExamen.Click += new System.EventHandler(this.button_descarcaTabelExamen_Click);
+            // 
+            // button_descarcaTabelRestanta
+            // 
+            this.button_descarcaTabelRestanta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_descarcaTabelRestanta.Location = new System.Drawing.Point(1022, 441);
+            this.button_descarcaTabelRestanta.Name = "button_descarcaTabelRestanta";
+            this.button_descarcaTabelRestanta.Size = new System.Drawing.Size(196, 95);
+            this.button_descarcaTabelRestanta.TabIndex = 5;
+            this.button_descarcaTabelRestanta.Text = "Descarca tabel restante";
+            this.button_descarcaTabelRestanta.UseVisualStyleBackColor = true;
+            this.button_descarcaTabelRestanta.Click += new System.EventHandler(this.button_descarcaTabelRestanta_Click);
             // 
             // ScheduleExamForm
             // 
@@ -1073,5 +1099,7 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.Panel panelAlegeMarcaProf;
         private System.Windows.Forms.Panel panelAniRestanta;
         private System.Windows.Forms.DataGridView dataGridViewRestanta;
+        private System.Windows.Forms.Button button_descarcaTabelExamen;
+        private System.Windows.Forms.Button button_descarcaTabelRestanta;
     }
 }

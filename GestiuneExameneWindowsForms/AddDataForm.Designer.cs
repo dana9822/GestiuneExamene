@@ -65,6 +65,7 @@ namespace GestiuneExameneWindowsForms
             this.comboBoxDropDownListSesiune = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageDisciplina = new System.Windows.Forms.TabPage();
+            this.buttonDealocareDisc = new System.Windows.Forms.Button();
             this.button_ToAcoperireDisc = new System.Windows.Forms.Button();
             this.buttonAdaugaDisciplina = new System.Windows.Forms.Button();
             this.textBoxDenumireDisciplina = new System.Windows.Forms.TextBox();
@@ -106,9 +107,6 @@ namespace GestiuneExameneWindowsForms
             this.comboBoxDropDownListAlocareDiscSpecList = new System.Windows.Forms.ComboBox();
             this.labelSpec = new System.Windows.Forms.Label();
             this.buttonAlocaDisciplina = new System.Windows.Forms.Button();
-            this.groupBoxAlocareDiscStatus = new System.Windows.Forms.GroupBox();
-            this.radioButtonInactiv = new System.Windows.Forms.RadioButton();
-            this.radioButtonActiv = new System.Windows.Forms.RadioButton();
             this.groupBoxAlocDiscTipEvaluare = new System.Windows.Forms.GroupBox();
             this.radioButtonExamen = new System.Windows.Forms.RadioButton();
             this.radioButtonVerificare = new System.Windows.Forms.RadioButton();
@@ -135,7 +133,6 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxFormaInv.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_Alocare.SuspendLayout();
-            this.groupBoxAlocareDiscStatus.SuspendLayout();
             this.groupBoxAlocDiscTipEvaluare.SuspendLayout();
             this.groupBoxAlocDiscSemestru.SuspendLayout();
             this.SuspendLayout();
@@ -549,6 +546,7 @@ namespace GestiuneExameneWindowsForms
             // 
             // tabPageDisciplina
             // 
+            this.tabPageDisciplina.Controls.Add(this.buttonDealocareDisc);
             this.tabPageDisciplina.Controls.Add(this.button_ToAcoperireDisc);
             this.tabPageDisciplina.Controls.Add(this.buttonAdaugaDisciplina);
             this.tabPageDisciplina.Controls.Add(this.textBoxDenumireDisciplina);
@@ -560,6 +558,17 @@ namespace GestiuneExameneWindowsForms
             this.tabPageDisciplina.TabIndex = 4;
             this.tabPageDisciplina.Text = "Disciplina";
             this.tabPageDisciplina.UseVisualStyleBackColor = true;
+            // 
+            // buttonDealocareDisc
+            // 
+            this.buttonDealocareDisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDealocareDisc.Location = new System.Drawing.Point(358, 331);
+            this.buttonDealocareDisc.Name = "buttonDealocareDisc";
+            this.buttonDealocareDisc.Size = new System.Drawing.Size(223, 40);
+            this.buttonDealocareDisc.TabIndex = 6;
+            this.buttonDealocareDisc.Text = "Dealocare discipline";
+            this.buttonDealocareDisc.UseVisualStyleBackColor = true;
+            this.buttonDealocareDisc.Click += new System.EventHandler(this.buttonDealocareDisc_Click);
             // 
             // button_ToAcoperireDisc
             // 
@@ -989,7 +998,6 @@ namespace GestiuneExameneWindowsForms
             this.tabPage_Alocare.Controls.Add(this.comboBoxDropDownListAlocareDiscSpecList);
             this.tabPage_Alocare.Controls.Add(this.labelSpec);
             this.tabPage_Alocare.Controls.Add(this.buttonAlocaDisciplina);
-            this.tabPage_Alocare.Controls.Add(this.groupBoxAlocareDiscStatus);
             this.tabPage_Alocare.Controls.Add(this.groupBoxAlocDiscTipEvaluare);
             this.tabPage_Alocare.Controls.Add(this.groupBoxAlocDiscSemestru);
             this.tabPage_Alocare.Controls.Add(this.comboBoxDropDownListAlocareDiscAnStudiuList);
@@ -1038,47 +1046,13 @@ namespace GestiuneExameneWindowsForms
             // buttonAlocaDisciplina
             // 
             this.buttonAlocaDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAlocaDisciplina.Location = new System.Drawing.Point(325, 330);
+            this.buttonAlocaDisciplina.Location = new System.Drawing.Point(314, 330);
             this.buttonAlocaDisciplina.Name = "buttonAlocaDisciplina";
-            this.buttonAlocaDisciplina.Size = new System.Drawing.Size(195, 32);
+            this.buttonAlocaDisciplina.Size = new System.Drawing.Size(206, 41);
             this.buttonAlocaDisciplina.TabIndex = 28;
             this.buttonAlocaDisciplina.Text = "Aloca disciplina";
             this.buttonAlocaDisciplina.UseVisualStyleBackColor = true;
             this.buttonAlocaDisciplina.Click += new System.EventHandler(this.buttonAlocaDisciplina_Click);
-            // 
-            // groupBoxAlocareDiscStatus
-            // 
-            this.groupBoxAlocareDiscStatus.Controls.Add(this.radioButtonInactiv);
-            this.groupBoxAlocareDiscStatus.Controls.Add(this.radioButtonActiv);
-            this.groupBoxAlocareDiscStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAlocareDiscStatus.Location = new System.Drawing.Point(287, 274);
-            this.groupBoxAlocareDiscStatus.Name = "groupBoxAlocareDiscStatus";
-            this.groupBoxAlocareDiscStatus.Size = new System.Drawing.Size(265, 50);
-            this.groupBoxAlocareDiscStatus.TabIndex = 27;
-            this.groupBoxAlocareDiscStatus.TabStop = false;
-            this.groupBoxAlocareDiscStatus.Text = "Status";
-            // 
-            // radioButtonInactiv
-            // 
-            this.radioButtonInactiv.AutoSize = true;
-            this.radioButtonInactiv.Location = new System.Drawing.Point(134, 18);
-            this.radioButtonInactiv.Name = "radioButtonInactiv";
-            this.radioButtonInactiv.Size = new System.Drawing.Size(80, 28);
-            this.radioButtonInactiv.TabIndex = 1;
-            this.radioButtonInactiv.Text = "Inactiv";
-            this.radioButtonInactiv.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonActiv
-            // 
-            this.radioButtonActiv.AutoSize = true;
-            this.radioButtonActiv.Checked = true;
-            this.radioButtonActiv.Location = new System.Drawing.Point(7, 18);
-            this.radioButtonActiv.Name = "radioButtonActiv";
-            this.radioButtonActiv.Size = new System.Drawing.Size(68, 28);
-            this.radioButtonActiv.TabIndex = 0;
-            this.radioButtonActiv.TabStop = true;
-            this.radioButtonActiv.Text = "Activ";
-            this.radioButtonActiv.UseVisualStyleBackColor = true;
             // 
             // groupBoxAlocDiscTipEvaluare
             // 
@@ -1220,8 +1194,6 @@ namespace GestiuneExameneWindowsForms
             this.tabControl1.ResumeLayout(false);
             this.tabPage_Alocare.ResumeLayout(false);
             this.tabPage_Alocare.PerformLayout();
-            this.groupBoxAlocareDiscStatus.ResumeLayout(false);
-            this.groupBoxAlocareDiscStatus.PerformLayout();
             this.groupBoxAlocDiscTipEvaluare.ResumeLayout(false);
             this.groupBoxAlocDiscTipEvaluare.PerformLayout();
             this.groupBoxAlocDiscSemestru.ResumeLayout(false);
@@ -1310,9 +1282,6 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.ComboBox comboBoxDropDownListAlocareDiscSpecList;
         private System.Windows.Forms.Label labelSpec;
         private System.Windows.Forms.Button buttonAlocaDisciplina;
-        private System.Windows.Forms.GroupBox groupBoxAlocareDiscStatus;
-        private System.Windows.Forms.RadioButton radioButtonInactiv;
-        private System.Windows.Forms.RadioButton radioButtonActiv;
         private System.Windows.Forms.GroupBox groupBoxAlocDiscTipEvaluare;
         private System.Windows.Forms.RadioButton radioButtonExamen;
         private System.Windows.Forms.RadioButton radioButtonVerificare;
@@ -1322,5 +1291,6 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.ComboBox comboBoxDropDownListAlocareDiscAnStudiuList;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button buttonDealocareDisc;
     }
 }
