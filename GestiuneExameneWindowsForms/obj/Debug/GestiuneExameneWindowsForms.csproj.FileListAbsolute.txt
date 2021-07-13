@@ -1,7 +1,6 @@
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\GestiuneExameneWindowsForms.exe.config
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\GestiuneExameneWindowsForms.exe
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\GestiuneExameneWindowsForms.pdb
-C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.csprojAssemblyReference.cache
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.Form1.resources
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.Properties.Resources.resources
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.csproj.GenerateResource.cache
@@ -73,8 +72,6 @@ C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExamene
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.DealocareDisciplina.resources
-C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\RdlCompile.cache
-C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\RdlCompile.compiled
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\Common.Logging.Core.dll
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\Common.Logging.dll
@@ -84,3 +81,7 @@ C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExamene
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\Common.Logging.Core.pdb
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\Common.Logging.Core.xml
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\itextsharp.xml
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.ModificaProfesorExaminator.resources
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.csproj.AssemblyReference.cache
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\RdlCompile.cache
+C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\RdlCompile.compiled

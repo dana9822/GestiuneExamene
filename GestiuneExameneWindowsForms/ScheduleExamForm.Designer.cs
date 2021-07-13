@@ -29,12 +29,6 @@ namespace GestiuneExameneWindowsForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonScheduleExamBack = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageExamen = new System.Windows.Forms.TabPage();
@@ -95,15 +89,15 @@ namespace GestiuneExameneWindowsForms
             this.label_RestantaAnUnivCurent = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPageArhivaExamene = new System.Windows.Forms.TabPage();
+            this.button_descarcaTabelExamen = new System.Windows.Forms.Button();
             this.panelAniExamen = new System.Windows.Forms.Panel();
             this.dataGridViewExamen = new System.Windows.Forms.DataGridView();
             this.tabPageArhivaRestante = new System.Windows.Forms.TabPage();
+            this.button_descarcaTabelRestanta = new System.Windows.Forms.Button();
             this.panelAniRestanta = new System.Windows.Forms.Panel();
             this.dataGridViewRestanta = new System.Windows.Forms.DataGridView();
             this.labelScheduleExamServerStatus = new System.Windows.Forms.Label();
             this.labelScheduleExamCurrentAcademicalYear = new System.Windows.Forms.Label();
-            this.button_descarcaTabelExamen = new System.Windows.Forms.Button();
-            this.button_descarcaTabelRestanta = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageExamen.SuspendLayout();
             this.groupBoxDiscSemestru.SuspendLayout();
@@ -137,6 +131,7 @@ namespace GestiuneExameneWindowsForms
             this.tabControl1.Controls.Add(this.tabPageRestanta);
             this.tabControl1.Controls.Add(this.tabPageArhivaExamene);
             this.tabControl1.Controls.Add(this.tabPageArhivaRestante);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(12, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -175,10 +170,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageExamen.Controls.Add(this.label2);
             this.tabPageExamen.Controls.Add(this.label1);
             this.tabPageExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPageExamen.Location = new System.Drawing.Point(4, 22);
+            this.tabPageExamen.Location = new System.Drawing.Point(4, 33);
             this.tabPageExamen.Name = "tabPageExamen";
             this.tabPageExamen.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageExamen.Size = new System.Drawing.Size(1224, 544);
+            this.tabPageExamen.Size = new System.Drawing.Size(1224, 533);
             this.tabPageExamen.TabIndex = 0;
             this.tabPageExamen.Text = "Programare Examen";
             this.tabPageExamen.UseVisualStyleBackColor = true;
@@ -192,6 +187,7 @@ namespace GestiuneExameneWindowsForms
             this.button_UpdateProfSuprav.TabIndex = 28;
             this.button_UpdateProfSuprav.Text = "Modifica profesor supraveghetor";
             this.button_UpdateProfSuprav.UseVisualStyleBackColor = true;
+            this.button_UpdateProfSuprav.Click += new System.EventHandler(this.button_UpdateProfSuprav_Click);
             // 
             // button_ValidareExamen
             // 
@@ -583,10 +579,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageRestanta.Controls.Add(this.label14);
             this.tabPageRestanta.Controls.Add(this.label_RestantaAnUnivCurent);
             this.tabPageRestanta.Controls.Add(this.label16);
-            this.tabPageRestanta.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRestanta.Location = new System.Drawing.Point(4, 33);
             this.tabPageRestanta.Name = "tabPageRestanta";
             this.tabPageRestanta.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRestanta.Size = new System.Drawing.Size(1224, 544);
+            this.tabPageRestanta.Size = new System.Drawing.Size(1224, 533);
             this.tabPageRestanta.TabIndex = 1;
             this.tabPageRestanta.Text = "Programare Restanta";
             this.tabPageRestanta.UseVisualStyleBackColor = true;
@@ -850,13 +846,24 @@ namespace GestiuneExameneWindowsForms
             this.tabPageArhivaExamene.Controls.Add(this.button_descarcaTabelExamen);
             this.tabPageArhivaExamene.Controls.Add(this.panelAniExamen);
             this.tabPageArhivaExamene.Controls.Add(this.dataGridViewExamen);
-            this.tabPageArhivaExamene.Location = new System.Drawing.Point(4, 22);
+            this.tabPageArhivaExamene.Location = new System.Drawing.Point(4, 33);
             this.tabPageArhivaExamene.Name = "tabPageArhivaExamene";
             this.tabPageArhivaExamene.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageArhivaExamene.Size = new System.Drawing.Size(1224, 544);
+            this.tabPageArhivaExamene.Size = new System.Drawing.Size(1224, 533);
             this.tabPageArhivaExamene.TabIndex = 2;
             this.tabPageArhivaExamene.Text = "Arhiva Examene";
             this.tabPageArhivaExamene.UseVisualStyleBackColor = true;
+            // 
+            // button_descarcaTabelExamen
+            // 
+            this.button_descarcaTabelExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_descarcaTabelExamen.Location = new System.Drawing.Point(1022, 443);
+            this.button_descarcaTabelExamen.Name = "button_descarcaTabelExamen";
+            this.button_descarcaTabelExamen.Size = new System.Drawing.Size(196, 84);
+            this.button_descarcaTabelExamen.TabIndex = 4;
+            this.button_descarcaTabelExamen.Text = "Descarca tabel examen";
+            this.button_descarcaTabelExamen.UseVisualStyleBackColor = true;
+            this.button_descarcaTabelExamen.Click += new System.EventHandler(this.button_descarcaTabelExamen_Click);
             // 
             // panelAniExamen
             // 
@@ -867,34 +874,10 @@ namespace GestiuneExameneWindowsForms
             // 
             // dataGridViewExamen
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewExamen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExamen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewExamen.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExamen.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewExamen.Name = "dataGridViewExamen";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewExamen.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewExamen.Size = new System.Drawing.Size(1010, 532);
+            this.dataGridViewExamen.Size = new System.Drawing.Size(1010, 521);
             this.dataGridViewExamen.TabIndex = 0;
             // 
             // tabPageArhivaRestante
@@ -902,13 +885,24 @@ namespace GestiuneExameneWindowsForms
             this.tabPageArhivaRestante.Controls.Add(this.button_descarcaTabelRestanta);
             this.tabPageArhivaRestante.Controls.Add(this.panelAniRestanta);
             this.tabPageArhivaRestante.Controls.Add(this.dataGridViewRestanta);
-            this.tabPageArhivaRestante.Location = new System.Drawing.Point(4, 22);
+            this.tabPageArhivaRestante.Location = new System.Drawing.Point(4, 33);
             this.tabPageArhivaRestante.Name = "tabPageArhivaRestante";
             this.tabPageArhivaRestante.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageArhivaRestante.Size = new System.Drawing.Size(1224, 544);
+            this.tabPageArhivaRestante.Size = new System.Drawing.Size(1224, 533);
             this.tabPageArhivaRestante.TabIndex = 3;
             this.tabPageArhivaRestante.Text = "Arhiva Restante";
             this.tabPageArhivaRestante.UseVisualStyleBackColor = true;
+            // 
+            // button_descarcaTabelRestanta
+            // 
+            this.button_descarcaTabelRestanta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_descarcaTabelRestanta.Location = new System.Drawing.Point(1022, 441);
+            this.button_descarcaTabelRestanta.Name = "button_descarcaTabelRestanta";
+            this.button_descarcaTabelRestanta.Size = new System.Drawing.Size(196, 86);
+            this.button_descarcaTabelRestanta.TabIndex = 5;
+            this.button_descarcaTabelRestanta.Text = "Descarca tabel restante";
+            this.button_descarcaTabelRestanta.UseVisualStyleBackColor = true;
+            this.button_descarcaTabelRestanta.Click += new System.EventHandler(this.button_descarcaTabelRestanta_Click);
             // 
             // panelAniRestanta
             // 
@@ -919,34 +913,10 @@ namespace GestiuneExameneWindowsForms
             // 
             // dataGridViewRestanta
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewRestanta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewRestanta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewRestanta.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewRestanta.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewRestanta.Location = new System.Drawing.Point(14, 6);
             this.dataGridViewRestanta.Name = "dataGridViewRestanta";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewRestanta.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewRestanta.Size = new System.Drawing.Size(1010, 532);
+            this.dataGridViewRestanta.Size = new System.Drawing.Size(1002, 521);
             this.dataGridViewRestanta.TabIndex = 1;
             // 
             // labelScheduleExamServerStatus
@@ -970,28 +940,6 @@ namespace GestiuneExameneWindowsForms
             this.labelScheduleExamCurrentAcademicalYear.TabIndex = 3;
             this.labelScheduleExamCurrentAcademicalYear.Text = "Academic Year Placeholder";
             this.labelScheduleExamCurrentAcademicalYear.Visible = false;
-            // 
-            // button_descarcaTabelExamen
-            // 
-            this.button_descarcaTabelExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_descarcaTabelExamen.Location = new System.Drawing.Point(1022, 443);
-            this.button_descarcaTabelExamen.Name = "button_descarcaTabelExamen";
-            this.button_descarcaTabelExamen.Size = new System.Drawing.Size(196, 95);
-            this.button_descarcaTabelExamen.TabIndex = 4;
-            this.button_descarcaTabelExamen.Text = "Descarca tabel examen";
-            this.button_descarcaTabelExamen.UseVisualStyleBackColor = true;
-            this.button_descarcaTabelExamen.Click += new System.EventHandler(this.button_descarcaTabelExamen_Click);
-            // 
-            // button_descarcaTabelRestanta
-            // 
-            this.button_descarcaTabelRestanta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_descarcaTabelRestanta.Location = new System.Drawing.Point(1022, 441);
-            this.button_descarcaTabelRestanta.Name = "button_descarcaTabelRestanta";
-            this.button_descarcaTabelRestanta.Size = new System.Drawing.Size(196, 95);
-            this.button_descarcaTabelRestanta.TabIndex = 5;
-            this.button_descarcaTabelRestanta.Text = "Descarca tabel restante";
-            this.button_descarcaTabelRestanta.UseVisualStyleBackColor = true;
-            this.button_descarcaTabelRestanta.Click += new System.EventHandler(this.button_descarcaTabelRestanta_Click);
             // 
             // ScheduleExamForm
             // 

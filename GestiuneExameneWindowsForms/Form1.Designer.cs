@@ -42,7 +42,7 @@ namespace GestiuneExameneWindowsForms
             // buttonAdaugaDate
             // 
             this.buttonAdaugaDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaDate.Location = new System.Drawing.Point(58, 207);
+            this.buttonAdaugaDate.Location = new System.Drawing.Point(123, 253);
             this.buttonAdaugaDate.Name = "buttonAdaugaDate";
             this.buttonAdaugaDate.Size = new System.Drawing.Size(178, 45);
             this.buttonAdaugaDate.TabIndex = 0;
@@ -53,7 +53,7 @@ namespace GestiuneExameneWindowsForms
             // buttonProgramareExamene
             // 
             this.buttonProgramareExamene.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProgramareExamene.Location = new System.Drawing.Point(242, 207);
+            this.buttonProgramareExamene.Location = new System.Drawing.Point(307, 253);
             this.buttonProgramareExamene.Name = "buttonProgramareExamene";
             this.buttonProgramareExamene.Size = new System.Drawing.Size(232, 45);
             this.buttonProgramareExamene.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace GestiuneExameneWindowsForms
             // buttonStatistici
             // 
             this.buttonStatistici.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStatistici.Location = new System.Drawing.Point(480, 207);
+            this.buttonStatistici.Location = new System.Drawing.Point(545, 253);
             this.buttonStatistici.Name = "buttonStatistici";
             this.buttonStatistici.Size = new System.Drawing.Size(206, 45);
             this.buttonStatistici.TabIndex = 2;
@@ -75,7 +75,7 @@ namespace GestiuneExameneWindowsForms
             // buttonExit
             // 
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.Location = new System.Drawing.Point(627, 439);
+            this.buttonExit.Location = new System.Drawing.Point(752, 444);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(101, 43);
             this.buttonExit.TabIndex = 3;
@@ -88,9 +88,9 @@ namespace GestiuneExameneWindowsForms
             this.comboBoxListaFacultati.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxListaFacultati.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxListaFacultati.FormattingEnabled = true;
-            this.comboBoxListaFacultati.Location = new System.Drawing.Point(58, 127);
+            this.comboBoxListaFacultati.Location = new System.Drawing.Point(71, 163);
             this.comboBoxListaFacultati.Name = "comboBoxListaFacultati";
-            this.comboBoxListaFacultati.Size = new System.Drawing.Size(628, 32);
+            this.comboBoxListaFacultati.Size = new System.Drawing.Size(751, 32);
             this.comboBoxListaFacultati.TabIndex = 4;
             this.comboBoxListaFacultati.SelectedIndexChanged += new System.EventHandler(this.facultateForm1_selectedIndexChanged);
             // 
@@ -98,7 +98,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(281, 86);
+            this.label1.Location = new System.Drawing.Point(353, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 24);
             this.label1.TabIndex = 5;
@@ -130,7 +130,7 @@ namespace GestiuneExameneWindowsForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 494);
+            this.ClientSize = new System.Drawing.Size(865, 499);
             this.Controls.Add(this.label_IDFacultateCurentSelectata);
             this.Controls.Add(this.labelFacultateCurentSelectata);
             this.Controls.Add(this.label1);

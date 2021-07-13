@@ -45,6 +45,7 @@ namespace GestiuneExameneWindowsForms
             this.groupBoxAcoperireDiscSemestru = new System.Windows.Forms.GroupBox();
             this.radioButtonSem2 = new System.Windows.Forms.RadioButton();
             this.radioButtonSem1 = new System.Windows.Forms.RadioButton();
+            this.panelAlegeMarcaProf = new System.Windows.Forms.Panel();
             this.groupBoxAcoperireDiscSemestru.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -222,11 +223,20 @@ namespace GestiuneExameneWindowsForms
             this.radioButtonSem1.UseVisualStyleBackColor = true;
             this.radioButtonSem1.CheckedChanged += new System.EventHandler(this.specializare_selectedIndexChanged);
             // 
+            // panelAlegeMarcaProf
+            // 
+            this.panelAlegeMarcaProf.Location = new System.Drawing.Point(656, 16);
+            this.panelAlegeMarcaProf.Name = "panelAlegeMarcaProf";
+            this.panelAlegeMarcaProf.Size = new System.Drawing.Size(132, 185);
+            this.panelAlegeMarcaProf.TabIndex = 45;
+            this.panelAlegeMarcaProf.Visible = false;
+            // 
             // Acoperire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelAlegeMarcaProf);
             this.Controls.Add(this.groupBoxAcoperireDiscSemestru);
             this.Controls.Add(this.button_back_toAddData);
             this.Controls.Add(this.button_Exit);
@@ -269,5 +279,6 @@ namespace GestiuneExameneWindowsForms
         private System.Windows.Forms.GroupBox groupBoxAcoperireDiscSemestru;
         private System.Windows.Forms.RadioButton radioButtonSem2;
         private System.Windows.Forms.RadioButton radioButtonSem1;
+        private System.Windows.Forms.Panel panelAlegeMarcaProf;
     }
 }

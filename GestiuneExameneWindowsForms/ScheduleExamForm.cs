@@ -35,6 +35,10 @@ namespace GestiuneExameneWindowsForms
         List<RadioButton> listRadioButtonSemestru = new List<RadioButton>();
         List<RadioButton> listRadioButtonsModEvaluareRestanta = new List<RadioButton>();
         static bool statusServerOk;
+        static string idSesiuneRestante;
+        static string dataInceputSesiuneRestante;
+        static string dataFinalSesiuneRestante;
+        static string denumireSesiuneRestante;
         #endregion
 
         #region backButton
@@ -55,6 +59,7 @@ namespace GestiuneExameneWindowsForms
             adaugaRadioButtonInList();
             getAnUniversitarCurent();
             getSesiuneCurenta();
+            getSesiuneCurentaRestante();
             showCurrentAcademicYear();
             adaugaSpecializareToDropDownList();
             adaugaSalaToDropDownList();
@@ -71,7 +76,7 @@ namespace GestiuneExameneWindowsForms
             label_RestantaAnUnivCurent.Visible = true;
             label_RestantaAnUnivCurent.Text = anUniversitarCurent.ToString();
             label_RestantaSesiuneCurenta.Visible = true;
-            label_RestantaSesiuneCurenta.Text = denumireSesiuneCurenta.ToString() + " - " + dataInceputSesiuneCurenta.ToString();
+            label_RestantaSesiuneCurenta.Text = denumireSesiuneRestante.ToString() + " - " + dataInceputSesiuneRestante.ToString();
         }
 
         #region conectare
@@ -171,14 +176,14 @@ namespace GestiuneExameneWindowsForms
                 con.Open();
                 labelScheduleExamServerStatus.Visible = true;
                 labelScheduleExamServerStatus.ForeColor = Color.Green;
-                labelScheduleExamServerStatus.Text = String.Format("Connected to database.");
+                labelScheduleExamServerStatus.Text = String.Format("Server online");
                 statusServerOk = true;
             }
             catch (Exception e)
             {
                 labelScheduleExamServerStatus.Visible = true;
                 labelScheduleExamServerStatus.ForeColor = Color.Red;
-                labelScheduleExamServerStatus.Text = String.Format("Not connected to database.");
+                labelScheduleExamServerStatus.Text = String.Format("Server offline");
                 MessageBox.Show(e.Message.ToString());
                 statusServerOk = false;
             }
@@ -227,11 +232,11 @@ namespace GestiuneExameneWindowsForms
         }
         #endregion
 
-        #region getSesiuneCurenta
+        #region getSesiuneCurenta + Sesiune restante
         public void getSesiuneCurenta()
         {
             con.Open();
-            string query = "SELECT top 1 idSesiune,anUniversitar,dataInceput,dataFinal FROM An_Sesiune order by dataInceput Desc;";
+            string query = "SELECT top 1 idSesiune,anUniversitar,dataInceput,dataFinal FROM An_Sesiune WHERE idSesiune IN (1,2) ORDER BY dataInceput Desc;";
             SqlCommand cmd = new SqlCommand(query, con);
 
             SqlDataReader returnedRows = cmd.ExecuteReader();
@@ -249,7 +254,31 @@ namespace GestiuneExameneWindowsForms
             }
 
             con.Close();
-            //MessageBox.Show("Sesiune curenta id: " + idSesiuneCurenta + " ,denumire: " + denumireSesiuneCurenta + " ,data inceput: " + dataInceputSesiuneCurenta + " ,data final: " + dataFinalSesiuneCurenta);
+            //MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta +" ,denumire: "+denumireSesiuneCurenta+ " ,data inceput: "+ dataInceputSesiuneCurenta+ " ,data final: "+ dataFinalSesiuneCurenta);
+        }
+
+        public void getSesiuneCurentaRestante()
+        {
+            con.Open();
+            string query = "SELECT top 1 idSesiune,anUniversitar,dataInceput,dataFinal FROM An_Sesiune WHERE idSesiune IN (3) ORDER BY dataInceput Desc;";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            SqlDataReader returnedRows = cmd.ExecuteReader();
+            if (returnedRows.Read())
+            {
+                idSesiuneRestante = returnedRows.GetValue(0).ToString();
+                dataInceputSesiuneRestante = returnedRows.GetValue(2).ToString();
+                dataFinalSesiuneRestante = returnedRows.GetValue(3).ToString();
+            }
+
+            foreach (DataRow dr in ds.Tables["SESIUNE"].Rows)
+            {
+                if (dr.ItemArray.GetValue(0).ToString() == idSesiuneRestante)
+                    denumireSesiuneRestante = dr.ItemArray.GetValue(1).ToString();
+            }
+
+            con.Close();
+            //MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta +" ,denumire: "+denumireSesiuneCurenta+ " ,data inceput: "+ dataInceputSesiuneCurenta+ " ,data final: "+ dataFinalSesiuneCurenta);
         }
         #endregion
 
@@ -675,13 +704,11 @@ namespace GestiuneExameneWindowsForms
             }
             if (dateTimePickerDataExamen.Value.Date > Convert.ToDateTime(dataFinalSesiuneCurenta))
             {
-                //functioneaza
                 MessageBox.Show("Nu puteti programa examene in afara sesiunii!\nData este prea tarzie!");
                 return false;
             }
             if (dateTimePickerDataExamen.Value.Date < Convert.ToDateTime(dataInceputSesiuneCurenta) && labelExamenTipEvaluare.Text == "Examen")
-
-            { //functioneaza
+            { 
                 MessageBox.Show("Examenele nu pot avea loc la date care sunt inaintea inceperii sesiunii!");
                 return false;
             }
@@ -758,12 +785,28 @@ namespace GestiuneExameneWindowsForms
                  Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerDataExamen.Value.ToShortDateString()) && Convert.ToInt32(dr["ora"].ToString()) == numericUpDownExamenOra.Value
                   && dr["profSupraveghetor"].ToString() == codProfAsistentExamen)
                 {
-                    MessageBox.Show("Asistentul examinator " + comboBoxExamenProfTitular.SelectedItem.ToString() + " are deja programat un examen la data de " + dateTimePickerDataExamen.Value.ToShortDateString() + " si ora " + numericUpDownExamenOra.Value + " !");
+                    MessageBox.Show("Asistentul examinator " + comboBoxExamenProfSuprav.SelectedItem.ToString() + " are deja programat un examen la data de " + dateTimePickerDataExamen.Value.ToShortDateString() + " si ora " + numericUpDownExamenOra.Value + " !");
+                    return false;
+                }
+                //---------------- Verificare => profesor titular sa nu fie asistent pentru alt examen si asistent examinator sa nu fie titular pentru alt examen deja programat
+                if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+                Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerDataExamen.Value.ToShortDateString()) && Convert.ToInt32(dr["ora"].ToString()) == numericUpDownExamenOra.Value
+                 && dr["profSupraveghetor"].ToString() == codProfTitular)
+                {
+                    MessageBox.Show("Profesorul titular " + comboBoxExamenProfTitular.SelectedItem.ToString() + " este asistent la un examen la data de " + dateTimePickerDataExamen.Value.ToShortDateString() + " si ora " + numericUpDownExamenOra.Value + " !");
                     return false;
                 }
                 if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
+                 Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerDataExamen.Value.ToShortDateString()) && Convert.ToInt32(dr["ora"].ToString()) == numericUpDownExamenOra.Value
+                  && dr["profTitular"].ToString() == codProfAsistentExamen)
+                {
+                    MessageBox.Show("Asistentul examinator " + comboBoxExamenProfSuprav.SelectedItem.ToString() + " este profesor titular la un examen la data de " + dateTimePickerDataExamen.Value.ToShortDateString() + " si ora " + numericUpDownExamenOra.Value + " !");
+                    return false;
+                }
+                //----------------
+                if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
                    Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerDataExamen.Value.ToShortDateString()) && Convert.ToInt32(dr["ora"].ToString()) == numericUpDownExamenOra.Value
-                    && dr.ItemArray.GetValue(0).ToString() + dr.ItemArray.GetValue(2).ToString() + dr.ItemArray.GetValue(1).ToString() == comboBoxExamenSala.SelectedItem.ToString())
+                    && dr.ItemArray.GetValue(0).ToString()== idCorp && dr.ItemArray.GetValue(2).ToString() == etaj && dr.ItemArray.GetValue(1).ToString() == nrSala)
                 {
                     //sala e deja ocupata
                     MessageBox.Show("Sala " + comboBoxExamenSala.SelectedItem.ToString() + " este ocupata la data " + dateTimePickerDataExamen.Value.ToShortDateString() +
@@ -1083,73 +1126,62 @@ namespace GestiuneExameneWindowsForms
         {
             if (validareRestanta() == true)
             {
-                if (comboBoxRestantaProfesor.Items.Count > 0)
+                codProfSelectat = copyCodProfSelectat;
+                ds.Tables["RESTANTA"].Clear();
+                SqlDataAdapter daRestanta = new SqlDataAdapter("SELECT * FROM ProgramareRestanta", con);
+                con.Open();
+                daRestanta.Fill(ds, "RESTANTA");
+                con.Close();
+                DataTable dt = ds.Tables["RESTANTA"];
+                DataRow dr1 = dt.NewRow();
+
+                //----------Id-uri PK+FK---------------
+                string codProf = "";
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                        codProf = dr.ItemArray.GetValue(0).ToString();
+
+                string idDisciplina = "";
+                foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() == comboBoxRestantaDisciplina.SelectedItem.ToString())
+                        idDisciplina = dr.ItemArray.GetValue(0).ToString();
+
+                string idCorp = "";
+                string nrSala = "";
+                string etaj = "";
+                foreach (DataRow drSala in ds.Tables["SALA"].Rows)
                 {
-                    gasesteCodProfSelectat();
-
-                    if (string.IsNullOrEmpty(codProfSelectat) && listaCodProf.Count > 1)
-                        MessageBox.Show("Alege codul profesorului care programeaza restanta!");
-                    else
-                    {
-                        ds.Tables["RESTANTA"].Clear();
-                        SqlDataAdapter daRestanta = new SqlDataAdapter("SELECT * FROM ProgramareRestanta", con);
-                        con.Open();
-                        daRestanta.Fill(ds, "RESTANTA");
-                        con.Close();
-                        DataTable dt = ds.Tables["RESTANTA"];
-                        DataRow dr1 = dt.NewRow();
-
-                        //----------Id-uri PK+FK---------------
-                        string codProf = "";
-                        foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-                            if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
-                                codProf = dr.ItemArray.GetValue(0).ToString();
-
-                        string idDisciplina = "";
-                        foreach (DataRow dr in ds.Tables["DISCIPLINA"].Rows)
-                            if (dr.ItemArray.GetValue(1).ToString() == comboBoxRestantaDisciplina.SelectedItem.ToString())
-                                idDisciplina = dr.ItemArray.GetValue(0).ToString();
-
-                        string idCorp = "";
-                        string nrSala = "";
-                        string etaj = "";
-                        foreach (DataRow drSala in ds.Tables["SALA"].Rows)
-                        {
-                            foreach (DataRow drCorp in ds.Tables["CORP"].Rows)
-                                if (drCorp.ItemArray.GetValue(0).ToString() == drSala.ItemArray.GetValue(0).ToString())
-                                    if (drCorp.ItemArray.GetValue(1).ToString() + drSala.ItemArray.GetValue(2).ToString() + drSala.ItemArray.GetValue(1).ToString() == comboBoxRestantaSala.SelectedItem.ToString()) //corp + etaj + nrSala => I.2.4 , Y.1.01
-                                    {
-                                        idCorp = drCorp.ItemArray.GetValue(0).ToString();
-                                        nrSala = drSala.ItemArray.GetValue(1).ToString();
-                                        etaj = drSala.ItemArray.GetValue(2).ToString();
-                                    }
-                        }
-                        //-------------------------------------
-                        dr1[0] = idCorp;
-                        dr1[1] = nrSala;
-                        dr1[2] = etaj;
-                        dr1[3] = codProfSelectat;
-                        dr1[4] = idDisciplina;
-                        dr1[5] = idSesiuneCurenta;
-                        dr1[6] = anUniversitarCurent;
-                        dr1[7] = dateTimePickerRestantaData.Value.ToShortDateString();
-                        dr1[8] = Convert.ToInt32(numericUpDownRestantaOra.Value);
-                        dr1[9] = Convert.ToInt32(numericUpDownRestantaDurata.Value);
-                        dr1[10] = returnRadioButtonName(listRadioButtonsModEvaluareRestanta);
-
-                        dt.Rows.Add(dr1);
-                        SqlCommandBuilder cb = new SqlCommandBuilder(daRestanta);
-                        cb.DataAdapter.Update(dt);
-                        MessageBox.Show("Restanta este programata!");
-                        completeazaGridRestanta();
-                        seteazaProprietatiGridRestanta();
-                        panelAlegeMarcaProf.Visible = false;
-                    }
-
-                    codProfSelectat = "";
+                    foreach (DataRow drCorp in ds.Tables["CORP"].Rows)
+                        if (drCorp.ItemArray.GetValue(0).ToString() == drSala.ItemArray.GetValue(0).ToString())
+                            if (drCorp.ItemArray.GetValue(1).ToString() + drSala.ItemArray.GetValue(2).ToString() + drSala.ItemArray.GetValue(1).ToString() == comboBoxRestantaSala.SelectedItem.ToString()) //corp + etaj + nrSala => I.2.4 , Y.1.01
+                            {
+                                idCorp = drCorp.ItemArray.GetValue(0).ToString();
+                                nrSala = drSala.ItemArray.GetValue(1).ToString();
+                                etaj = drSala.ItemArray.GetValue(2).ToString();
+                            }
                 }
-                else
-                    MessageBox.Show("Nu exista profesor selectat!!!");
+                //-------------------------------------
+                dr1[0] = idCorp;
+                dr1[1] = nrSala;
+                dr1[2] = etaj;
+                dr1[3] = codProfSelectat;
+                dr1[4] = idDisciplina;
+                dr1[5] = idSesiuneRestante;
+                dr1[6] = anUniversitarCurent;
+                dr1[7] = dateTimePickerRestantaData.Value.ToShortDateString();
+                dr1[8] = Convert.ToInt32(numericUpDownRestantaOra.Value);
+                dr1[9] = Convert.ToInt32(numericUpDownRestantaDurata.Value);
+                dr1[10] = returnRadioButtonName(listRadioButtonsModEvaluareRestanta);
+
+                dt.Rows.Add(dr1);
+                SqlCommandBuilder cb = new SqlCommandBuilder(daRestanta);
+                cb.DataAdapter.Update(dt);
+                MessageBox.Show("Restanta este programata!");
+                completeazaGridRestanta();
+                seteazaProprietatiGridRestanta();
+                panelAlegeMarcaProf.Visible = false;
+
+                codProfSelectat = "";
             }
             else
                 MessageBox.Show("Modificati greselile si incercati din nou!");
@@ -1160,7 +1192,7 @@ namespace GestiuneExameneWindowsForms
             if (validareRestanta() == true)
                 MessageBox.Show("Restanta este validata si se poate programa!");
         }
-
+        static string copyCodProfSelectat = "";
         bool validareRestanta()
         {
             if (statusServerOk == false)
@@ -1187,27 +1219,32 @@ namespace GestiuneExameneWindowsForms
                 return false;
             }
             else
-            if (dateTimePickerRestantaData.Value > Convert.ToDateTime(dataFinalSesiuneCurenta))
+            if (dateTimePickerRestantaData.Value > Convert.ToDateTime(dataFinalSesiuneRestante))
             {
                 //functioneaza
                 MessageBox.Show("Nu puteti programa examene in afara sesiunii!Data este prea tarzie!");
                 return false;
             }
             else
-            if (dateTimePickerRestantaData.Value < Convert.ToDateTime(dataInceputSesiuneCurenta))
+            if (dateTimePickerRestantaData.Value < Convert.ToDateTime(dataInceputSesiuneRestante))
             {
                 //functioneaza
                 MessageBox.Show("Restantele nu pot avea loc la date care sunt inaintea inceperii sesiunii!");
                 return false;
             }
-            else
+            if (comboBoxRestantaProfesor.Items.Count > 0)
             {
+                gasesteCodProfSelectat();
+
+                if (string.IsNullOrEmpty(codProfSelectat) && listaCodProf.Count > 1)
+                    MessageBox.Show("Alege codul profesorului care programeaza restanta!");
+
                 ds.Tables["RESTANTA"].Clear();
                 adaugaRestantaToDataSet();
-                string codProf = "";
-                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
-                        codProf = dr.ItemArray.GetValue(0).ToString();
+                //string codProf = "";
+                //foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                //    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                //        codProf = dr.ItemArray.GetValue(0).ToString();
 
                 string idCorp = "";
                 string nrSala = "";
@@ -1231,29 +1268,40 @@ namespace GestiuneExameneWindowsForms
                 foreach (DataRow dr in ds.Tables["RESTANTA"].Rows)
                 {
                     data = dr.ItemArray.GetValue(7).ToString();
-                    if (dr.ItemArray.GetValue(6).ToString() == anUniversitarCurent && dr.ItemArray.GetValue(5).ToString() == idSesiuneCurenta &&
+                    if (dr.ItemArray.GetValue(6).ToString() == anUniversitarCurent && dr.ItemArray.GetValue(5).ToString() == idSesiuneRestante &&
                         dr.ItemArray.GetValue(3).ToString() == codProfSelectat && dr.ItemArray.GetValue(8).ToString() == numericUpDownRestantaOra.Value.ToString() &&
                         Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerRestantaData.Value.ToShortDateString()))
                     {
-                        //profesorul deja are restanta la ora+data selectate
+                        //profesorul deja are restanta la ora+data selectate , NEFUNCTIONAL...?
                         MessageBox.Show("Profesorul " + comboBoxRestantaProfesor.SelectedItem.ToString() + " are deja programata restanta la data " + dateTimePickerRestantaData.Value.ToShortDateString() +
                             " ora :" + numericUpDownRestantaOra.Value.ToString());
                         return false;
                     }
-                    if (dr["anUniversitar"].ToString() == anUniversitarCurent && dr["idSesiune"].ToString() == idSesiuneCurenta &&
-                       Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerRestantaData.Value.ToShortDateString()) && dr["ora"].ToString() == numericUpDownRestantaOra.Value.ToString()
-                        && dr["idCorp"].ToString() == idCorp && dr["nrSala"].ToString() == nrSala && dr["etaj"].ToString() == etaj)
+                    if (dr["anUniversitar"].ToString() == anUniversitarCurent)
                     {
-                        //sala e deja ocupata
-                        MessageBox.Show("Sala " + codSala + " este ocupata la data " + dateTimePickerRestantaData.Value.ToShortDateString() +
-                            " ora: " + numericUpDownRestantaOra.Value.ToString());
-                        return false;
+                        if (dr["idSesiune"].ToString() == idSesiuneRestante)
+                        {
+                            if (Convert.ToDateTime(data) == dataSelectata)
+                            {
+                                if (Convert.ToInt32(dr["ora"].ToString()) == Convert.ToInt32(numericUpDownRestantaOra.Value))
+                                {
+                                    if (dr.ItemArray.GetValue(0).ToString() == idCorp && dr.ItemArray.GetValue(2).ToString() == etaj && dr.ItemArray.GetValue(1).ToString() == nrSala)
+                                    {
+                                        //sala e deja ocupata => NEFUNCTIONAL ????? ( E acelasi cod ca la examen, unde functioneaza....
+                                        MessageBox.Show("Sala " + codSala + " este ocupata la data " + dateTimePickerRestantaData.Value.ToShortDateString() +
+                                            " ora: " + numericUpDownRestantaOra.Value.ToString());
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
+            copyCodProfSelectat = codProfSelectat;
+            codProfSelectat = "";
             return true;
         }
-
         #endregion
 
         #region DataGridRestanta
@@ -1455,5 +1503,12 @@ namespace GestiuneExameneWindowsForms
             }
         }
         #endregion
+
+        private void button_UpdateProfSuprav_Click(object sender, EventArgs e)
+        {
+            ModificaProfesorExaminator updateProfForm = new ModificaProfesorExaminator();
+            this.Hide();
+            updateProfForm.ShowDialog();
+        }
     }
 }

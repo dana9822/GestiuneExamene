@@ -202,10 +202,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSala.Controls.Add(this.numericUpDownNrSala);
             this.tabPageSala.Controls.Add(this.comboBoxDropDownListCorp);
             this.tabPageSala.Controls.Add(this.label15);
-            this.tabPageSala.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSala.Location = new System.Drawing.Point(4, 33);
             this.tabPageSala.Name = "tabPageSala";
-            this.tabPageSala.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSala.Size = new System.Drawing.Size(830, 389);
+            this.tabPageSala.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageSala.Size = new System.Drawing.Size(830, 378);
             this.tabPageSala.TabIndex = 7;
             this.tabPageSala.Text = "Sala";
             this.tabPageSala.UseVisualStyleBackColor = true;
@@ -213,9 +213,9 @@ namespace GestiuneExameneWindowsForms
             // buttonAdaugaSala
             // 
             this.buttonAdaugaSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaSala.Location = new System.Drawing.Point(262, 334);
+            this.buttonAdaugaSala.Location = new System.Drawing.Point(264, 330);
             this.buttonAdaugaSala.Name = "buttonAdaugaSala";
-            this.buttonAdaugaSala.Size = new System.Drawing.Size(288, 49);
+            this.buttonAdaugaSala.Size = new System.Drawing.Size(271, 41);
             this.buttonAdaugaSala.TabIndex = 12;
             this.buttonAdaugaSala.Text = "Adauga Sala";
             this.buttonAdaugaSala.UseVisualStyleBackColor = true;
@@ -382,10 +382,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageCorp.Controls.Add(this.textBoxDenumireCorp);
             this.tabPageCorp.Controls.Add(this.label14);
             this.tabPageCorp.Controls.Add(this.label13);
-            this.tabPageCorp.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCorp.Location = new System.Drawing.Point(4, 33);
             this.tabPageCorp.Name = "tabPageCorp";
-            this.tabPageCorp.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCorp.Size = new System.Drawing.Size(830, 389);
+            this.tabPageCorp.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageCorp.Size = new System.Drawing.Size(830, 378);
             this.tabPageCorp.TabIndex = 6;
             this.tabPageCorp.Text = "Corp";
             this.tabPageCorp.UseVisualStyleBackColor = true;
@@ -449,10 +449,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSesiune.Controls.Add(this.label10);
             this.tabPageSesiune.Controls.Add(this.comboBoxDropDownListSesiune);
             this.tabPageSesiune.Controls.Add(this.label9);
-            this.tabPageSesiune.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSesiune.Location = new System.Drawing.Point(4, 33);
             this.tabPageSesiune.Name = "tabPageSesiune";
-            this.tabPageSesiune.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSesiune.Size = new System.Drawing.Size(830, 389);
+            this.tabPageSesiune.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageSesiune.Size = new System.Drawing.Size(830, 378);
             this.tabPageSesiune.TabIndex = 5;
             this.tabPageSesiune.Text = "Sesiune";
             this.tabPageSesiune.UseVisualStyleBackColor = true;
@@ -551,10 +551,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageDisciplina.Controls.Add(this.buttonAdaugaDisciplina);
             this.tabPageDisciplina.Controls.Add(this.textBoxDenumireDisciplina);
             this.tabPageDisciplina.Controls.Add(this.label8);
-            this.tabPageDisciplina.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDisciplina.Location = new System.Drawing.Point(4, 33);
             this.tabPageDisciplina.Name = "tabPageDisciplina";
-            this.tabPageDisciplina.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDisciplina.Size = new System.Drawing.Size(830, 389);
+            this.tabPageDisciplina.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageDisciplina.Size = new System.Drawing.Size(830, 378);
             this.tabPageDisciplina.TabIndex = 4;
             this.tabPageDisciplina.Text = "Disciplina";
             this.tabPageDisciplina.UseVisualStyleBackColor = true;
@@ -619,10 +619,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageProfesor.Controls.Add(this.groupBoxGradDidactic);
             this.tabPageProfesor.Controls.Add(this.label7);
             this.tabPageProfesor.Controls.Add(this.label6);
-            this.tabPageProfesor.Location = new System.Drawing.Point(4, 22);
+            this.tabPageProfesor.Location = new System.Drawing.Point(4, 33);
             this.tabPageProfesor.Name = "tabPageProfesor";
-            this.tabPageProfesor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProfesor.Size = new System.Drawing.Size(830, 389);
+            this.tabPageProfesor.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageProfesor.Size = new System.Drawing.Size(830, 378);
             this.tabPageProfesor.TabIndex = 3;
             this.tabPageProfesor.Text = "Profesor";
             this.tabPageProfesor.UseVisualStyleBackColor = true;
@@ -746,10 +746,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageGrupa.Controls.Add(this.comboBoxDropDownListSpecializareGrupa);
             this.tabPageGrupa.Controls.Add(this.label1);
             this.tabPageGrupa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPageGrupa.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGrupa.Location = new System.Drawing.Point(4, 33);
             this.tabPageGrupa.Name = "tabPageGrupa";
-            this.tabPageGrupa.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGrupa.Size = new System.Drawing.Size(830, 389);
+            this.tabPageGrupa.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageGrupa.Size = new System.Drawing.Size(830, 378);
             this.tabPageGrupa.TabIndex = 2;
             this.tabPageGrupa.Text = "Grupa";
             this.tabPageGrupa.UseVisualStyleBackColor = true;
@@ -894,10 +894,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPageSpecializare.Controls.Add(this.groupBoxFormaInv);
             this.tabPageSpecializare.Controls.Add(this.labelDenSpec);
             this.tabPageSpecializare.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPageSpecializare.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSpecializare.Location = new System.Drawing.Point(4, 33);
             this.tabPageSpecializare.Name = "tabPageSpecializare";
-            this.tabPageSpecializare.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSpecializare.Size = new System.Drawing.Size(830, 389);
+            this.tabPageSpecializare.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageSpecializare.Size = new System.Drawing.Size(830, 378);
             this.tabPageSpecializare.TabIndex = 1;
             this.tabPageSpecializare.Text = "Specializare";
             this.tabPageSpecializare.UseVisualStyleBackColor = true;
@@ -915,9 +915,9 @@ namespace GestiuneExameneWindowsForms
             // buttonAdaugaSpecializare
             // 
             this.buttonAdaugaSpecializare.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaSpecializare.Location = new System.Drawing.Point(256, 318);
+            this.buttonAdaugaSpecializare.Location = new System.Drawing.Point(256, 303);
             this.buttonAdaugaSpecializare.Name = "buttonAdaugaSpecializare";
-            this.buttonAdaugaSpecializare.Size = new System.Drawing.Size(320, 56);
+            this.buttonAdaugaSpecializare.Size = new System.Drawing.Size(325, 56);
             this.buttonAdaugaSpecializare.TabIndex = 5;
             this.buttonAdaugaSpecializare.Text = "Adauga Specializare";
             this.buttonAdaugaSpecializare.UseVisualStyleBackColor = true;
@@ -986,6 +986,7 @@ namespace GestiuneExameneWindowsForms
             this.tabControl1.Controls.Add(this.tabPageCorp);
             this.tabControl1.Controls.Add(this.tabPageSala);
             this.tabControl1.Controls.Add(this.tabPage_Alocare);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(30, 21);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1003,10 +1004,10 @@ namespace GestiuneExameneWindowsForms
             this.tabPage_Alocare.Controls.Add(this.comboBoxDropDownListAlocareDiscAnStudiuList);
             this.tabPage_Alocare.Controls.Add(this.label21);
             this.tabPage_Alocare.Controls.Add(this.label20);
-            this.tabPage_Alocare.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_Alocare.Location = new System.Drawing.Point(4, 33);
             this.tabPage_Alocare.Name = "tabPage_Alocare";
-            this.tabPage_Alocare.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Alocare.Size = new System.Drawing.Size(830, 389);
+            this.tabPage_Alocare.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_Alocare.Size = new System.Drawing.Size(830, 378);
             this.tabPage_Alocare.TabIndex = 8;
             this.tabPage_Alocare.Text = "Alocare Disciplina";
             this.tabPage_Alocare.UseVisualStyleBackColor = true;
@@ -1046,9 +1047,9 @@ namespace GestiuneExameneWindowsForms
             // buttonAlocaDisciplina
             // 
             this.buttonAlocaDisciplina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAlocaDisciplina.Location = new System.Drawing.Point(314, 330);
+            this.buttonAlocaDisciplina.Location = new System.Drawing.Point(312, 287);
             this.buttonAlocaDisciplina.Name = "buttonAlocaDisciplina";
-            this.buttonAlocaDisciplina.Size = new System.Drawing.Size(206, 41);
+            this.buttonAlocaDisciplina.Size = new System.Drawing.Size(221, 68);
             this.buttonAlocaDisciplina.TabIndex = 28;
             this.buttonAlocaDisciplina.Text = "Aloca disciplina";
             this.buttonAlocaDisciplina.UseVisualStyleBackColor = true;
@@ -1163,8 +1164,9 @@ namespace GestiuneExameneWindowsForms
             this.Controls.Add(this.labelAnUniversitarCurent);
             this.Controls.Add(this.labelAddDataConnectionStatus);
             this.Controls.Add(this.buttonAddDataBack);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AddDataForm";
-            this.Text = "AddDataForm";
+            this.Text = "Adaugare Date";
             this.Load += new System.EventHandler(this.AddDataForm_Load);
             this.tabPageSala.ResumeLayout(false);
             this.tabPageSala.PerformLayout();

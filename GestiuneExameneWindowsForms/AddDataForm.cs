@@ -49,7 +49,7 @@ namespace GestiuneExameneWindowsForms
         List<RadioButton> listRadioButtonTipSala = new List<RadioButton>();
         List<RadioButton> listRadioButtonSemestru = new List<RadioButton>();
         List<RadioButton> listRadioButtonTipEvaluare = new List<RadioButton>();
-        Alocare alocareForm = new Alocare();
+        //Alocare alocareForm = new Alocare();
         Acoperire acoperireForm = new Acoperire();
         DealocareDisciplina dealocareDisciplinaForm = new DealocareDisciplina();
         public static string idDisciplinaAdaugata = "";
@@ -75,6 +75,7 @@ namespace GestiuneExameneWindowsForms
             addAnUnivAutomat();
             getAnUniversitarCurent();
             getSesiuneCurenta();
+            getSesiuneCurentaRestante();
             showCurrentAcademicYear();
             adaugaSpecializareToDropDownList();
             adaugaDisciplinaToDropDownList();
@@ -251,13 +252,13 @@ namespace GestiuneExameneWindowsForms
                 con.Open();
                 labelAddDataConnectionStatus.Visible = true;
                 labelAddDataConnectionStatus.ForeColor = Color.Green;
-                labelAddDataConnectionStatus.Text = String.Format("Connected to database.");
+                labelAddDataConnectionStatus.Text = String.Format("Server online");
             }
             catch (Exception e)
             {
                 labelAddDataConnectionStatus.Visible = true;
                 labelAddDataConnectionStatus.ForeColor = Color.Red;
-                labelAddDataConnectionStatus.Text = String.Format("Not connected to database.");
+                labelAddDataConnectionStatus.Text = String.Format("Server offline.");
                 MessageBox.Show(e.Message.ToString());
             }
             finally
@@ -347,16 +348,21 @@ namespace GestiuneExameneWindowsForms
         }
         #endregion
 
-        #region Sesiune Curenta
+        #region Sesiune Curenta + Sesiune de restante
         static string idSesiuneCurenta;
         static string dataInceputSesiuneCurenta;
         static string dataFinalSesiuneCurenta;
         static string denumireSesiuneCurenta;
 
+        static string idSesiuneRestante;
+        static string dataInceputSesiuneRestante;
+        static string dataFinalSesiuneRestante;
+        static string denumireSesiuneRestante;
+
         public void getSesiuneCurenta()
         {
             con.Open();
-            string query = "SELECT top 1 idSesiune,anUniversitar,dataInceput,dataFinal FROM An_Sesiune order by dataInceput Desc;";
+            string query = "SELECT top 1 idSesiune,anUniversitar,dataInceput,dataFinal FROM An_Sesiune WHERE idSesiune IN (1,2) ORDER BY dataInceput Desc;";
             SqlCommand cmd = new SqlCommand(query, con);
 
             SqlDataReader returnedRows = cmd.ExecuteReader();
@@ -371,6 +377,30 @@ namespace GestiuneExameneWindowsForms
             {
                 if (dr.ItemArray.GetValue(0).ToString() == idSesiuneCurenta)
                     denumireSesiuneCurenta = dr.ItemArray.GetValue(1).ToString();
+            }
+
+            con.Close();
+            //MessageBox.Show("Sesiune curenta id: "+ idSesiuneCurenta +" ,denumire: "+denumireSesiuneCurenta+ " ,data inceput: "+ dataInceputSesiuneCurenta+ " ,data final: "+ dataFinalSesiuneCurenta);
+        }
+
+        public void getSesiuneCurentaRestante()
+        {
+            con.Open();
+            string query = "SELECT top 1 idSesiune,anUniversitar,dataInceput,dataFinal FROM An_Sesiune WHERE idSesiune IN (3) ORDER BY dataInceput Desc;";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            SqlDataReader returnedRows = cmd.ExecuteReader();
+            if (returnedRows.Read())
+            {
+                idSesiuneRestante = returnedRows.GetValue(0).ToString();
+                dataInceputSesiuneRestante = returnedRows.GetValue(2).ToString();
+                dataFinalSesiuneRestante = returnedRows.GetValue(3).ToString();
+            }
+
+            foreach (DataRow dr in ds.Tables["SESIUNE"].Rows)
+            {
+                if (dr.ItemArray.GetValue(0).ToString() == idSesiuneRestante)
+                    denumireSesiuneRestante = dr.ItemArray.GetValue(1).ToString();
             }
 
             con.Close();
@@ -744,8 +774,10 @@ namespace GestiuneExameneWindowsForms
 
                     con.Close();
                     MessageBox.Show("Disciplina " + discOriginalText.ToString() + " a fost adaugata cu succes!");
+                    adaugaDisciplinaToDropDownList();
                     textBoxDenumireDisciplina.Clear();
                     idDisciplinaAdaugata = idDisciplinaDB.ToString();
+                    Alocare alocareForm = new Alocare();
                     this.Hide();
                     alocareForm.ShowDialog();
                 }
@@ -775,8 +807,11 @@ namespace GestiuneExameneWindowsForms
                     DataTable dt = ds.Tables["ANSESIUNE"];
                     DataRow dr1 = dt.NewRow();
 
+                    bool perioadaValida = true;
                     bool exista = false;
                     string idSesiune = "";
+                    string mesajSesiuneIarnaPerioadaInvalida = "Sesiunea de Iarna nu poate avea loc in afara lunilor Ianuarie - Februarie!";
+                    string mesajSesiuneVaraPerioadaInvalida = "Sesiunea de Vara nu poate avea loc in afara lunilor Mai - Iunie!";
 
                     foreach (DataRow dr in ds.Tables["SESIUNE"].Rows)
                     {
@@ -784,33 +819,56 @@ namespace GestiuneExameneWindowsForms
                             idSesiune = dr.ItemArray.GetValue(0).ToString();
                     }
 
-                    foreach (DataRow dr in ds.Tables["ANSESIUNE"].Rows)
+                    if (idSesiune == "1") //daca este sesiunea de Iarna
                     {
-                        if (dr.ItemArray.GetValue(0).ToString() == idSesiune.ToString())  //daca mai exista sesiune in acelasi tip de sesiune -Vara,Iarna,Restanta
+                        if (dateTimePickerSesiuneInceput.Value.Date.Month != 1 || dateTimePickerSesiuneFinal.Value.Date.Month != 2) //daca lunile alese pentru data sesiunii de iarna nu sunt Ianuarie/Februarie
+                            perioadaValida = false;
+                    }
+
+                    if (idSesiune == "2") //daca este sesiunea de Vara
+                    {
+                        if (dateTimePickerSesiuneInceput.Value.Date.Month != 5 || dateTimePickerSesiuneFinal.Value.Date.Month != 6) //daca luna aleasa pentru data sesiunii de vara nu este Iunie
+                            perioadaValida = false;
+                    }
+
+                    if (perioadaValida == false)
+                    {
+                        if (idSesiune == "1")
+                            MessageBox.Show(mesajSesiuneIarnaPerioadaInvalida);
+                        else
+                            if (idSesiune == "2")
+                            MessageBox.Show(mesajSesiuneVaraPerioadaInvalida);
+                    }
+                    else
+                    {
+                        foreach (DataRow dr in ds.Tables["ANSESIUNE"].Rows)
                         {
-                            if (dr.ItemArray.GetValue(1).ToString() == anUniversitarCurent.ToString())  //daca mai exista sesiune inregistrata in acelasi an
+                            if (dr.ItemArray.GetValue(0).ToString() == idSesiune.ToString())  //daca mai exista sesiune in acelasi tip de sesiune -Vara,Iarna,Restanta
                             {
-                                if (Convert.ToDateTime(dr.ItemArray.GetValue(2).ToString()) == dateTimePickerSesiuneInceput.Value.Date) //verifica unicitate prin data
+                                if (dr.ItemArray.GetValue(1).ToString() == anUniversitarCurent.ToString())  //daca mai exista sesiune inregistrata in acelasi an
                                 {
-                                    MessageBox.Show("Sesiunea de " + comboBoxDropDownListSesiune.SelectedItem.ToString() + " din anul universitar " + anUniversitarCurent.ToString() + " din data de " + dateTimePickerSesiuneInceput.Value.Date.ToString() + " este deja inregistrata!");
-                                    exista = true;
-                                    break;
+                                    if (Convert.ToDateTime(dr.ItemArray.GetValue(2).ToString()) == dateTimePickerSesiuneInceput.Value.Date) //verifica unicitate prin data
+                                    {
+                                        MessageBox.Show("Sesiunea de " + comboBoxDropDownListSesiune.SelectedItem.ToString() + " din anul universitar " + anUniversitarCurent.ToString() + " din data de " + dateTimePickerSesiuneInceput.Value.Date.ToString() + " este deja inregistrata!");
+                                        exista = true;
+                                        break;
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    if (exista == false)
-                    {
-                        dr1[0] = idSesiune.ToString();
-                        dr1[1] = anUniversitarCurent.ToString();
-                        dr1[2] = dateTimePickerSesiuneInceput.Value.Date;
-                        dr1[3] = dateTimePickerSesiuneFinal.Value.Date;
+                        if (exista == false)
+                        {
+                            dr1[0] = idSesiune.ToString();
+                            dr1[1] = anUniversitarCurent.ToString();
+                            dr1[2] = dateTimePickerSesiuneInceput.Value.Date;
+                            dr1[3] = dateTimePickerSesiuneFinal.Value.Date;
 
-                        dt.Rows.Add(dr1);
-                        SqlCommandBuilder cb = new SqlCommandBuilder(daAnSesiune);
-                        cb.DataAdapter.Update(dt);
-                        MessageBox.Show("Sesiunea de " + comboBoxDropDownListSesiune.SelectedItem.ToString() + " din anul universitar " + anUniversitarCurent.ToString() + " din data de " + dateTimePickerSesiuneInceput.Value.ToShortDateString().ToString() + " a fost programata cu succes!");
+                            dt.Rows.Add(dr1);
+                            SqlCommandBuilder cb = new SqlCommandBuilder(daAnSesiune);
+                            cb.DataAdapter.Update(dt);
+                            MessageBox.Show("Sesiunea de " + comboBoxDropDownListSesiune.SelectedItem.ToString() + " din anul universitar " + anUniversitarCurent.ToString() + " din data de " + dateTimePickerSesiuneInceput.Value.ToShortDateString().ToString() + " a fost programata cu succes!");
+                        }
                     }
                 }
             }
