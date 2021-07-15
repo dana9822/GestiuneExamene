@@ -79,8 +79,6 @@ C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExamene
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\GestiuneExameneWindowsForms.ScheduleExamForm.resources
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\GestiuneExameneWindowsForms.StatisticsForm.resources
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\GestiuneExameneWindowsForms.csproj.GenerateResource.cache
-C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\RdlCompile.cache
-C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\RdlCompile.compiled
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\GestiuneExameneWindowsForms.csproj.CoreCompileInputs.cache
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\GestiuneExameneWindowsForms.csproj.CopyComplete
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Release\GestiuneExameneWindowsForms.exe

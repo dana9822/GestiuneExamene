@@ -396,8 +396,8 @@ namespace GestiuneExameneWindowsForms
                 {
                     if (drAloc.ItemArray.GetValue(6).ToString() == anUniversitarCurent) // daca este activ si apartine anului Univ curent
                     {
-                        if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
-                        {
+                        //if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
+                        //{
                             foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
                             {
                                 if (drAloc.ItemArray.GetValue(0).ToString() == dr.ItemArray.GetValue(0).ToString()) //daca specializarea are disciplina alocata
@@ -408,7 +408,7 @@ namespace GestiuneExameneWindowsForms
                                     }
                                 }
                             }
-                        }
+                        //}
                     }
                 }
             }
@@ -1069,64 +1069,63 @@ namespace GestiuneExameneWindowsForms
 
         #region ProgrameazaRestanta
 
-        void golestePanel()
-        {
-            foreach (Control c in panelAlegeMarcaProf.Controls)
-                panelAlegeMarcaProf.Controls.Remove(c);
-        }
+        //void golestePanel()
+        //{
+        //    foreach (Control c in panelAlegeMarcaProf.Controls)
+        //        panelAlegeMarcaProf.Controls.Remove(c);
+        //}
 
-        string codProfSelectat = "";
-        List<string> listaCodProf = new List<string>();
-        List<RadioButton> listaRadioButtonsCodProf = new List<RadioButton>();
+        //string codProfSelectat = "";
+        //List<string> listaCodProf = new List<string>();
+        //List<RadioButton> listaRadioButtonsCodProf = new List<RadioButton>();
 
-        void gasesteCodProfSelectat()
-        {
-            int pozTop = 10;
-            golestePanel();
-            listaCodProf.Clear();
-            listaRadioButtonsCodProf.Clear();
+        //void gasesteCodProfSelectat()
+        //{
+        //    int pozTop = 10;
+        //    golestePanel();
+        //    listaCodProf.Clear();
+        //    listaRadioButtonsCodProf.Clear();
 
-            foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-                if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
-                    listaCodProf.Add(dr.ItemArray.GetValue(0).ToString());
+        //    foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+        //        if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+        //            listaCodProf.Add(dr.ItemArray.GetValue(0).ToString());
 
-            if (listaCodProf.Count > 1) //daca sunt mai multi profesori cu acelasi nume, trebuie sa alegem codul aceceluia pentru care se programeaza restanta.
-            {
-                panelAlegeMarcaProf.Visible = true;
-                foreach (string matr in listaCodProf)
-                {
-                    listaRadioButtonsCodProf.Add(CreateNewControls.createRadioButton(matr, 10, pozTop));
-                    pozTop += 20;
-                }
+        //    if (listaCodProf.Count > 1) //daca sunt mai multi profesori cu acelasi nume, trebuie sa alegem codul aceceluia pentru care se programeaza restanta.
+        //    {
+        //        panelAlegeMarcaProf.Visible = true;
+        //        foreach (string matr in listaCodProf)
+        //        {
+        //            listaRadioButtonsCodProf.Add(CreateNewControls.createRadioButton(matr, 10, pozTop));
+        //            pozTop += 20;
+        //        }
 
-                foreach (RadioButton rb in listaRadioButtonsCodProf)
-                {
-                    panelAlegeMarcaProf.Controls.Add(rb);
-                    rb.CheckedChanged += rb_CheckedChanged;
-                }
-            }
-            else
-            {
-                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
-                        codProfSelectat = dr.ItemArray.GetValue(0).ToString();
-            }
-        }
+        //        foreach (RadioButton rb in listaRadioButtonsCodProf)
+        //        {
+        //            panelAlegeMarcaProf.Controls.Add(rb);
+        //            rb.CheckedChanged += rb_CheckedChanged;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+        //            if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+        //                codProfSelectat = dr.ItemArray.GetValue(0).ToString();
+        //    }
+        //}
 
-        void rb_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton button = (RadioButton)sender;
-            if (button.Checked == true)
-            {
-                codProfSelectat = button.Text;
-            }
-        }
+        //void rb_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    RadioButton button = (RadioButton)sender;
+        //    if (button.Checked == true)
+        //    {
+        //        codProfSelectat = button.Text;
+        //    }
+        //}
 
         private void buttonProgramareRestanta_Click(object sender, EventArgs e)
         {
             if (validareRestanta() == true)
             {
-                codProfSelectat = copyCodProfSelectat;
                 ds.Tables["RESTANTA"].Clear();
                 SqlDataAdapter daRestanta = new SqlDataAdapter("SELECT * FROM ProgramareRestanta", con);
                 con.Open();
@@ -1164,7 +1163,7 @@ namespace GestiuneExameneWindowsForms
                 dr1[0] = idCorp;
                 dr1[1] = nrSala;
                 dr1[2] = etaj;
-                dr1[3] = codProfSelectat;
+                dr1[3] = codProf;
                 dr1[4] = idDisciplina;
                 dr1[5] = idSesiuneRestante;
                 dr1[6] = anUniversitarCurent;
@@ -1179,9 +1178,6 @@ namespace GestiuneExameneWindowsForms
                 MessageBox.Show("Restanta este programata!");
                 completeazaGridRestanta();
                 seteazaProprietatiGridRestanta();
-                panelAlegeMarcaProf.Visible = false;
-
-                codProfSelectat = "";
             }
             else
                 MessageBox.Show("Modificati greselile si incercati din nou!");
@@ -1192,7 +1188,6 @@ namespace GestiuneExameneWindowsForms
             if (validareRestanta() == true)
                 MessageBox.Show("Restanta este validata si se poate programa!");
         }
-        static string copyCodProfSelectat = "";
         bool validareRestanta()
         {
             if (statusServerOk == false)
@@ -1234,17 +1229,13 @@ namespace GestiuneExameneWindowsForms
             }
             if (comboBoxRestantaProfesor.Items.Count > 0)
             {
-                gasesteCodProfSelectat();
-
-                if (string.IsNullOrEmpty(codProfSelectat) && listaCodProf.Count > 1)
-                    MessageBox.Show("Alege codul profesorului care programeaza restanta!");
 
                 ds.Tables["RESTANTA"].Clear();
                 adaugaRestantaToDataSet();
-                //string codProf = "";
-                //foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
-                //    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
-                //        codProf = dr.ItemArray.GetValue(0).ToString();
+                string codProf = "";
+                foreach (DataRow dr in ds.Tables["PROFESOR"].Rows)
+                    if (dr.ItemArray.GetValue(1).ToString() + " " + dr.ItemArray.GetValue(2).ToString() == comboBoxRestantaProfesor.SelectedItem.ToString())
+                        codProf = dr.ItemArray.GetValue(0).ToString();
 
                 string idCorp = "";
                 string nrSala = "";
@@ -1269,10 +1260,9 @@ namespace GestiuneExameneWindowsForms
                 {
                     data = dr.ItemArray.GetValue(7).ToString();
                     if (dr.ItemArray.GetValue(6).ToString() == anUniversitarCurent && dr.ItemArray.GetValue(5).ToString() == idSesiuneRestante &&
-                        dr.ItemArray.GetValue(3).ToString() == codProfSelectat && dr.ItemArray.GetValue(8).ToString() == numericUpDownRestantaOra.Value.ToString() &&
+                        dr.ItemArray.GetValue(3).ToString() == codProf && dr.ItemArray.GetValue(8).ToString() == numericUpDownRestantaOra.Value.ToString() &&
                         Convert.ToDateTime(data) == Convert.ToDateTime(dateTimePickerRestantaData.Value.ToShortDateString()))
                     {
-                        //profesorul deja are restanta la ora+data selectate , NEFUNCTIONAL...?
                         MessageBox.Show("Profesorul " + comboBoxRestantaProfesor.SelectedItem.ToString() + " are deja programata restanta la data " + dateTimePickerRestantaData.Value.ToShortDateString() +
                             " ora :" + numericUpDownRestantaOra.Value.ToString());
                         return false;
@@ -1287,7 +1277,6 @@ namespace GestiuneExameneWindowsForms
                                 {
                                     if (dr.ItemArray.GetValue(0).ToString() == idCorp && dr.ItemArray.GetValue(2).ToString() == etaj && dr.ItemArray.GetValue(1).ToString() == nrSala)
                                     {
-                                        //sala e deja ocupata => NEFUNCTIONAL ????? ( E acelasi cod ca la examen, unde functioneaza....
                                         MessageBox.Show("Sala " + codSala + " este ocupata la data " + dateTimePickerRestantaData.Value.ToShortDateString() +
                                             " ora: " + numericUpDownRestantaOra.Value.ToString());
                                         return false;
@@ -1298,8 +1287,6 @@ namespace GestiuneExameneWindowsForms
                     }
                 }
             }
-            copyCodProfSelectat = codProfSelectat;
-            codProfSelectat = "";
             return true;
         }
         #endregion
@@ -1389,14 +1376,24 @@ namespace GestiuneExameneWindowsForms
                     {
                         try
                         {
+                            Paragraph title = new Paragraph("ARHIVA EXAMENE " + anUniv);
+                            title.Alignment = Element.ALIGN_CENTER;
+                            title.Font = FontFactory.GetFont("Arial", 32);
+                            title.SpacingAfter = 25;
+                            title.SetLeading(1, 1);
+
                             PdfPTable pdfTable = new PdfPTable(dataGridViewExamen.Columns.Count);
                             pdfTable.DefaultCell.Padding = 3;
                             pdfTable.WidthPercentage = 100;
                             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.DefaultCell.BorderWidth = 1;
 
                             foreach (DataGridViewColumn column in dataGridViewExamen.Columns)
                             {
                                 PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                cell.BackgroundColor = new iTextSharp.text.BaseColor(Color.LightBlue);
+                                cell.HorizontalAlignment = 1;
+                                cell.VerticalAlignment = 1;
                                 pdfTable.AddCell(cell);
                             }
 
@@ -1404,15 +1401,23 @@ namespace GestiuneExameneWindowsForms
                             {
                                 foreach (DataGridViewCell cell in row.Cells)
                                 {
-                                    pdfTable.AddCell(cell.Value.ToString());
+                                    //pdfTable.AddCell(cell.Value.ToString());
+                                    PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Value.ToString()));
+                                    pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    pdfCell.VerticalAlignment = Element.ALIGN_CENTER;
+                                    pdfTable.AddCell(pdfCell);
                                 }
                             }
 
                             using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
                             {
-                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                //Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                //PdfWriter.GetInstance(pdfDoc, stream);
+                                Document pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+                                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
                                 PdfWriter.GetInstance(pdfDoc, stream);
                                 pdfDoc.Open();
+                                pdfDoc.Add(title);
                                 pdfDoc.Add(pdfTable);
                                 pdfDoc.Close();
                                 stream.Close();
@@ -1459,14 +1464,24 @@ namespace GestiuneExameneWindowsForms
                     {
                         try
                         {
+                            Paragraph title = new Paragraph("ARHIVA RESTANTE " + anUniv);
+                            title.Alignment = Element.ALIGN_CENTER;
+                            title.Font = FontFactory.GetFont("Arial", 32);
+                            title.SpacingAfter = 25;
+                            title.SetLeading(1, 1);
+
                             PdfPTable pdfTable = new PdfPTable(dataGridViewRestanta.Columns.Count);
                             pdfTable.DefaultCell.Padding = 3;
                             pdfTable.WidthPercentage = 100;
                             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.DefaultCell.BorderWidth = 1;
 
                             foreach (DataGridViewColumn column in dataGridViewRestanta.Columns)
                             {
                                 PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                cell.BackgroundColor = new iTextSharp.text.BaseColor(Color.LightBlue);
+                                cell.HorizontalAlignment = 1;
+                                cell.VerticalAlignment = 1;
                                 pdfTable.AddCell(cell);
                             }
 
@@ -1474,15 +1489,20 @@ namespace GestiuneExameneWindowsForms
                             {
                                 foreach (DataGridViewCell cell in row.Cells)
                                 {
-                                    pdfTable.AddCell(cell.Value.ToString());
+                                    PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Value.ToString()));
+                                    pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                    pdfCell.VerticalAlignment = Element.ALIGN_CENTER;
+                                    pdfTable.AddCell(pdfCell);
                                 }
                             }
 
                             using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
                             {
-                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                Document pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+                                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
                                 PdfWriter.GetInstance(pdfDoc, stream);
                                 pdfDoc.Open();
+                                pdfDoc.Add(title);
                                 pdfDoc.Add(pdfTable);
                                 pdfDoc.Close();
                                 stream.Close();

@@ -111,8 +111,8 @@ namespace GestiuneExameneWindowsForms
             {
                 if (drAloc.ItemArray.GetValue(5).ToString() == "Activ")  //daca disciplina este inca valida la specializarea x pentru anul in curs
                 {
-                    if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
-                    {
+                    //if (drAloc.ItemArray.GetValue(3).ToString() == returnRadioButtonName(listRadioButtonSemestru).ToString())  //daca semestrul corespunde cu cel bifat
+                    //{
                         foreach (DataRow dr in ds.Tables["SPECIALIZARE"].Rows)
                         {
                             if (drAloc.ItemArray.GetValue(0).ToString() == dr.ItemArray.GetValue(0).ToString()) //daca specializarea are disciplina alocata
@@ -123,7 +123,7 @@ namespace GestiuneExameneWindowsForms
                                 }
                             }
                         }
-                    }
+                    //}
                 }
             }
             List<string> distinct = specializari.Distinct().ToList();

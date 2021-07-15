@@ -83,5 +83,3 @@ C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExamene
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\bin\Debug\itextsharp.xml
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.ModificaProfesorExaminator.resources
 C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\GestiuneExameneWindowsForms.csproj.AssemblyReference.cache
-C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\RdlCompile.cache
-C:\Users\gheoda\Desktop\Dana\Licenta\GestiuneExameneWindowsForms\GestiuneExameneWindowsForms\obj\Debug\RdlCompile.compiled

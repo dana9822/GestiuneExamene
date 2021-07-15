@@ -1020,7 +1020,7 @@ namespace GestiuneExameneWindowsForms
                     daAlocare.Fill(ds, "ALOCAREDISCIPLINA");
                     con.Close();
                     MessageBox.Show("Disciplina " + comboBoxDropDownListAlocareDiscDiscList.SelectedItem.ToString() + " a fost alocata cu succes, avand urmatoarele specificatii:" + "\nSpecializarea: " + comboBoxDropDownListAlocareDiscSpecList.SelectedItem.ToString() + " \nAnul de studiu: " + comboBoxDropDownListAlocareDiscAnStudiuList.SelectedItem.ToString() + "\nSemestrul: " + returnRadioButtonName(listRadioButtonSemestru).ToString() + " \nTip Evaluare: " + returnRadioButtonName(listRadioButtonTipEvaluare).ToString() + "\nStatus: " + statusDisc);
-                    // reset drop down numeric fields to their default values?
+                    
                 }
                 else
                     MessageBox.Show("Alocarea exista deja in baza de date!");

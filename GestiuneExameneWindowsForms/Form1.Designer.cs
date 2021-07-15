@@ -41,10 +41,10 @@ namespace GestiuneExameneWindowsForms
             // 
             // buttonAdaugaDate
             // 
-            this.buttonAdaugaDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaDate.Location = new System.Drawing.Point(123, 253);
+            this.buttonAdaugaDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaDate.Location = new System.Drawing.Point(71, 239);
             this.buttonAdaugaDate.Name = "buttonAdaugaDate";
-            this.buttonAdaugaDate.Size = new System.Drawing.Size(178, 45);
+            this.buttonAdaugaDate.Size = new System.Drawing.Size(229, 72);
             this.buttonAdaugaDate.TabIndex = 0;
             this.buttonAdaugaDate.Text = "Adauga Date";
             this.buttonAdaugaDate.UseVisualStyleBackColor = true;
@@ -52,10 +52,10 @@ namespace GestiuneExameneWindowsForms
             // 
             // buttonProgramareExamene
             // 
-            this.buttonProgramareExamene.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProgramareExamene.Location = new System.Drawing.Point(307, 253);
+            this.buttonProgramareExamene.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProgramareExamene.Location = new System.Drawing.Point(306, 239);
             this.buttonProgramareExamene.Name = "buttonProgramareExamene";
-            this.buttonProgramareExamene.Size = new System.Drawing.Size(232, 45);
+            this.buttonProgramareExamene.Size = new System.Drawing.Size(263, 72);
             this.buttonProgramareExamene.TabIndex = 1;
             this.buttonProgramareExamene.Text = "Programare Examene";
             this.buttonProgramareExamene.UseVisualStyleBackColor = true;
@@ -63,18 +63,18 @@ namespace GestiuneExameneWindowsForms
             // 
             // buttonStatistici
             // 
-            this.buttonStatistici.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStatistici.Location = new System.Drawing.Point(545, 253);
+            this.buttonStatistici.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStatistici.Location = new System.Drawing.Point(584, 239);
             this.buttonStatistici.Name = "buttonStatistici";
-            this.buttonStatistici.Size = new System.Drawing.Size(206, 45);
+            this.buttonStatistici.Size = new System.Drawing.Size(238, 72);
             this.buttonStatistici.TabIndex = 2;
-            this.buttonStatistici.Text = "Rapoarte";
+            this.buttonStatistici.Text = "Orar Examene";
             this.buttonStatistici.UseVisualStyleBackColor = true;
             this.buttonStatistici.Click += new System.EventHandler(this.buttonStatistici_Click);
             // 
             // buttonExit
             // 
-            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonExit.Location = new System.Drawing.Point(752, 444);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(101, 43);
@@ -86,21 +86,22 @@ namespace GestiuneExameneWindowsForms
             // comboBoxListaFacultati
             // 
             this.comboBoxListaFacultati.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxListaFacultati.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxListaFacultati.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxListaFacultati.FormattingEnabled = true;
             this.comboBoxListaFacultati.Location = new System.Drawing.Point(71, 163);
             this.comboBoxListaFacultati.Name = "comboBoxListaFacultati";
-            this.comboBoxListaFacultati.Size = new System.Drawing.Size(751, 32);
+            this.comboBoxListaFacultati.Size = new System.Drawing.Size(751, 39);
+            this.comboBoxListaFacultati.Sorted = true;
             this.comboBoxListaFacultati.TabIndex = 4;
             this.comboBoxListaFacultati.SelectedIndexChanged += new System.EventHandler(this.facultateForm1_selectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(353, 95);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(328, 94);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 24);
+            this.label1.Size = new System.Drawing.Size(231, 31);
             this.label1.TabIndex = 5;
             this.label1.Text = "Alegeti facultatea:";
             // 
